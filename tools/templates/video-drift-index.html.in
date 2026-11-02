@@ -100,7 +100,7 @@
     <section class="block donate" id="donate">
       <div class="wrap">
         <h2 data-i18n="d_title">Support the project</h2>
-        <p class="sub" data-i18n="d_sub">Video Drift is free and has no ads. If you enjoy it, you can support development by card on Ko-fi or with crypto. Any amount helps ship new versions.</p>
+        <p class="sub" data-i18n="d_sub">Video Drift is free and has no ads. If you enjoy it, you can support development by card on Ko-fi or Donatello, or with crypto. Any amount helps ship new versions.</p>
         <div class="wallets" id="wallets"></div>
         <p class="warn" data-i18n="d_warn">Send coins only on the network shown on the card. A transfer on another network may be lost.</p>
         <p class="thanks" data-i18n="d_thanks">Thank you for being here.</p>

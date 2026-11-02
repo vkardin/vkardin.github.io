@@ -158,7 +158,7 @@ function render(id,lang,kind) {
     const a=doc.createElement('a');a.className='kofi';a.href='https://ko-fi.com/vkardin';a.target='_blank';a.rel='noopener';
     a.textContent={en:'Donate by card on Ko-fi ↗',ru:'Поддержать картой через Ko-fi ↗',uk:'Підтримати карткою через Ko-fi ↗'}[lang];
     const d=doc.createElement('a');d.className='kofi kofi-alt';d.href='https://donatello.to/vkardin';d.target='_blank';d.rel='noopener';
-    d.textContent={en:'Donatello ↗',ru:'Donatello (удобно из Украины) ↗',uk:'Donatello ↗'}[lang];
+    d.textContent={en:'Donate via Donatello ↗',ru:'Поддержать через Donatello ↗',uk:'Підтримати через Donatello ↗'}[lang];
     row.append(a,' ',d);wallets.before(row);
   }
   // Remove the old automatic language redirect; URLs select the language.
