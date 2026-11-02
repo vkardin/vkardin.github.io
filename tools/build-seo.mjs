@@ -10,13 +10,13 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = p => fs.readFileSync(path.join(root,p), 'utf8');
 const write = (p,s) => {fs.mkdirSync(path.dirname(path.join(root,p)),{recursive:true});fs.writeFileSync(path.join(root,p),s);};
 const copy = JSON.parse(read('tools/seo-copy.json'));
-const langs = ['ru','uk','en'];
+const langs = ['en','ru','uk'];
 const origin = 'https://vkardin.github.io';
 const projectPath = id => id==='hub' ? '/' : `/${id}/`;
-// Existing project entry URLs remain valid; Snapt keeps its established English root.
+// English is always the unprefixed entry; translations have stable URLs.
 export const pagePath = (id,lang,kind='index') => {
-  const base=projectPath(id), def=id==='snapt'?'en':'ru';
-  return base+(lang===def?'':lang+'/')+(kind==='index'?'':kind+'.html');
+  const base=projectPath(id);
+  return base+(lang==='en'?'':lang+'/')+(kind==='index'?'':kind+'.html');
 };
 function objectFrom(code,name,end) {
   const start=code.indexOf(`const ${name} = `)>=0 ? code.indexOf(`const ${name} = `) : code.indexOf(`const ${name}=`);
@@ -99,6 +99,7 @@ function render(id,lang,kind) {
   const dom=new JSDOM(read('tools/templates/'+source),{url:origin+sourcePath,runScripts:'outside-only'});
   const doc=dom.window.document;
   doc.documentElement.lang=lang;doc.documentElement.dataset.staticLang=lang;
+  if(lang==='en')doc.documentElement.dataset.localeBase=projectPath(id);
   translate(doc,id,lang,kind);familyLinks(doc,lang);
   if(kind==='index'&&id!=='video-glow'){
     const demo=doc.querySelector(id==='uni-homebot'?'.hero .phone':'.hero .demo, .screen .demo, .demo');
@@ -121,14 +122,20 @@ function render(id,lang,kind) {
   let image=id==='snapt'?'/snapt/social-preview.png':id==='uni-homebot'?'/uni-homebot/assets/banner.jpg':id==='leveler'?'/leveler/img/og.png':`/media/${id==='hub'?'video-glow':id}-${lang}.webp`;
   meta('og:image',origin+image,true);meta('og:image:alt',title,true);meta('twitter:card','summary_large_image');meta('twitter:title',title);meta('twitter:description',description);meta('twitter:image',origin+image);
   const canonical=doc.createElement('link');canonical.rel='canonical';canonical.href=url;doc.head.append(canonical);
-  for(const l of [...langs,'x-default']){const e=doc.createElement('link');e.rel='alternate';e.hreflang=l;e.href=origin+pagePath(id,l==='x-default'?(id==='snapt'?'en':'ru'):l,kind);doc.head.append(e);}
+  for(const l of [...langs,'x-default']){const e=doc.createElement('link');e.rel='alternate';e.hreflang=l;e.href=origin+pagePath(id,l==='x-default'?'en':l,kind);doc.head.append(e);}
   // Real language links also work with JavaScript disabled.
   doc.querySelectorAll('[data-lang]').forEach(b=>{const a=doc.createElement('a');a.href=pagePath(id,b.dataset.lang,kind);a.hreflang=b.dataset.lang;a.textContent=b.textContent;if(b.dataset.lang===lang)a.setAttribute('aria-current','page');b.replaceWith(a);});
   doc.querySelectorAll('.langs a[hreflang]').forEach(a=>{a.setAttribute('href',pagePath(id,a.hreflang,kind));a.removeAttribute('aria-current');if(a.hreflang===lang)a.setAttribute('aria-current','page');});
+  for(const selector of ['.langs','.hub-languages']){
+    const switcher=doc.querySelector(selector);if(!switcher)continue;
+    for(const l of langs){const a=switcher.querySelector(`a[hreflang="${l}"]`);if(a)switcher.append(a);}
+  }
   for(const el of doc.querySelectorAll('[src],[href],[data-qr]'))for(const attr of ['src','href','data-qr']) {
+    // Search metadata requires absolute URLs; normalize only local resources and UI links.
+    if(el.matches('link[rel="canonical"],link[rel="alternate"][hreflang]'))continue;
     const v=el.getAttribute(attr);if(!v||v.startsWith('#')||/^(?:data:|mailto:|tel:|javascript:)/i.test(v))continue;
     const target=new URL(v,origin+sourcePath);if(target.origin!==origin)continue;
-    if(el.tagName==='SCRIPT'&&attr==='src')target.searchParams.set('v','seo-1');
+    if(el.tagName==='SCRIPT'&&attr==='src')target.searchParams.set('v','seo-2');
     // Localize cross-project navigation, cards and document links.
     const match=target.pathname.match(/^\/(video-glow|leveler|video-drift|snapt|uni-homebot)\/(?:ru\/|uk\/|en\/)?(?:(index|support|privacy)\.html)?$/);
     if(attr==='href'&&el.tagName==='A'&&!el.hreflang) {
@@ -166,11 +173,17 @@ function render(id,lang,kind) {
     {'@context':'https://schema.org','@type':id==='hub'?'CollectionPage':'WebPage',name:title,url,inLanguage:lang,description};
   const json=doc.createElement('script');json.type='application/ld+json';json.textContent=JSON.stringify(schema).replaceAll('<','\\u003c');doc.head.append(json);
   // Styles cover static language links and stable screenshots before the first paint.
-  const css=doc.createElement('link');css.rel='stylesheet';css.href='/seo.css?v=1';doc.head.append(css);
+  const css=doc.createElement('link');css.rel='stylesheet';css.href='/seo.css?v=2';doc.head.append(css);
   const dest=pagePath(id,lang,kind)+(kind==='index'?'index.html':'');
   write(dest.slice(1),dom.serialize().replace(/^[\t ]+$/gm,'')+'\n');urls.push(url);dom.window.close();
 }
 for(const id of Object.keys(copy))for(const lang of langs){render(id,lang,'index');if(['video-glow','leveler','video-drift'].includes(id))for(const kind of ['support','privacy'])render(id,lang,kind);}
+// Keep already published /en/ links working without duplicate English pages.
+for(const id of Object.keys(copy).filter(id=>id!=='snapt'))for(const kind of ['index',...(['video-glow','leveler','video-drift'].includes(id)?['support','privacy']:[])]){
+  const destination=pagePath(id,'en',kind),legacy=projectPath(id)+'en/'+(kind==='index'?'index.html':kind+'.html');
+  const script=`try{localStorage.setItem('vkardin-site-language-choice','en');}catch{}location.replace(${JSON.stringify(destination)}+location.search+location.hash);`;
+  write(legacy.slice(1),'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow"><title>Page moved</title><link rel="canonical" href="'+origin+destination+'"><meta http-equiv="refresh" content="0;url='+destination+'"><script>'+script+'</script></head><body><a href="'+destination+'">Continue in English</a></body></html>\n');
+}
 write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+urls.map(url=>`  <url><loc>${url}</loc></url>`).join('\n')+'\n</urlset>\n');
 write('robots.txt','User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /node_modules/\n\nSitemap: '+origin+'/sitemap.xml\n');
 console.log(`Generated ${urls.length} localized pages and sitemap.xml.`);

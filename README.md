@@ -20,10 +20,14 @@ Serve locally with `python3 -m http.server 8000` from this directory. Check prod
 ## Localized pages and SEO
 
 Every landing page and the extension support/privacy pages have a static HTML
-version in Russian, Ukrainian and English. Existing URLs remain valid: the root
-is Russian except for `/snapt/`, which remains English. Other languages use
-`/en/` and `/uk/` (Snapt uses `/ru/` and `/uk/`). Language selectors are normal
-links; saved preferences do not redirect visitors or replace a URL's language.
+version in English, Russian and Ukrainian. English uses the unprefixed root;
+Russian and Ukrainian use `/ru/` and `/uk/`. Old `/en/` links redirect to the
+English entry. All language selectors use the order EN, RU, UK.
+
+On an entry URL, a first-time visit uses the first supported browser/system
+language, falling back to English. A manual language choice is remembered and
+takes priority. Explicit `/ru/` and `/uk/` links never change their language.
+Static English HTML, canonical URLs and hreflang remain available to crawlers.
 
 To update pages:
 

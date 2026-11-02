@@ -10,7 +10,7 @@
     document.querySelectorAll('[data-family-word]').forEach((el) => { el.textContent = words[lang][el.dataset.familyWord] + (el.dataset.familyWord === 'site' ? ' ↗' : ''); });
     document.querySelectorAll('[data-family-type]').forEach((el) => { el.textContent = projects[el.dataset.familyType].type[lang]; });
     document.querySelectorAll('[data-family-description]').forEach((el) => { el.textContent = projects[el.dataset.familyDescription].desc[lang]; });
-    document.querySelectorAll('[data-family-site]').forEach((el) => { const id = el.dataset.familySite; el.href = 'https://vkardin.github.io/' + id + '/' + (lang !== (id === 'snapt' ? 'en' : 'ru') ? lang + '/' : ''); });
+    document.querySelectorAll('[data-family-site]').forEach((el) => { const id = el.dataset.familySite; el.href = 'https://vkardin.github.io/' + id + '/' + (lang !== 'en' ? lang + '/' : ''); });
   }
   new MutationObserver(apply).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   apply();
@@ -69,7 +69,7 @@ new MutationObserver(applyTags).observe(document.documentElement,{attributes:tru
   document.querySelectorAll('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===lang)));
   try{localStorage.setItem('vkardin-site-language',lang);for(const k of ['vg-lang','lv-lang','video-drift-lang','lang'])localStorage.setItem(k,lang);}catch{}
  }
- document.addEventListener('click',event=>{const link=event.target.closest('a[hreflang]');if(link&&['ru','uk','en'].includes(link.hreflang)){try{localStorage.setItem('vkardin-site-language',link.hreflang);}catch{}}},true);
+ document.addEventListener('click',event=>{const link=event.target.closest('a[hreflang]');if(link&&['en','ru','uk'].includes(link.hreflang)){try{localStorage.setItem('vkardin-site-language',link.hreflang);localStorage.setItem('vkardin-site-language-choice',link.hreflang);}catch{if(link.hreflang==='en'){const url=new URL(link.href);url.searchParams.set('lang','en');link.href=url.href;}}}},true);
  new MutationObserver(applyLanguage).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
  applyLanguage();
 })();

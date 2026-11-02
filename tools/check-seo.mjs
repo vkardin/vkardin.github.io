@@ -21,9 +21,15 @@ for(const [url,doc] of docs){
  check(doc.querySelectorAll('title').length===1&&doc.title.length>10,url+': title');
  check(doc.querySelectorAll('meta[name="description"]').length===1&&doc.querySelector('meta[name="description"]').content.length>40,url+': description');
  check(doc.querySelectorAll('link[rel="canonical"]').length===1&&doc.querySelector('link[rel="canonical"]').href===url,url+': canonical');
+ check(doc.querySelector('link[rel="canonical"]').getAttribute('href')===url,url+': absolute canonical attribute');
+ for(const selector of ['.langs','.hub-languages']){
+  const links=[...doc.querySelectorAll(selector+' a[hreflang]')];
+  if(links.length)check(links.map(a=>a.hreflang).join(',')==='en,ru,uk',url+': language order');
+ }
  for(const l of ['ru','uk','en','x-default']){
   const a=doc.querySelector(`link[hreflang="${l}"]`),target=docs.get(a?.href);
   check(!!target,url+': hreflang target '+l);
+  check(a?.getAttribute('href').startsWith(origin+'/'),url+': absolute hreflang '+l);
   if(target&&l!=='x-default'){
    check(target.documentElement.lang===l,url+': hreflang language '+l);
    check(target.querySelector(`link[hreflang="${lang}"]`)?.href===url,url+': reciprocal hreflang '+l);
@@ -52,6 +58,21 @@ for(const [url,doc] of docs){
   check(fs.existsSync(path.join(root,candidate.trim().split(/\s+/)[0])),url+': responsive image');
  }
 }
+// Test entry URL negotiation without a browser or any navigation side effects.
+const negotiate=(preferences,explicit,saved,pathname='/',hash='',search='')=>{
+ let destination=null;
+ const ctx={document:{documentElement:{dataset:{localeBase:'/',siteProject:'hub'},lang:'en'}},navigator:{languages:preferences},location:{pathname,hash,search:explicit?'?lang='+explicit:search,replace:p=>destination=p},localStorage:{getItem:k=>k==='vkardin-site-language-choice'?saved:null,setItem(){}},URLSearchParams};
+ vm.runInNewContext(read('family-head.js'),ctx);return destination;
+};
+assert.equal(negotiate(['ru-RU']),'/ru/');
+assert.equal(negotiate(['uk-UA']),'/uk/');
+assert.equal(negotiate(['de-DE','ru-UA']),'/ru/');
+assert.equal(negotiate(['de-DE','fr-FR']),null);
+assert.equal(negotiate(['en-GB','ru-RU']),null);
+assert.equal(negotiate(['ru-RU'],null,'en'),null);
+assert.equal(negotiate(['en-US'],null,'uk'),'/uk/');
+assert.equal(negotiate(['ru-RU'],'en'),null);
+assert.equal(negotiate(['uk-UA'],null,null,'/support.html','#help','?ref=site'),'/uk/support.html?ref=site#help');
 // Exercise existing scripts on localized HTML with opposite saved preferences.
 // No network is enabled: release lookup and feedback submissions cannot run.
 for(const [url] of docs){
