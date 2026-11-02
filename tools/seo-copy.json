@@ -1,0 +1,32 @@
+{
+  "hub": {
+    "ru": ["vKardin — приложения и расширения с открытым кодом", "Приложения и расширения для видео, скриншотов и домашнего сервера", "Бесплатные инструменты vKardin с открытым кодом: подсветка видео, ровная громкость, плавающий плеер, скриншоты и управление домашним сервером."],
+    "uk": ["vKardin — застосунки та розширення з відкритим кодом", "Застосунки та розширення для відео, знімків екрана й домашнього сервера", "Безкоштовні інструменти vKardin з відкритим кодом: підсвічування відео, рівна гучність, плаваючий плеєр, знімки екрана й керування домашнім сервером."],
+    "en": ["vKardin — open-source apps and browser extensions", "Apps and extensions for video, screenshots and your home server", "Free, open-source tools by vKardin: video ambient light, even loudness, a floating player, screenshots and home server management."]
+  },
+  "video-glow": {
+    "ru": ["Video Glow — подсветка видео для Chrome и Firefox", "Подсветка вокруг видео в Chrome и Firefox", "Добавьте подсветку в цвет кадра вокруг видео с Video Glow. Мягкое свечение, LED-лента и цвет комнаты. Бесплатное расширение для Chrome и Firefox."],
+    "uk": ["Video Glow — підсвічування відео для Chrome і Firefox", "Підсвічування навколо відео в Chrome і Firefox", "Додайте підсвічування в колір кадру навколо відео з Video Glow. М’яке світло, LED-стрічка й колір кімнати. Безкоштовне розширення для Chrome і Firefox."],
+    "en": ["Video Glow — video ambient light for Chrome and Firefox", "Ambient light around videos in Chrome and Firefox", "Add ambient light in the colours of any video with Video Glow. Soft glow, LED strips and room colour. A free extension for Chrome and Firefox."]
+  },
+  "leveler": {
+    "ru": ["Leveler — выравнивание громкости видео в браузере", "Ровная громкость видео: диалоги громче, взрывы тише", "Выравнивайте громкость видео с Leveler: тихие диалоги громче, взрывы тише. Эквалайзер и управление скоростью. Бесплатно для Chrome и Firefox."],
+    "uk": ["Leveler — вирівнювання гучності відео в браузері", "Рівна гучність відео: діалоги гучніші, вибухи тихіші", "Вирівнюйте гучність відео з Leveler: тихі діалоги гучніші, вибухи тихіші. Еквалайзер і керування швидкістю. Безкоштовно для Chrome і Firefox."],
+    "en": ["Leveler — even video loudness in your browser", "Even video loudness: louder dialogue, softer explosions", "Even out video loudness with Leveler: louder quiet dialogue, softer explosions, an equalizer and playback speed controls. Free for Chrome and Firefox."]
+  },
+  "video-drift": {
+    "ru": ["Video Drift — видео поверх окон с субтитрами", "Плавающий видеоплеер с субтитрами и памятью позиции", "Смотрите видео поверх окон с Video Drift. Субтитры, сохранение позиции и заметки с таймкодами. Бесплатное расширение для Chrome и Firefox."],
+    "uk": ["Video Drift — відео поверх вікон із субтитрами", "Плаваючий відеоплеєр із субтитрами та пам’яттю позиції", "Дивіться відео поверх вікон із Video Drift. Субтитри, збереження позиції й нотатки з таймкодами. Безкоштовне розширення для Chrome і Firefox."],
+    "en": ["Video Drift — floating video with subtitles", "A floating video player with subtitles and saved positions", "Watch videos above other windows with Video Drift. Subtitles, saved playback positions and timestamped notes. A free extension for Chrome and Firefox."]
+  },
+  "snapt": {
+    "ru": ["Snapt — скриншоты для Windows, macOS и Linux", "Скриншоты и пометки одной клавишей", "Делайте скриншоты со Snapt: выделяйте область, добавляйте стрелки и подписи, копируйте или сохраняйте. Бесплатно для Windows, macOS и Linux. Без облака."],
+    "uk": ["Snapt — знімки екрана для Windows, macOS і Linux", "Знімки екрана й позначки однією клавішею", "Робіть знімки екрана зі Snapt: виділяйте область, додавайте стрілки й підписи, копіюйте або зберігайте. Безкоштовно для Windows, macOS і Linux. Без хмари."],
+    "en": ["Snapt — screenshots for Windows, macOS and Linux", "Screenshots and annotations in one keystroke", "Take screenshots with Snapt: select an area, add arrows and captions, then copy or save. Free and open source for Windows, macOS and Linux. No cloud."]
+  },
+  "uni-homebot": {
+    "ru": ["UNI — Telegram-бот для управления домашним сервером", "Управление домашним сервером через Telegram", "Управляйте домашним сервером через UNI: Telegram-бот, мониторинг, приложения, уведомления и мини-приложение. Свой сервер, установка одной командой."],
+    "uk": ["UNI — Telegram-бот для керування домашнім сервером", "Керування домашнім сервером через Telegram", "Керуйте домашнім сервером через UNI: Telegram-бот, моніторинг, застосунки, сповіщення й мінізастосунок. Власний сервер, встановлення однією командою."],
+    "en": ["UNI — a Telegram bot for home server management", "Manage your home server through Telegram", "Manage your home server with UNI: a Telegram bot, monitoring, apps, notifications and a Mini App. Self-hosted, with one-command installation."]
+  }
+}

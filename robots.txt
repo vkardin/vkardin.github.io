@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /tools/
+Disallow: /node_modules/
+
+Sitemap: https://vkardin.github.io/sitemap.xml

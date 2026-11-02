@@ -13,3 +13,29 @@ Shared `family.css`, `family.js`, `family-head.js`, `family-assets/` and localiz
 GitHub Pages publishes `main` from the repository root. To complete the cutover, disable Pages in the five app repositories and disable the Snapt Pages workflow; their existing deployments otherwise override these paths. Keep the old sources until the cutover has been verified.
 
 Serve locally with `python3 -m http.server 8000` from this directory. Check product pages, language versions, demos, support/privacy pages and shared previews before deploying.
+
+## Localized pages and SEO
+
+Every landing page and the extension support/privacy pages have a static HTML
+version in Russian, Ukrainian and English. Existing URLs remain valid: the root
+is Russian except for `/snapt/`, which remains English. Other languages use
+`/en/` and `/uk/` (Snapt uses `/ru/` and `/uk/`). Language selectors are normal
+links; saved preferences do not redirect visitors or replace a URL's language.
+
+To update pages:
+
+1. Edit markup in `tools/templates/*.html.in`, translations in the existing
+   product dictionaries, and metadata in `tools/seo-copy.json`.
+2. Run `npm ci`, `npm run build`, and `npm test` with Node.js 24.
+3. Commit both source changes and the generated pages, sitemap and robots file.
+
+The build does not contact external services. Checks cover all 36 canonical
+pages, reciprocal hreflang, local assets, internal links and anchors, JSON-LD,
+and runtime language stability with an opposite saved language preference.
+Browser checks are still needed for layout and interactive demos.
+
+`robots.txt` lives at the host root and points to `/sitemap.xml`. Submit that
+sitemap in the verified Search Console property, inspect representative URLs
+for each language, and monitor indexing, impressions and click-through rate.
+Field Core Web Vitals require real-user data; a Lighthouse score alone does
+not confirm field performance or search rankings.

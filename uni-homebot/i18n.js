@@ -12,7 +12,7 @@ while(walk.nextNode()){
 function apply(){
  const lang=['ru','uk','en'].includes(document.documentElement.lang)?document.documentElement.lang:'ru';
  originals.forEach(({original,key},node)=>{node.nodeValue=original.replace(key,dictionary[key][lang]);});
- document.title=dictionary['UNI — домашний сервер в Telegram'][lang];
+
  document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===lang)));
 }
 document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{document.documentElement.lang=b.dataset.lang;apply();}));

@@ -1,0 +1,11 @@
+/* Static language links have the same treatment as the original controls. */
+.hub-languages a,.langs a{display:inline-flex;align-items:center;justify-content:center;min-width:40px;min-height:40px;text-decoration:none;border-radius:999px;color:inherit;font:600 12px/1.4 system-ui,sans-serif}
+.hub-languages a[aria-current=page],.langs a[aria-current=page]{background:var(--family-text,#f3f2ef);color:var(--family-bg,#0a0a0b)}
+body[data-family] .top .langs a{min-height:40px;min-width:40px;padding:8px}
+.family-settings-button{min-width:40px;height:40px}
+.family-nav-links a{display:inline-flex;align-items:center;min-height:40px}
+body[data-family] .screen img{display:block;width:100%;height:auto;aspect-ratio:8/5}
+body[data-family=uni-homebot] main p a,body[data-family=uni-homebot] main li a{text-decoration:underline;text-underline-offset:3px}
+/* Reserve the navigation height, including the settings control added by JS. */
+.family-nav-inner{min-height:64px}
+@media(max-width:760px){.family-nav-inner{min-height:92px}.hub-languages a{min-width:36px}}

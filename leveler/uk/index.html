@@ -1,0 +1,153 @@
+<!DOCTYPE html><html data-theme="dark" data-site-project="leveler" lang="uk" data-static-lang="uk"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leveler — вирівнювання гучності відео в браузері</title>
+
+  <meta name="theme-color" content="#0a0a0b">
+
+
+
+
+
+
+
+
+  <link rel="icon" href="/leveler/img/icon32.png">
+  <link rel="icon" href="/leveler/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/leveler/style.css?v=4">
+<script src="/family-head.js?v=seo-1"></script><link rel="stylesheet" href="/family.css?v=9">
+<link rel="stylesheet" href="/leveler/demo-controls.css?v=1">
+<meta name="description" content="Вирівнюйте гучність відео з Leveler: тихі діалоги гучніші, вибухи тихіші. Еквалайзер і керування швидкістю. Безкоштовно для Chrome і Firefox."><meta property="og:type" content="website"><meta property="og:title" content="Leveler — вирівнювання гучності відео в браузері"><meta property="og:description" content="Вирівнюйте гучність відео з Leveler: тихі діалоги гучніші, вибухи тихіші. Еквалайзер і керування швидкістю. Безкоштовно для Chrome і Firefox."><meta property="og:url" content="https://vkardin.github.io/leveler/uk/"><meta property="og:locale" content="uk_UA"><meta property="og:image" content="https://vkardin.github.io/leveler/img/og.png"><meta property="og:image:alt" content="Leveler — вирівнювання гучності відео в браузері"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Leveler — вирівнювання гучності відео в браузері"><meta name="twitter:description" content="Вирівнюйте гучність відео з Leveler: тихі діалоги гучніші, вибухи тихіші. Еквалайзер і керування швидкістю. Безкоштовно для Chrome і Firefox."><meta name="twitter:image" content="https://vkardin.github.io/leveler/img/og.png"><link rel="canonical" href="/leveler/uk/"><link rel="alternate" hreflang="ru" href="/leveler/"><link rel="alternate" hreflang="uk" href="/leveler/uk/"><link rel="alternate" hreflang="en" href="/leveler/en/"><link rel="alternate" hreflang="x-default" href="/leveler/"><script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Leveler","url":"https://vkardin.github.io/leveler/uk/","inLanguage":"uk","description":"Вирівнюйте гучність відео з Leveler: тихі діалоги гучніші, вибухи тихіші. Еквалайзер і керування швидкістю. Безкоштовно для Chrome і Firefox.","applicationCategory":"MultimediaApplication","operatingSystem":"Chrome, Firefox","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"vKardin","url":"https://vkardin.github.io/"}}</script><link rel="stylesheet" href="/seo.css?v=1"></head>
+<body data-family="leveler" style="--family-accent:#63ddb0">
+<a class="family-skip" href="#family-content" data-family-word="skip">Перейти до вмісту</a><nav class="family-nav" aria-label="vkardin projects"><div class="family-nav-inner"><a class="family-brand" href="/uk/"><span class="family-brand-by">by</span><span class="family-brand-name"><span class="family-brand-v">v</span>Kardin</span></a><div class="family-nav-links"><a href="/video-glow/uk/">Video Glow</a><a href="/leveler/uk/" aria-current="page">Leveler</a><a href="/video-drift/uk/">Video Drift</a><a href="/snapt/uk/">Snapt</a><a href="/uni-homebot/uk/">UNI</a></div></div></nav>
+  <header class="top"><div class="wrap"><a class="brand" href="#"><img src="/leveler/img/logo.svg" alt="" width="28" height="28">Leveler</a><nav class="nav" aria-label="Leveler"><a class="opt" href="#demo" data-family-label="try">Спробувати</a><a class="opt" href="#features" data-family-label="features">Можливості</a><a href="#install" data-family-label="install">Встановити</a><a class="opt" href="#donate" data-family-label="donate">Підтримати</a><a class="opt" href="/leveler/uk/support.html" data-family-label="support">Підтримка</a></nav><div class="langs" aria-label="Language"><a href="/leveler/" hreflang="ru">RU</a><a href="/leveler/uk/" hreflang="uk" aria-current="page">UK</a><a href="/leveler/en/" hreflang="en">EN</a></div></div></header>
+
+  <main id="family-content" tabindex="-1">
+    <section class="hero">
+      <div class="wrap">
+        <h1>Рівна гучність відео: діалоги гучніші, вибухи тихіші</h1>
+        <p class="lead" data-i18n="hero_lead">Leveler вирівнює гучність фільмів і серіалів просто в браузері. Більше не треба хапатися за звук на кожній сцені.</p>
+        <div class="cta">
+          <a class="btn primary store-chrome" href="#install"><span data-i18n="btn_chrome">Додати до Chrome</span></a>
+          <a class="btn store-firefox" href="#install"><span data-i18n="btn_firefox">Додати до Firefox</span></a>
+        </div>
+        <p class="free" data-i18n="hero_free">Безкоштовно, без акаунтів і реклами. YouTube, Twitch, онлайн-кінотеатри та будь-які сайти з HTML5-відео.</p>
+        <div class="demo" aria-hidden="true" id="demo">
+          <div class="tile before">
+            <div class="demo-h"><b data-i18n="demo_before">Без Leveler</b><small data-i18n="demo_before_d">шепіт не чути, вибух оглушує</small></div>
+            <canvas id="demoBefore"></canvas>
+          </div>
+          <div class="tile after">
+            <div class="demo-h"><b data-i18n="demo_after">З Leveler</b><small data-i18n="demo_after_d">усе на одній гучності</small></div>
+            <canvas id="demoAfter"></canvas>
+          </div>
+          <div class="demo-legend"><span><i style="background:#f2c66d"></i><span data-i18n="demo_talk">діалоги</span></span><span><i style="background:#ff6b6b"></i><span data-i18n="demo_boom">вибухи й музика</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="features">
+      <div class="wrap">
+        <h2 data-i18n="f_title">Що вміє</h2>
+        <p class="sub" data-i18n="f_sub">Один повзунок «Вирівняти звук» для всіх і докладні налаштування для тих, хто любить покрутити.</p>
+        <div class="grid">
+          <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h3l2-6 3 12 2-8 2 4h6"></path></svg></div><b data-i18n="m1_t">Компресор</b><span data-i18n="m1_d">Стискає гучні місця й підтягує тихі. Поріг, ступінь, м’якість, атака й відновлення.</span></div>
+          <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path><circle cx="9" cy="7" r="2" fill="currentColor"></circle><circle cx="15" cy="12" r="2" fill="currentColor"></circle><circle cx="7" cy="17" r="2" fill="currentColor"></circle></svg></div><b data-i18n="m2_t">Пресети</b><span data-i18n="m2_d">«Нічний режим», «Діалоги гучніше», «Подкасти», «Навушники», «Бас+», «Музика» і власні пресети з експортом у JSON.</span></div>
+          <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 20V10M12 20V4M18 20v-7"></path></svg></div><b data-i18n="m3_t">Еквалайзер</b><span data-i18n="m3_d">Три смуги (низ, середина, верх) і зріз гулу на низьких частотах.</span></div>
+          <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l7 7-7 7M12 5l7 7-7 7"></path></svg></div><b data-i18n="m4_t">Швидкість</b><span data-i18n="m4_d">Від 0,25× до 4× без «бурундучого» голосу, з підказкою на відео.</span></div>
+          <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"></path></svg></div><b data-i18n="m5_t">Для кожного сайту</b><span data-i18n="m5_d">Пресет і швидкість запам’ятовуються окремо для кожного сайту.</span></div>
+          <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"></rect><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"></path></svg></div><b data-i18n="m6_t">Гарячі клавіші</b><span data-i18n="m6_d">[ і ] змінюють швидкість, \ скидає її. Клавіші можна перепризначити.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="how">
+      <div class="wrap">
+        <h2 data-i18n="h_title">Як це працює</h2>
+        <p class="sub" data-i18n="h_sub">Три кроки, і звук у фільмах перестає стрибати.</p>
+        <div class="steps">
+          <div class="tile"><b data-i18n="h1_t">Встановіть розширення</b><span data-i18n="h1_d">З Chrome Web Store або Firefox Add-ons. Акаунт не потрібен.</span></div>
+          <div class="tile"><b data-i18n="h2_t">Увімкніть відео</b><span data-i18n="h2_d">Leveler сам знаходить відео й аудіо на сторінці, зокрема в iframe і в повноекранному режимі.</span></div>
+          <div class="tile"><b data-i18n="h3_t">Виберіть пресет</b><span data-i18n="h3_d">Або посуньте повзунок «Вирівняти звук». Сайт запам’ятає ваш вибір.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="install">
+      <div class="wrap">
+        <h2 data-i18n="i_title">Встановити</h2>
+        <p class="sub" data-i18n="i_sub">Розширення однаково працює в Chrome, Edge, Opera, Brave і Firefox.</p>
+        <div class="install">
+          <a class="tile store store-chrome" target="_blank" rel="noopener">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" style="fill:var(--text)"></circle><circle cx="24" cy="24" r="9" style="fill:var(--card)"></circle><circle cx="24" cy="24" r="6" style="fill:var(--text)"></circle><path d="M24 15h19M16.2 28.5 6.7 12M31.8 28.5 22.3 45" style="stroke:var(--card)" stroke-width="2.4"></path></svg>
+            <div><b>Chrome Web Store</b><span data-i18n="i_chrome">Chrome, Edge, Opera, Brave</span></div>
+          </a>
+          <a class="tile store store-firefox" target="_blank" rel="noopener">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" style="fill:var(--text)"></circle><path d="M24 9a15 15 0 1 0 14.6 11.6c-1.4 3-4 4.4-6.4 4.4 1.2-5.5-2.2-10-7-11.5 1.4 3-1.2 5.3-3.4 5.6-2.3.4-4 2.3-4 4.6 0 3.3 2.8 5.8 6.2 5.8" fill="none" style="stroke:var(--card)" stroke-width="2.6" stroke-linecap="round"></path></svg>
+            <div><b>Firefox Add-ons</b><span data-i18n="i_firefox">Firefox для комп’ютера</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="faq">
+      <div class="wrap">
+        <h2 data-i18n="q_title">Часті питання</h2>
+        <div class="faq">
+          <details><summary data-i18n="q1">Чому на Netflix і схожих сервісах звук не обробляється?</summary><p data-i18n="a1">Там відео захищене (DRM), і браузер віддає розширенням замість звуку тишу. Leveler це розпізнає, залишає оригінальний звук і пише у вікні розширення: «Цей сайт не підтримує обробку звуку». Швидкість при цьому працює.</p></details>
+          <details><summary data-i18n="q2">Це не зіпсує звук?</summary><p data-i18n="a2">Ні. Параметри змінюються плавно, без клацань, а на виході стоїть обмежувач, який не дає звуку перевантажуватися. Вимикач у вікні розширення миттєво повертає оригінал.</p></details>
+          <details><summary data-i18n="q3">Чим це краще за нічний режим у телевізорі?</summary><p data-i18n="a3">По суті це він і є, лише для браузера й з налаштуваннями: можна вибрати готовий пресет або налаштувати компресор і еквалайзер під свої колонки чи навушники.</p></details>
+          <details><summary data-i18n="q4">Розширення навантажує процесор?</summary><p data-i18n="a4">Майже ні. Обробка йде вбудованим у браузер Web Audio, а індикатори рівня малюються лише поки вікно розширення відкрите.</p></details>
+          <details><summary data-i18n="q5">Що означає «доступ до всіх сайтів»?</summary><p data-i18n="a5">Він потрібен, щоб знайти на сторінці відео й підключити до нього обробку звуку. Нічого не читається й нікуди не надсилається, усе відбувається на вашому пристрої.</p></details>
+          <details><summary data-i18n="q6">Як перенести налаштування на інший комп’ютер?</summary><p data-i18n="a6">Пресети й налаштування сайтів синхронізуються через ваш акаунт браузера. Ще їх можна зберегти в JSON-файл і завантажити назад.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="feedback">
+      <div class="wrap fb-cta">
+        <div>
+          <h2 data-i18n="fb_title">Маєте ідею чи знайшли помилку?</h2>
+          <p class="sub" data-i18n="fb_sub">Розкажіть, чого бракує. Найкращі ідеї потраплять у наступні версії.</p>
+        </div>
+        <a class="btn primary" href="/leveler/uk/support.html" data-i18n="fb_btn">Написати</a>
+      </div>
+    </section>
+
+    <section class="family-section" id="more" aria-labelledby="family-title"><div class="family-wrap"><p class="family-kicker">VKARDIN / TOOLS</p><h2 id="family-title" data-family-word="title">Інші інструменти від vkardin</h2><p class="family-intro" data-family-word="sub">Один автор. П’ять проєктів для відео, знімків екрана й домашнього сервера.</p><div class="family-grid"><article class="family-card" style="--project-accent:#d3b3ff"><a class="family-preview" href="/video-glow/uk/" tabindex="-1" aria-hidden="true"><img src="/media/video-glow-uk.webp?v=7" alt="" width="960" height="600" loading="lazy" srcset="/media/responsive/video-glow-uk-480.webp 480w, /media/video-glow-uk.webp 960w" sizes="(max-width: 700px) calc(100vw - 36px), 540px"></a><header class="family-card-header"><span class="family-icon"><img src="/family-assets/video-glow.svg" alt="" width="32" height="32" loading="lazy"></span><div><h3>Video Glow</h3><small data-family-type="video-glow">Розширення</small></div></header><p data-family-description="video-glow">Підсвічування навколо відео в колір кадру. М’яке світло, LED-стрічка й колір кімнати.</p><ul class="family-chips"><li data-family-chip="video-glow:0">Підсвічування</li><li data-family-chip="video-glow:1">LED</li><li data-family-chip="video-glow:2">Колір кімнати</li></ul><div class="family-actions"><a data-family-site="video-glow" href="/video-glow/uk/" data-family-word="site">Відкрити сайт ↗</a><a href="https://github.com/vkardin/video-glow" data-family-word="code">Вихідний код</a><a href="https://github.com/vkardin/video-glow/releases" data-family-word="download">Релізи</a></div></article><article class="family-card" style="--project-accent:#63d9d0"><a class="family-preview" href="/video-drift/uk/" tabindex="-1" aria-hidden="true"><img src="/media/video-drift-uk.webp?v=7" alt="" width="960" height="600" loading="lazy" srcset="/media/responsive/video-drift-uk-480.webp 480w, /media/video-drift-uk.webp 960w" sizes="(max-width: 700px) calc(100vw - 36px), 540px"></a><header class="family-card-header"><span class="family-icon"><img src="/family-assets/video-drift.svg" alt="" width="32" height="32" loading="lazy"></span><div><h3>Video Drift</h3><small data-family-type="video-drift">Розширення</small></div></header><p data-family-description="video-drift">Відео поверх інших вікон, субтитри, збереження позиції й нотатки до моментів.</p><ul class="family-chips"><li data-family-chip="video-drift:0">Плаваюче відео</li><li data-family-chip="video-drift:1">Субтитри</li><li data-family-chip="video-drift:2">Нотатки</li></ul><div class="family-actions"><a data-family-site="video-drift" href="/video-drift/uk/" data-family-word="site">Відкрити сайт ↗</a><a href="https://github.com/vkardin/video-drift" data-family-word="code">Вихідний код</a><a href="https://github.com/vkardin/video-drift/releases" data-family-word="download">Релізи</a></div></article><article class="family-card" style="--project-accent:#b79bff"><a class="family-preview" href="/snapt/uk/" tabindex="-1" aria-hidden="true"><img src="/media/snapt-uk.webp?v=7" alt="" width="960" height="600" loading="lazy" srcset="/media/responsive/snapt-uk-480.webp 480w, /media/snapt-uk.webp 960w" sizes="(max-width: 700px) calc(100vw - 36px), 540px"></a><header class="family-card-header"><span class="family-icon"><img src="/family-assets/snapt.svg" alt="" width="32" height="32" loading="lazy"></span><div><h3>Snapt</h3><small data-family-type="snapt">Застосунок і розширення</small></div></header><p data-family-description="snapt">Знімки екрана, стрілки й підписи. Застосунок для Windows, macOS та Linux і розширення браузера.</p><ul class="family-chips"><li data-family-chip="snapt:0">Знімай</li><li data-family-chip="snapt:1">Позначай</li><li data-family-chip="snapt:2">Зберігай</li></ul><div class="family-actions"><a data-family-site="snapt" href="/snapt/uk/" data-family-word="site">Відкрити сайт ↗</a><a href="https://github.com/vkardin/snapt" data-family-word="code">Вихідний код</a><a href="https://github.com/vkardin/snapt/releases" data-family-word="download">Релізи</a></div></article><article class="family-card" style="--project-accent:#8fb5ff"><a class="family-preview" href="/uni-homebot/uk/" tabindex="-1" aria-hidden="true"><img src="/media/uni-homebot-uk.webp?v=7" alt="" width="960" height="600" loading="lazy" srcset="/media/responsive/uni-homebot-uk-480.webp 480w, /media/uni-homebot-uk.webp 960w" sizes="(max-width: 700px) calc(100vw - 36px), 540px"></a><header class="family-card-header"><span class="family-icon"><img src="/family-assets/uni-homebot.svg" alt="" width="32" height="32" loading="lazy"></span><div><h3>UNI</h3><small data-family-type="uni-homebot">Telegram · власний сервер</small></div></header><p data-family-description="uni-homebot">Домашній сервер у Telegram: застосунки, моніторинг, сповіщення й мінізастосунок.</p><ul class="family-chips"><li data-family-chip="uni-homebot:0">Telegram</li><li data-family-chip="uni-homebot:1">Моніторинг</li><li data-family-chip="uni-homebot:2">Свій сервер</li></ul><div class="family-actions"><a data-family-site="uni-homebot" href="/uni-homebot/uk/" data-family-word="site">Відкрити сайт ↗</a><a href="https://github.com/vkardin/uni-homebot" data-family-word="code">Вихідний код</a><a href="https://github.com/vkardin/uni-homebot/releases" data-family-word="download">Релізи</a></div></article></div><p class="family-credit"><a href="https://github.com/vkardin">github.com/vkardin</a> · <span data-family-word="author">Незалежні інструменти · відкритий код</span></p></div></section>
+
+    <section class="block donate" id="donate">
+      <div class="wrap">
+        <h2 data-i18n="d_title">Підтримати проєкт</h2>
+        <p class="sub" data-i18n="d_sub">Leveler безкоштовний і без реклами. Якщо він вам подобається, можна підтримати розробку криптовалютою. Будь-яка сума допомагає випускати нові версії.</p>
+        <div class="wallets" id="wallets"></div>
+        <p class="warn" data-i18n="d_warn">Надсилайте монети лише в тій мережі, що вказана на картці. Переказ в іншій мережі може загубитися.</p>
+        <p class="thanks" data-i18n="d_thanks">Дякуємо, що ви з нами.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>© <span id="year"></span> Leveler</span>
+      <a href="/leveler/uk/support.html" data-i18n="nav_support">Зворотний зв’язок</a>
+      <a href="/leveler/uk/privacy.html" data-i18n="privacy">Конфіденційність</a>
+      <a href="#donate" data-i18n="nav_donate">Підтримати</a>
+    </div>
+  </footer>
+
+  <template id="wallet">
+    <div class="tile">
+      <div class="coin"><i></i><div><b></b><small></small></div></div>
+      <div class="qr"><img alt="QR" width="300" height="300"></div>
+      <div class="addr"></div>
+      <button type="button" class="btn copy"></button>
+    </div>
+  </template>
+
+  <script src="/leveler/app.js?v=seo-1"></script>
+<script src="/family.js?v=seo-1"></script>
+<script src="/leveler/demo-controls.js?v=seo-1"></script>
+
+
+</body></html>

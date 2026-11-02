@@ -30,7 +30,7 @@
  }else if(project==='uni-homebot'){
   const phone=document.querySelector('.phone'),img=phone?.querySelector('img');if(!img)return;phone.id='demo';
   const el=panel('uniTitle','uniHint');el.innerHTML+='<div class="fd-row">'+['home','server','news','more'].map(v=>`<button type="button" data-view="${v}" data-demo-t="${v}"></button>`).join('')+'</div>';phone.append(el);let view='home';
-  update=()=>{img.src='assets/screen-'+view+'.webp';img.alt=t(view);el.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));};el.querySelectorAll('button').forEach(b=>b.onclick=()=>{view=b.dataset.view;update();});
+  update=()=>{img.src='/uni-homebot/assets/screen-'+view+'.webp';img.alt=t(view);el.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));};el.querySelectorAll('button').forEach(b=>b.onclick=()=>{view=b.dataset.view;update();});
  }
  const localize=()=>{document.querySelectorAll('[data-demo-t]').forEach(el=>el.textContent=t(el.dataset.demoT));update();};
  new MutationObserver(localize).observe(document.documentElement,{attributes:true,attributeFilter:['lang','data-theme']});localize();

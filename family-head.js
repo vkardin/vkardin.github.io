@@ -8,7 +8,7 @@ try {
 
 // One language preference for the project websites.
 try {
- const language=localStorage.getItem('vkardin-site-language')||'ru';
+ const language=document.documentElement.lang||'ru';
  for(const key of ['vg-lang','lv-lang','video-drift-lang','lang'])localStorage.setItem(key,language);
  if(['uni-homebot','hub'].includes(document.documentElement.dataset.siteProject))document.documentElement.lang=language;
 } catch {}

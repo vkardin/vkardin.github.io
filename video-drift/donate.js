@@ -18,7 +18,7 @@ function renderWallets() {
     i.textContent = w.sign; i.style.background = w.color;
     n.querySelector('.coin b').textContent = w.name;
     n.querySelector('.coin small').textContent = w.net;
-    n.querySelector('.qr img').src = `qr/${w.id}.svg`;
+    n.querySelector('.qr img').src = `/video-drift/qr/${w.id}.svg`;
     n.querySelector('.qr img').alt = `QR ${w.name}`;
     n.querySelector('.addr').textContent = w.addr;
     const btn = n.querySelector('.copy');

@@ -10,7 +10,7 @@
     document.querySelectorAll('[data-family-word]').forEach((el) => { el.textContent = words[lang][el.dataset.familyWord] + (el.dataset.familyWord === 'site' ? ' ↗' : ''); });
     document.querySelectorAll('[data-family-type]').forEach((el) => { el.textContent = projects[el.dataset.familyType].type[lang]; });
     document.querySelectorAll('[data-family-description]').forEach((el) => { el.textContent = projects[el.dataset.familyDescription].desc[lang]; });
-    document.querySelectorAll('[data-family-site]').forEach((el) => { const id = el.dataset.familySite; el.href = 'https://vkardin.github.io/' + id + '/' + (id === 'snapt' && lang !== 'en' ? lang + '/' : ''); });
+    document.querySelectorAll('[data-family-site]').forEach((el) => { const id = el.dataset.familySite; el.href = 'https://vkardin.github.io/' + id + '/' + (lang !== (id === 'snapt' ? 'en' : 'ru') ? lang + '/' : ''); });
   }
   new MutationObserver(apply).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   apply();

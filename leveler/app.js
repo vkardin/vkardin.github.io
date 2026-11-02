@@ -160,17 +160,7 @@ const T = {
   }
 };
 
-function pickLang() {
-  const q = new URLSearchParams(location.search).get('lang');
-  if (T[q]) return q;
-  try { const s = localStorage.getItem('lv-lang'); if (T[s]) return s; } catch (e) {}
-  for (const l of navigator.languages || [navigator.language || 'en']) {
-    const c = String(l).slice(0, 2).toLowerCase();
-    if (c === 'uk' || c === 'ru' || c === 'en') return c;
-    if (c === 'be') return 'ru';
-  }
-  return 'en';
-}
+function pickLang() { return document.documentElement.lang; }
 
 let lang = pickLang();
 
@@ -181,8 +171,7 @@ function apply() {
     const v = (el.dataset.i18n in t) ? t[el.dataset.i18n] : (window.PAGE_T && PAGE_T[lang][el.dataset.i18n]);
     if (v != null) el.textContent = v;
   });
-  document.title = (window.PAGE_T && PAGE_T[lang].title) || t.title;
-  document.querySelectorAll('[data-shot]').forEach(img => { img.src = `img/${img.dataset.shot}-${lang}.webp`; });
+  document.querySelectorAll('[data-shot]').forEach(img => { img.src = `/leveler/img/${img.dataset.shot}-${lang}.webp`; });
   document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
   document.querySelectorAll('[data-ph]').forEach(el => {
     const v = (window.PAGE_T && PAGE_T[lang][el.dataset.ph]) || t[el.dataset.ph];
@@ -202,7 +191,7 @@ function renderWallets() {
     i.textContent = w.sign; i.style.background = w.color;
     n.querySelector('.coin b').textContent = w.name;
     n.querySelector('.coin small').textContent = w.net;
-    n.querySelector('.qr img').src = `qr/${w.id}.svg`;
+    n.querySelector('.qr img').src = `/leveler/qr/${w.id}.svg`;
     n.querySelector('.qr img').alt = `QR ${w.name}`;
     n.querySelector('.addr').textContent = w.addr;
     const btn = n.querySelector('.copy');

@@ -1,0 +1,269 @@
+<!DOCTYPE html><html data-theme="dark" data-site-project="uni-homebot" lang="en" data-static-lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UNI — a Telegram bot for home server management</title>
+
+
+
+
+
+
+
+
+
+
+<link rel="preload" as="image" href="/uni-homebot/assets/screen-home.webp" type="image/webp" fetchpriority="high">
+
+
+<meta name="theme-color" content="#0f1114">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%237aa7ff'/><stop offset='1' stop-color='%23d99a5b'/></linearGradient></defs><rect width='32' height='32' rx='8' fill='%230f1114'/><text x='16' y='22' font-family='Arial' font-weight='800' font-size='15' text-anchor='middle' fill='url(%23g)'>U</text></svg>">
+<style>
+:root {
+  --bg: #0d0f13; --bg2: #11141a; --card: #161a21; --card2: #1b2029; --line: rgba(140, 150, 170, .16); --line2: rgba(140, 150, 170, .28);
+  --text: #eceef2; --dim: #949cab; --accent: #7aa7ff; --warm: #e0a061; --ok: #4fbf86; --code: #0a0c0f;
+  --glow: color-mix(in srgb, var(--accent) 20%, transparent); --glow2: color-mix(in srgb, var(--warm) 14%, transparent);
+  --shadow: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 10px 30px rgba(0, 0, 0, .28);
+  --r: 20px; --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: clip; scroll-padding-top: 80px; }
+body {
+  margin: 0; color: var(--text); font: 16px/1.65 "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-feature-settings: "cv11", "ss01"; text-rendering: optimizeLegibility;
+  background:
+    radial-gradient(70% 45% at 20% -8%, var(--glow), transparent 70%) no-repeat,
+    radial-gradient(50% 40% at 95% 5%, var(--glow2), transparent 70%) no-repeat,
+    var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: color-mix(in srgb, var(--accent) 35%, transparent); }
+a { color: var(--accent); text-decoration: none; text-underline-offset: 3px; }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.grad { background: linear-gradient(120deg, var(--accent) 10%, var(--warm) 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; }
+.logo { font-weight: 800; font-size: 23px; letter-spacing: .04em; }
+nav .links { display: flex; align-items: center; gap: 6px; font-size: 15px; }
+nav .links a { color: var(--dim); padding: 7px 12px; border-radius: 10px; transition: color .2s, background-color .2s; }
+nav .links a:hover { color: var(--text); background: color-mix(in srgb, var(--text) 6%, transparent); text-decoration: none; }
+nav .links a:last-child { color: var(--text); border: 1px solid var(--line2); margin-left: 6px; }
+
+.hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; padding: 64px 0 96px; }
+.badge { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--dim); background: color-mix(in srgb, var(--card) 70%, transparent); border: 1px solid var(--line2); border-radius: 99px; padding: 5px 14px 5px 11px; margin-bottom: 22px; backdrop-filter: blur(6px); }
+.badge b { color: var(--ok); font-weight: 600; font-size: 10px; text-shadow: 0 0 10px var(--ok); animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .45; } }
+h1 { font-size: clamp(40px, 6.4vw, 66px); line-height: 1.02; letter-spacing: -.035em; font-weight: 800; margin: 0 0 22px; text-wrap: balance; }
+.lead { font-size: 19px; line-height: 1.6; color: var(--dim); max-width: 32em; margin: 0 0 34px; text-wrap: pretty; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 13px; font-weight: 600; font-size: 15px; border: 1px solid var(--line2); color: var(--text); background: var(--card); box-shadow: var(--shadow); transition: transform .2s var(--ease), border-color .2s, box-shadow .2s; }
+.btn:hover { text-decoration: none; transform: translateY(-1px); border-color: color-mix(in srgb, var(--accent) 50%, var(--line2)); }
+.btn.primary { background: linear-gradient(120deg, var(--accent), color-mix(in srgb, var(--accent) 55%, var(--warm))); color: #fff; border: 0; box-shadow: 0 10px 30px var(--glow), 0 1px 0 rgba(255, 255, 255, .25) inset; }
+.btn.primary:hover { box-shadow: 0 14px 38px color-mix(in srgb, var(--accent) 34%, transparent), 0 1px 0 rgba(255, 255, 255, .25) inset; }
+.phone { justify-self: center; position: relative; }
+.phone img { width: min(330px, 78vw); height: auto; display: block; border-radius: 30px; border: 1px solid var(--line2); box-shadow: 0 40px 90px rgba(0, 0, 0, .45), 0 0 0 9px color-mix(in srgb, var(--card) 80%, transparent), 0 0 0 10px var(--line); transform: rotate(2deg); transition: transform .5s var(--ease); }
+.phone:hover img { transform: rotate(0) translateY(-4px); }
+.phone::before { content: ""; position: absolute; inset: -80px; z-index: -1; background: radial-gradient(closest-side, var(--glow), transparent), radial-gradient(closest-side at 70% 80%, var(--glow2), transparent); }
+
+section { padding: 80px 0; }
+section + section { border-top: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.15; letter-spacing: -.025em; font-weight: 750; margin: 0 0 12px; text-wrap: balance; }
+.sub { color: var(--dim); font-size: 17px; margin: 0 0 40px; max-width: 38em; text-wrap: pretty; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.card { position: relative; background: linear-gradient(180deg, var(--card2), var(--card)); border: 1px solid var(--line); border-radius: var(--r); padding: 26px; box-shadow: var(--shadow); transition: transform .3s var(--ease), border-color .3s, box-shadow .3s; }
+.grid .card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); box-shadow: var(--shadow), 0 18px 40px var(--glow); }
+.card .ic { display: grid; place-items: center; width: 48px; height: 48px; font-size: 24px; line-height: 1; margin-bottom: 18px; border-radius: 14px; background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 16%, transparent), color-mix(in srgb, var(--warm) 12%, transparent)); border: 1px solid var(--line); }
+.card h3 { margin: 0 0 8px; font-size: 18px; letter-spacing: -.01em; line-height: 1.3; }
+.card p { margin: 0; color: var(--dim); font-size: 15px; line-height: 1.6; }
+
+.apps { display: flex; flex-wrap: wrap; gap: 10px; }
+.apps span { border: 1px solid var(--line); background: var(--card); box-shadow: var(--shadow); border-radius: 99px; padding: 9px 16px; font-size: 14.5px; font-weight: 500; transition: border-color .2s, transform .2s var(--ease); }
+.apps span:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); transform: translateY(-1px); }
+
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.gallery figure { margin: 0; }
+.gallery img { width: 100%; height: auto; display: block; border-radius: 22px; border: 1px solid var(--line2); box-shadow: 0 24px 60px rgba(0, 0, 0, .3); transition: transform .4s var(--ease), box-shadow .4s; }
+.gallery figure:hover img { transform: translateY(-6px); box-shadow: 0 32px 70px rgba(0, 0, 0, .35), 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent); }
+.gallery figcaption { text-align: center; color: var(--dim); font-size: 14px; font-weight: 500; margin-top: 14px; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: s; margin-bottom: 28px; }
+.steps .card::before { counter-increment: s; content: counter(s); display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 11px; margin-bottom: 16px; font-weight: 700; color: #fff; background: linear-gradient(120deg, var(--accent), var(--warm)); box-shadow: 0 6px 18px var(--glow); }
+.term { background: var(--code); color: #e8eaed; border: 1px solid var(--line2); border-radius: var(--r); overflow: hidden; box-shadow: 0 30px 70px rgba(0, 0, 0, .35); }
+.term .bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid rgba(255, 255, 255, .07); background: rgba(255, 255, 255, .025); font-size: 13px; color: #8b93a1; }
+.term .tabs { display: flex; align-items: center; gap: 6px; }
+.term .tabs::before { content: ""; width: 10px; height: 10px; margin: 0 40px 0 4px; border-radius: 50%; background: #ff5f57; box-shadow: 16px 0 #febc2e, 32px 0 #28c840; opacity: .85; }
+.term .tabs button { font: inherit; color: #8b93a1; background: none; border: 1px solid transparent; border-radius: 8px; padding: 4px 11px; cursor: pointer; transition: color .2s, background-color .2s; }
+.term .tabs button:hover { color: #e8eaed; }
+.term .tabs button[aria-selected="true"] { color: #e8eaed; border-color: rgba(255, 255, 255, .14); background: rgba(255, 255, 255, .06); }
+.copy { font: inherit; color: #b4bac5; background: rgba(255, 255, 255, .04); border: 1px solid rgba(255, 255, 255, .14); border-radius: 8px; padding: 4px 11px; cursor: pointer; transition: color .2s, border-color .2s; }
+.copy:hover { color: #fff; border-color: rgba(255, 255, 255, .28); }
+pre { margin: 0; padding: 20px 22px; overflow-x: auto; font: 14px/1.75 ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace; }
+pre .c { color: #6b7380; }
+.note { color: var(--dim); font-size: 14.5px; margin-top: 18px; }
+code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .9em; background: color-mix(in srgb, var(--text) 8%, transparent); border: 1px solid var(--line); padding: 1px 6px; border-radius: 6px; }
+
+footer { border-top: 1px solid var(--line); padding: 32px 0 44px; color: var(--dim); font-size: 14px; background: color-mix(in srgb, var(--bg2) 60%, transparent); }
+footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+footer a { color: var(--dim); }
+footer a:hover { color: var(--text); }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; gap: 44px; padding: 32px 0 64px; text-align: center; }
+  .lead { margin-left: auto; margin-right: auto; }
+  .cta { justify-content: center; }
+  .phone img { transform: none; }
+  .grid, .steps, .gallery { grid-template-columns: 1fr 1fr; }
+  nav .links a.opt { display: none; }
+  section { padding: 64px 0; }
+}
+@media (max-width: 560px) {
+  .wrap { padding: 0 16px; }
+  nav { padding: 16px 0; }
+  .grid, .steps { grid-template-columns: 1fr; }
+  .gallery { gap: 14px; }
+  section { padding: 48px 0; }
+  .lead { font-size: 17px; }
+  .sub { font-size: 16px; margin-bottom: 28px; }
+  .card { padding: 22px; }
+  .phone::before { inset: -40px; }
+  .term .tabs::before { margin-right: 36px; }
+  pre { font-size: 12.5px; padding: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before { transition: none !important; animation: none !important; }
+}
+</style>
+<script src="/family-head.js?v=seo-1"></script><link rel="stylesheet" href="/family.css?v=9">
+<link rel="stylesheet" href="/uni-homebot/demo-controls.css?v=1">
+<meta name="description" content="Manage your home server with UNI: a Telegram bot, monitoring, apps, notifications and a Mini App. Self-hosted, with one-command installation."><meta property="og:type" content="website"><meta property="og:title" content="UNI — a Telegram bot for home server management"><meta property="og:description" content="Manage your home server with UNI: a Telegram bot, monitoring, apps, notifications and a Mini App. Self-hosted, with one-command installation."><meta property="og:url" content="https://vkardin.github.io/uni-homebot/en/"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://vkardin.github.io/uni-homebot/assets/banner.jpg"><meta property="og:image:alt" content="UNI — a Telegram bot for home server management"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="UNI — a Telegram bot for home server management"><meta name="twitter:description" content="Manage your home server with UNI: a Telegram bot, monitoring, apps, notifications and a Mini App. Self-hosted, with one-command installation."><meta name="twitter:image" content="https://vkardin.github.io/uni-homebot/assets/banner.jpg"><link rel="canonical" href="/uni-homebot/en/"><link rel="alternate" hreflang="ru" href="/uni-homebot/"><link rel="alternate" hreflang="uk" href="/uni-homebot/uk/"><link rel="alternate" hreflang="en" href="/uni-homebot/en/"><link rel="alternate" hreflang="x-default" href="/uni-homebot/"><script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"UNI","url":"https://vkardin.github.io/uni-homebot/en/","inLanguage":"en","description":"Manage your home server with UNI: a Telegram bot, monitoring, apps, notifications and a Mini App. Self-hosted, with one-command installation.","applicationCategory":"UtilitiesApplication","operatingSystem":"Linux","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"vKardin","url":"https://vkardin.github.io/"}}</script><link rel="stylesheet" href="/seo.css?v=1"></head>
+<body data-family="uni-homebot" style="--family-accent:#8fb5ff">
+<a class="family-skip" href="#family-content" data-family-word="skip">Skip to content</a><nav class="family-nav" aria-label="vkardin projects"><div class="family-nav-inner"><a class="family-brand" href="/en/"><span class="family-brand-by">by</span><span class="family-brand-name"><span class="family-brand-v">v</span>Kardin</span></a><div class="family-nav-links"><a href="/video-glow/en/">Video Glow</a><a href="/leveler/en/">Leveler</a><a href="/video-drift/en/">Video Drift</a><a href="/snapt/">Snapt</a><a href="/uni-homebot/en/" aria-current="page">UNI</a></div></div></nav>
+<header class="top"><div class="wrap"><a class="brand" href="#"><img src="/family-assets/uni-homebot.svg" alt="" width="28" height="28">UNI</a><nav class="nav" aria-label="UNI"><a class="opt" href="#demo" data-family-label="try">Try it</a><a class="opt" href="#features" data-family-label="features">Features</a><a href="#install" data-family-label="install">Install</a><a class="opt" href="https://github.com/vkardin/uni-homebot" data-family-label="code">GitHub</a></nav><div class="langs" aria-label="Language"><a href="/uni-homebot/" hreflang="ru">RU</a><a href="/uni-homebot/uk/" hreflang="uk">UK</a><a href="/uni-homebot/en/" hreflang="en" aria-current="page">EN</a></div></div></header><main id="family-content" tabindex="-1">
+<div class="wrap">
+
+  <header class="hero" tabindex="-1">
+    <div>
+      <span class="badge"><b>●</b> UNI 10.0 · a complete platform</span>
+      <h1>Manage your home server through Telegram</h1>
+      <p class="lead">Summary, apps, notifications and a web panel in one bot. Your own instance on your server, with your own bot token. One-command installation.</p>
+      <div class="cta">
+        <a class="btn primary" href="#install">Install</a>
+        <a class="btn" href="https://github.com/vkardin/uni-homebot/releases">Releases</a>
+      </div>
+    </div>
+    <div class="phone" id="demo"><img src="/uni-homebot/assets/screen-home.webp" alt="Главный экран мини-приложения UNI: состояние сервера и приложения" width="422" height="717" fetchpriority="high" decoding="async" onerror="this.parentNode.remove()"></div>
+  </header>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Your server in one conversation</h2>
+    <p class="sub">The bot shows what you have connected. Everything else stays out of the way.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">🗞</div><h3>An hourly summary</h3><p>Weather, exchange rates, up to five new stories summarized by a local model, and server health. One daily message that quietly stays up to date.</p></div>
+      <div class="card"><div class="ic">🖥</div><h3>Your server at hand</h3><p>CPU, memory, disks, temperature, weekly charts, service logs, SMART and SSH sign-ins.</p></div>
+      <div class="card"><div class="ic">🧩</div><h3>Apps as tiles</h3><p>Connect apps from the chat. The bot discovers containers and keys; you confirm what to connect.</p></div>
+      <div class="card"><div class="ic">📱</div><h3>Mini App</h3><p>A web panel inside Telegram: light and dark themes, in-app news reading and a notification centre.</p></div>
+      <div class="card"><div class="ic">🩹</div><h3>Recovers from failures</h3><p>Failed tasks restart and a configuration typo does not crash the bot. PIN-protected server actions cover services, the bot and reboots.</p></div>
+      <div class="card"><div class="ic">👥</div><h3>Access for others</h3><p>Guests get separate permissions. The owner is assigned with a one-time code on first launch.</p></div>
+      <div class="card"><div class="ic">🌍</div><h3>Community catalogue</h3><p>Home Assistant, Immich, Portainer and other services are discovered on your server and added to the dashboard with a tap.</p></div>
+      <div class="card"><div class="ic">🔏</div><h3>Signed updates</h3><p>The bot checks for new versions, verifies the author's signature and backs up before installing. One-button rollback.</p></div>
+      <div class="card"><div class="ic">⚡</div><h3>Automation and smart home</h3><p>If a disk fills up, a container stops or an exchange rate changes, a rule can respond. Control Home Assistant lights, outlets and scenes from Telegram.</p></div>
+      <div class="card"><div class="ic">🛰</div><h3>Multiple machines</h3><p>A UNI agent on your NAS or Raspberry Pi adds metrics to the same panel. Backups can be copied to another machine, with roles for family and friends.</p></div>
+      <div class="card"><div class="ic">📈</div><h3>Reports and questions</h3><p>Weekly, monthly and yearly server reports. Ask why a server is slow: a local model answers using recent metrics without changing anything.</p></div>
+      <div class="card"><div class="ic">🧱</div><h3>Your own modules</h3><p>Add commands and background tasks without modifying UNI itself. Permissions are visible before activation; a broken module does not crash the bot.</p></div>
+      <div class="card"><div class="ic">🌐</div><h3>Three languages, any Linux</h3><p>Russian, English and Ukrainian. Debian, Ubuntu, Fedora, Arch, Raspberry Pi or a ready-made Docker image.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="screens">
+  <div class="wrap">
+    <h2>Mini App</h2>
+    <p class="sub">The panel includes everything available in chat. Its theme follows Telegram.</p>
+    <div class="gallery">
+      <figure><img src="/uni-homebot/assets/screen-server.webp" alt="Экран «Сервер»: нагрузка и графики" width="422" height="717" loading="lazy" decoding="async"><figcaption>Server</figcaption></figure>
+      <figure><img src="/uni-homebot/assets/screen-news.webp" alt="Экран «Новости»: лента с пересказом" width="422" height="717" loading="lazy" decoding="async"><figcaption>News</figcaption></figure>
+      <figure><img src="/uni-homebot/assets/screen-money.webp" alt="Экран «Деньги»: быстрая запись и курс" width="422" height="717" loading="lazy" decoding="async"><figcaption>Money</figcaption></figure>
+      <figure><img src="/uni-homebot/assets/screen-more.webp" alt="Экран «Ещё»: инструменты и настройки" width="422" height="717" loading="lazy" decoding="async"><figcaption>More</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Works with your apps</h2>
+    <p class="sub">Connect apps from the chat. Missing one? Install it from the catalogue.</p>
+    <div class="apps">
+      <span>🐳 Docker</span><span>🎞 Jellyfin</span><span>🎬 Radarr</span><span>📺 Sonarr</span><span>🧲 qBittorrent</span>
+      <span>🛡 AdGuard Home</span><span>🚀 Speedtest Tracker</span><span>🔎 changedetection.io</span><span>💰 Actual Budget</span>
+      <span>🧠 Ollama</span><span>🌐 Tailscale</span>
+    </div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <h2>Set up in a few minutes</h2>
+    <p class="sub">A Linux server is required: Ubuntu, Debian, Fedora, Arch, or Alpine through Docker.</p>
+    <div class="steps">
+      <div class="card"><h3>Create a bot</h3><p>Get a token from <a href="https://t.me/BotFather">@BotFather</a>.</p></div>
+      <div class="card"><h3>Run the command</h3><p>The script installs dependencies and asks for your token.</p></div>
+      <div class="card"><h3>Become the owner</h3><p>Send the bot <code>/start КОД</code> from the installation log.</p></div>
+    </div>
+    <div class="term">
+      <div class="bar">
+        <div class="tabs" role="tablist">
+          <button role="tab" aria-selected="true" data-tab="sys">systemd</button>
+          <button role="tab" aria-selected="false" data-tab="docker">Docker</button>
+        </div>
+        <button class="copy" type="button">Copy</button>
+      </div>
+<pre data-pane="sys"><span class="c"># номер версии из последнего релиза</span>
+V=10.0.0
+curl -fsSL https://github.com/vkardin/uni-homebot/releases/download/v$V/homebot-$V.tar.gz | tar xz
+sudo bash homebot/deploy/install.sh</pre>
+<pre data-pane="docker" hidden=""><span class="c"># без systemd и без пакетов в системе</span>
+V=10.0.0
+curl -fsSL https://github.com/vkardin/uni-homebot/releases/download/v$V/homebot-$V.tar.gz | tar xz
+cd homebot &amp;&amp; sudo bash deploy/install.sh --docker</pre>
+    </div>
+    <p class="note">Update from the chat (Settings → Update) or run the same server script again. Your <code>.env</code> and data are preserved.</p>
+  </div>
+</section>
+
+<section class="family-section" id="more" aria-labelledby="family-title"><div class="family-wrap"><p class="family-kicker">VKARDIN / TOOLS</p><h2 id="family-title" data-family-word="title">More tools by vkardin</h2><p class="family-intro" data-family-word="sub">One developer. Five projects for video, screenshots and your home server.</p><div class="family-grid"><article class="family-card" style="--project-accent:#d3b3ff"><a class="family-preview" href="/video-glow/en/" tabindex="-1" aria-hidden="true"><img src="/media/video-glow-en.webp?v=7" alt="" width="960" height="600" loading="lazy" srcset="/media/responsive/video-glow-en-480.webp 480w, /media/video-glow-en.webp 960w" sizes="(max-width: 700px) calc(100vw - 36px), 540px"></a><header class="family-card-header"><span class="family-icon"><img src="/family-assets/video-glow.svg" alt="" width="32" height="32" loading="lazy"></span><div><h3>Video Glow</h3><small data-family-type="video-glow">Extension</small></div></header><p data-family-description="video-glow">Ambient light around web videos. Soft glow, LED strips and room colour.</p><ul class="family-chips"><li data-family-chip="video-glow:0">Ambient light</li><li data-family-chip="video-glow:1">LED</li><li data-family-chip="video-glow:2">Room colour</li></ul><div class="family-actions"><a data-family-site="video-glow" href="/video-glow/en/" data-family-word="site">Visit website ↗</a><a href="https://github.com/vkardin/video-glow" data-family-word="code">Source code</a><a href="https://github.com/vkardin/video-glow/releases" data-family-word="download">Releases</a></div></article><article class="family-card" style="--project-accent:#63ddb0"><a class="family-preview" href="/leveler/en/" tabindex="-1" aria-hidden="true"><img src="/media/leveler-en.webp?v=7" alt="" width="960" height="600" loading="lazy" srcset="/media/responsive/leveler-en-480.webp 480w, /media/leveler-en.webp 960w" sizes="(max-width: 700px) calc(100vw - 36px), 540px"></a><header class="family-card-header"><span class="family-icon"><img src="/family-assets/leveler.svg" alt="" width="32" height="32" loading="lazy"></span><div><h3>Leveler</h3><small data-family-type="leveler">Extension</small></div></header><p data-family-description="leveler">Even loudness, clearer dialogue, an equalizer and playback speed controls.</p><ul class="family-chips"><li data-family-chip="leveler:0">Loudness</li><li data-family-chip="leveler:1">EQ</li><li data-family-chip="leveler:2">Speed</li></ul><div class="family-actions"><a data-family-site="leveler" href="/leveler/en/" data-family-word="site">Visit website ↗</a><a href="https://github.com/vkardin/leveler" data-family-word="code">Source code</a><a href="https://github.com/vkardin/leveler/releases" data-family-word="download">Releases</a></div></article><article class="family-card" style="--project-accent:#63d9d0"><a class="family-preview" href="/video-drift/en/" tabindex="-1" aria-hidden="true"><img src="/media/video-drift-en.webp?v=7" alt="" width="960" height="600" loading="lazy" srcset="/media/responsive/video-drift-en-480.webp 480w, /media/video-drift-en.webp 960w" sizes="(max-width: 700px) calc(100vw - 36px), 540px"></a><header class="family-card-header"><span class="family-icon"><img src="/family-assets/video-drift.svg" alt="" width="32" height="32" loading="lazy"></span><div><h3>Video Drift</h3><small data-family-type="video-drift">Extension</small></div></header><p data-family-description="video-drift">Floating video with subtitles, saved playback positions and timestamped notes.</p><ul class="family-chips"><li data-family-chip="video-drift:0">Floating video</li><li data-family-chip="video-drift:1">Subtitles</li><li data-family-chip="video-drift:2">Notes</li></ul><div class="family-actions"><a data-family-site="video-drift" href="/video-drift/en/" data-family-word="site">Visit website ↗</a><a href="https://github.com/vkardin/video-drift" data-family-word="code">Source code</a><a href="https://github.com/vkardin/video-drift/releases" data-family-word="download">Releases</a></div></article><article class="family-card" style="--project-accent:#b79bff"><a class="family-preview" href="/snapt/" tabindex="-1" aria-hidden="true"><img src="/media/snapt-en.webp?v=7" alt="" width="960" height="600" loading="lazy" srcset="/media/responsive/snapt-en-480.webp 480w, /media/snapt-en.webp 960w" sizes="(max-width: 700px) calc(100vw - 36px), 540px"></a><header class="family-card-header"><span class="family-icon"><img src="/family-assets/snapt.svg" alt="" width="32" height="32" loading="lazy"></span><div><h3>Snapt</h3><small data-family-type="snapt">App &amp; extension</small></div></header><p data-family-description="snapt">Capture, annotate and export. A Windows, macOS and Linux app, plus a browser extension.</p><ul class="family-chips"><li data-family-chip="snapt:0">Capture</li><li data-family-chip="snapt:1">Annotate</li><li data-family-chip="snapt:2">Export</li></ul><div class="family-actions"><a data-family-site="snapt" href="/snapt/" data-family-word="site">Visit website ↗</a><a href="https://github.com/vkardin/snapt" data-family-word="code">Source code</a><a href="https://github.com/vkardin/snapt/releases" data-family-word="download">Releases</a></div></article></div><p class="family-credit"><a href="https://github.com/vkardin">github.com/vkardin</a> · <span data-family-word="author">Independent tools · open source</span></p></div></section>
+</main><footer>
+  <div class="wrap">
+    <span><span class="grad" style="font-weight:800">UNI</span> · your home server in Telegram</span>
+    <span><a href="https://github.com/vkardin/uni-homebot">GitHub</a> · <a href="https://github.com/vkardin/uni-homebot/releases">Releases</a> · <a href="https://github.com/vkardin/uni-homebot/blob/main/docs/LEGAL.md">Legal notes</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var tabs = document.querySelectorAll('.tabs button');
+  var panes = document.querySelectorAll('.term pre');
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      tabs.forEach(function (x) { x.setAttribute('aria-selected', x === t ? 'true' : 'false'); });
+      panes.forEach(function (p) { p.hidden = p.dataset.pane !== t.dataset.tab; });
+    });
+  });
+  var copy = document.querySelector('.copy');
+  copy.addEventListener('click', function () {
+    var pre = document.querySelector('.term pre:not([hidden])');
+    var text = pre.innerText.split('\n').filter(function (l) { return l.charAt(0) !== '#'; }).join('\n');
+    var done = function () { copy.textContent = self.uniTranslate('Скопировано'); setTimeout(function () { copy.textContent = self.uniTranslate('Копировать'); }, 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {});
+  });
+})();
+</script>
+<script src="/uni-homebot/i18n.js?v=seo-1"></script>
+<script src="/family.js?v=seo-1"></script>
+<script src="/uni-homebot/demo-controls.js?v=seo-1"></script>
+
+
+</body></html>
