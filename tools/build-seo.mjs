@@ -186,7 +186,7 @@ function render(id,lang,kind) {
   // Include the Snapt hero in its main landmark.
   if(id==='snapt'){const hero=doc.querySelector('body>.hero');if(hero)main.prepend(hero);}
   doc.querySelectorAll('[id="family-content"]').forEach(e=>{if(e!==main)e.removeAttribute('id');});main.id='family-content';main.tabIndex=-1;
-  const author={'@type':'Person',name:'vKardin',url:origin+'/',sameAs:['https://github.com/vkardin','https://www.youtube.com/@vKardin']};
+  const author={'@type':'Person',name:'vKardin',url:origin+'/',sameAs:['https://github.com/vkardin','https://www.youtube.com/@vKardin','https://www.tiktok.com/@vkard1n']};
   const schema=kind==='index'&&id!=='hub'?{'@context':'https://schema.org','@type':'SoftwareApplication',name:brand,url,inLanguage:lang,description,applicationCategory:id==='uni-homebot'?'UtilitiesApplication':'MultimediaApplication',operatingSystem:id==='snapt'?'Windows, macOS, Linux':id==='uni-homebot'?'Linux':'Chrome, Firefox',offers:{'@type':'Offer',price:'0',priceCurrency:'USD'},isAccessibleForFree:true,license:'https://opensource.org/licenses/MIT',image:origin+image,downloadUrl:stores[id]?.[0]||`https://github.com/vkardin/${repos[id]}/releases/latest`,sameAs:[...(stores[id]||[]),`https://github.com/vkardin/${repos[id]}`],author}:
     {'@context':'https://schema.org','@type':id==='hub'?'CollectionPage':'WebPage',name:title,url,inLanguage:lang,description,...(id==='hub'?{author,mainEntity:{'@type':'ItemList',itemListElement:Object.keys(repos).map((p,i)=>({'@type':'ListItem',position:i+1,url:origin+pagePath(p,lang)}))}}:{})};
   const json=doc.createElement('script');json.type='application/ld+json';json.textContent=JSON.stringify(schema).replaceAll('<','\\u003c');doc.head.append(json);
