@@ -223,7 +223,7 @@ try { const lang=localStorage.getItem('vkardin-site-language')||'ru'; if(lang===
 <section id="donate" class="soft">
   <div class="wrap">
     <h2>Support Snapt</h2>
-    <p class="sub">Snapt is free and has no ads. If it saves you time, you can support development with crypto. Any amount helps ship new versions.</p>
+    <p class="sub">Snapt is free and has no ads. If it saves you time, you can support development by card on Ko-fi or with crypto. Any amount helps ship new versions.</p>
     <div class="wallets" id="wallets" data-qr="qr/"></div>
     <p class="note">Send coins only on the network shown on the card. A transfer on another network may be lost. Thank you for being here.</p>
   </div>
