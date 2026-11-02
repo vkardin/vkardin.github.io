@@ -10,7 +10,10 @@ Canonical source for https://vkardin.github.io/ and the product websites:
 
 Shared `family.css`, `family.js`, `family-head.js`, `family-assets/` and localized `media/` live at the repository root. Product-specific styles, scripts and assets stay in the product folders. App code and releases stay in their existing repositories.
 
-GitHub Pages publishes `main` from the repository root. To complete the cutover, disable Pages in the five app repositories and disable the Snapt Pages workflow; their existing deployments otherwise override these paths. Keep the old sources until the cutover has been verified.
+GitHub Pages publishes `main` from the repository root. Pages in the five app
+repositories and the old Snapt Pages workflow are disabled, so they cannot
+override these paths. Keep app code and releases in their existing repositories;
+publish website changes here.
 
 Serve locally with `python3 -m http.server 8000` from this directory. Check product pages, language versions, demos, support/privacy pages and shared previews before deploying.
 

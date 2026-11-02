@@ -8,4 +8,12 @@ body[data-family] .screen img{display:block;width:100%;height:auto;aspect-ratio:
 body[data-family=uni-homebot] main p a,body[data-family=uni-homebot] main li a{text-decoration:underline;text-underline-offset:3px}
 /* Reserve the navigation height, including the settings control added by JS. */
 .family-nav-inner{min-height:64px}
-@media(max-width:760px){.family-nav-inner{min-height:92px}.hub-languages a{min-width:36px}}
+@media(max-width:760px){
+ .family-nav-inner{display:grid;grid-template-columns:auto 1fr auto;gap:4px 10px;padding-block:10px;min-height:100px}
+ .family-brand{grid-column:1;grid-row:1}
+ .hub-languages{grid-column:2;grid-row:1;justify-self:end;margin-left:0}
+ .family-settings-button{grid-column:3;grid-row:1;margin-left:0}
+ .family-nav-links{grid-column:1/-1;grid-row:2;justify-content:center;gap:4px 14px}
+ .hub-languages a{min-width:36px}
+ .hub-hero h1{font-size:clamp(32px,8.8vw,40px)!important}
+}
