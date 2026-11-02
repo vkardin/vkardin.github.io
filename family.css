@@ -43,6 +43,18 @@ body[data-family] section[id]{scroll-margin-top:90px}
 @media(max-width:760px){.family-nav-inner{align-items:flex-start;gap:12px}.family-nav-links{gap:8px 14px;justify-content:flex-end}.family-grid{grid-template-columns:1fr}.family-section{padding-block:48px!important}.family-card{padding:22px}body[data-family] .hero{padding-block:48px 32px}body[data-family] .wrap{padding-inline:18px}.family-section .family-wrap{padding-inline:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.family-card,body[data-family] .btn{transition:none}.family-card:hover{transform:none}}
 
+/* Snapt keeps its illustration while sharing the neutral page palette. */
+body[data-family=snapt]{--bg-soft:var(--family-field)}
+body[data-family=snapt] .top .brand,body[data-family=snapt] .top nav a{color:var(--family-text)}
+body[data-family=snapt] .top nav .langs{border-color:var(--family-line)}
+body[data-family=snapt] .top nav .langs a[aria-current]{background:var(--family-field);color:var(--family-text)}
+body[data-family=snapt] .hero{background:radial-gradient(ellipse at 85% 50%,color-mix(in srgb,var(--family-accent) 15%,transparent),transparent 65%),var(--family-bg);color:var(--family-text);padding-block:0}
+body[data-family=snapt] .hero .wrap{padding-block:76px 60px}
+body[data-family=snapt] .hero h1 span{color:var(--family-text)}
+body[data-family=snapt] .hero p.lead,body[data-family=snapt] .hero small.meta,body[data-family=snapt] .hero small.meta a{color:var(--family-muted)}
+body[data-family=snapt] .btn-ghost{color:var(--family-text);border-color:var(--family-line)}
+@media(max-width:760px){body[data-family=snapt] .hero .wrap{padding-block:48px 36px}}
+
 /* Preview-led project cards. */
 .family-card{position:relative;overflow:hidden;gap:16px;padding:0 28px 26px;border-color:color-mix(in srgb,var(--project-accent) 22%,var(--family-line));background:linear-gradient(150deg,color-mix(in srgb,var(--project-accent) 7%,var(--family-card)),var(--family-card) 60%)}
 .family-preview{display:block;margin:0 -28px 8px;overflow:hidden;aspect-ratio:16/10;background:color-mix(in srgb,var(--project-accent) 12%,var(--family-card));border-bottom:1px solid var(--family-line)}
@@ -85,6 +97,20 @@ body[data-family] .family-settings-heading h2{font-size:22px;margin:0}
 html[data-motion=reduce]{scroll-behavior:auto!important}
 html[data-motion=reduce] *,html[data-motion=reduce] *::before,html[data-motion=reduce] *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 @media(max-width:760px){.family-nav-inner{gap:8px;padding-inline:18px}.family-nav-links{gap:6px 10px}.family-settings-button{margin-left:0}}
+
+/* Focus brand: a neutral canvas with a warm selection accent. */
+body[data-family=snapt]{--family-accent:#b09bff}
+body[data-family=snapt] .hero{background:radial-gradient(ellipse at 85% 50%,#b09bff18,transparent 65%),var(--family-bg)}
+body[data-family=snapt] .demo{background:#0a0a0b;border-color:#27272c}
+body[data-family=snapt] .demo .bar{background:#171719}
+body[data-family=snapt] .demo .bar i{background:#34343a}
+body[data-family=snapt] .demo .desk div{background:#202024}
+body[data-family=snapt] .demo .sel{border-color:#b09bff}
+body[data-family=snapt] .demo .sel b{border-color:#b09bff}
+body[data-family=snapt] .demo .size{background:#b09bff;color:#101013}
+body[data-family=snapt] .demo .tools span{background:#101013}
+body[data-family=snapt] .demo .hint{color:#16161a}
+body[data-family=snapt] .demo .hint kbd{color:#16161a;background:#f3f2ef;border-color:#c8c7c3}
 
 /* One product header on every website. */
 body[data-family] .top .wrap{display:flex;align-items:center;gap:16px;height:64px;max-width:1120px;padding-inline:24px}
