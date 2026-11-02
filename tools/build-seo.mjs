@@ -151,13 +151,15 @@ function render(id,lang,kind) {
     }
     el.setAttribute(attr,target.pathname+target.search+target.hash);
   }
-  // Card donations through Ko-fi, placed above the crypto wallets.
+  // Card donations through Ko-fi and Donatello, placed above the crypto wallets.
   const wallets=doc.querySelector('#donate #wallets');
   if(wallets){
     const row=doc.createElement('p');row.className='kofi-row';
     const a=doc.createElement('a');a.className='kofi';a.href='https://ko-fi.com/vkardin';a.target='_blank';a.rel='noopener';
     a.textContent={en:'Donate by card on Ko-fi ↗',ru:'Поддержать картой через Ko-fi ↗',uk:'Підтримати карткою через Ko-fi ↗'}[lang];
-    row.append(a);wallets.before(row);
+    const d=doc.createElement('a');d.className='kofi kofi-alt';d.href='https://donatello.to/vkardin';d.target='_blank';d.rel='noopener';
+    d.textContent={en:'Donatello ↗',ru:'Donatello (удобно из Украины) ↗',uk:'Donatello ↗'}[lang];
+    row.append(a,' ',d);wallets.before(row);
   }
   // Remove the old automatic language redirect; URLs select the language.
   doc.querySelectorAll('script:not([src])').forEach(s=>{if(s.textContent.includes('location.replace')&&id==='snapt')s.remove();});
@@ -189,7 +191,7 @@ function render(id,lang,kind) {
     {'@context':'https://schema.org','@type':id==='hub'?'CollectionPage':'WebPage',name:title,url,inLanguage:lang,description,...(id==='hub'?{author,mainEntity:{'@type':'ItemList',itemListElement:Object.keys(repos).map((p,i)=>({'@type':'ListItem',position:i+1,url:origin+pagePath(p,lang)}))}}:{})};
   const json=doc.createElement('script');json.type='application/ld+json';json.textContent=JSON.stringify(schema).replaceAll('<','\\u003c');doc.head.append(json);
   // Styles cover static language links and stable screenshots before the first paint.
-  const css=doc.createElement('link');css.rel='stylesheet';css.href='/seo.css?v=3';doc.head.append(css);
+  const css=doc.createElement('link');css.rel='stylesheet';css.href='/seo.css?v=4';doc.head.append(css);
   const dest=pagePath(id,lang,kind)+(kind==='index'?'index.html':'');
   write(dest.slice(1),dom.serialize().replace(/^[\t ]+$/gm,'')+'\n');urls.push(url);dom.window.close();
 }
