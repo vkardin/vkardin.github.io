@@ -10,5 +10,5 @@ try {
 try {
  const language=localStorage.getItem('vkardin-site-language')||'ru';
  for(const key of ['vg-lang','lv-lang','video-drift-lang','lang'])localStorage.setItem(key,language);
- if(document.documentElement.dataset.siteProject==='uni-homebot')document.documentElement.lang=language;
+ if(['uni-homebot','hub'].includes(document.documentElement.dataset.siteProject))document.documentElement.lang=language;
 } catch {}
