@@ -35,6 +35,10 @@ for(const id of ['video-glow','leveler'])tables[id]=objectFrom(read(id+'/app.js'
 const driftWindow={};vm.runInNewContext(read('video-drift/i18n.js'),{window:driftWindow});
 const drift=driftWindow.I18N;
 const urls=[];
+// Store listings; cards link straight to installation where a store exists.
+const stores={'video-glow':['https://chromewebstore.google.com/detail/bjgbalkabocifimhnhbcnomeknpbhkea','https://addons.mozilla.org/firefox/addon/video-glow/'],leveler:['https://chromewebstore.google.com/detail/phbjpipnbhffcegccfbbfabbhmgaelko','https://addons.mozilla.org/firefox/addon/leveler/']};
+const repos={'video-glow':'video-glow',leveler:'leveler','video-drift':'video-drift',snapt:'snapt','uni-homebot':'uni-homebot'};
+const ogSize=image=>image.startsWith('/media/og/')||image==='/leveler/img/og.png'?[1200,630]:[1280,640];
 // Smaller image candidates reduce mobile transfers without changing the desktop originals.
 const responsive=new Map();
 for(const id of ['video-glow','leveler','video-drift','snapt','uni-homebot'])for(const lang of langs){
@@ -85,6 +89,7 @@ function translate(doc,id,lang,kind) {
   }
 }
 function familyLinks(doc,lang) {
+  doc.querySelectorAll('a[data-family-word="download"]').forEach(a=>{const id=(a.getAttribute('href')||'').match(/github\.com\/vkardin\/([a-z-]+)\/releases/)?.[1];if(stores[id]){a.href=stores[id][0];a.dataset.familyWord='install';}});
   doc.querySelectorAll('[data-family-word]').forEach(e=>{e.textContent=words[lang][e.dataset.familyWord]+(e.dataset.familyWord==='site'?' ↗':'');});
   doc.querySelectorAll('[data-family-type]').forEach(e=>e.textContent=projects[e.dataset.familyType].type[lang]);
   doc.querySelectorAll('[data-family-description]').forEach(e=>e.textContent=projects[e.dataset.familyDescription].desc[lang]);
@@ -119,8 +124,10 @@ function render(id,lang,kind) {
   const meta=(key,value,property=false)=>{const e=doc.createElement('meta');e.setAttribute(property?'property':'name',key);e.content=value;doc.head.append(e);};
   meta('description',description);meta('og:type','website',true);meta('og:title',title,true);meta('og:description',description,true);meta('og:url',url,true);
   meta('og:locale',{ru:'ru_RU',uk:'uk_UA',en:'en_US'}[lang],true);
-  let image=id==='snapt'?'/snapt/social-preview.png':id==='uni-homebot'?'/uni-homebot/assets/banner.jpg':id==='leveler'?'/leveler/img/og.png':`/media/${id==='hub'?'video-glow':id}-${lang}.webp`;
-  meta('og:image',origin+image,true);meta('og:image:alt',title,true);meta('twitter:card','summary_large_image');meta('twitter:title',title);meta('twitter:description',description);meta('twitter:image',origin+image);
+  let image=id==='snapt'?'/snapt/social-preview.png':id==='uni-homebot'?'/uni-homebot/assets/banner.jpg':id==='leveler'?'/leveler/img/og.png':`/media/og/${id}-${lang}.png`;
+  meta('og:site_name','vKardin',true);meta('og:image',origin+image,true);meta('og:image:width',String(ogSize(image)[0]),true);meta('og:image:height',String(ogSize(image)[1]),true);meta('og:image:alt',title,true);meta('twitter:card','summary_large_image');meta('twitter:title',title);meta('twitter:description',description);meta('twitter:image',origin+image);
+  doc.querySelectorAll('link[rel="apple-touch-icon"]').forEach(e=>e.remove());
+  const touch=doc.createElement('link');touch.rel='apple-touch-icon';touch.href=id==='hub'?'/apple-touch-icon.png':`/family-assets/touch/${id}.png`;doc.head.append(touch);
   const canonical=doc.createElement('link');canonical.rel='canonical';canonical.href=url;doc.head.append(canonical);
   for(const l of [...langs,'x-default']){const e=doc.createElement('link');e.rel='alternate';e.hreflang=l;e.href=origin+pagePath(id,l==='x-default'?'en':l,kind);doc.head.append(e);}
   // Real language links also work with JavaScript disabled.
@@ -169,8 +176,9 @@ function render(id,lang,kind) {
   // Include the Snapt hero in its main landmark.
   if(id==='snapt'){const hero=doc.querySelector('body>.hero');if(hero)main.prepend(hero);}
   doc.querySelectorAll('[id="family-content"]').forEach(e=>{if(e!==main)e.removeAttribute('id');});main.id='family-content';main.tabIndex=-1;
-  const schema=kind==='index'&&id!=='hub'?{'@context':'https://schema.org','@type':'SoftwareApplication',name:brand,url,inLanguage:lang,description,applicationCategory:id==='uni-homebot'?'UtilitiesApplication':'MultimediaApplication',operatingSystem:id==='snapt'?'Windows, macOS, Linux':id==='uni-homebot'?'Linux':'Chrome, Firefox',offers:{'@type':'Offer',price:'0',priceCurrency:'USD'},author:{'@type':'Person',name:'vKardin',url:origin+'/'}}:
-    {'@context':'https://schema.org','@type':id==='hub'?'CollectionPage':'WebPage',name:title,url,inLanguage:lang,description};
+  const author={'@type':'Person',name:'vKardin',url:origin+'/',sameAs:['https://github.com/vkardin']};
+  const schema=kind==='index'&&id!=='hub'?{'@context':'https://schema.org','@type':'SoftwareApplication',name:brand,url,inLanguage:lang,description,applicationCategory:id==='uni-homebot'?'UtilitiesApplication':'MultimediaApplication',operatingSystem:id==='snapt'?'Windows, macOS, Linux':id==='uni-homebot'?'Linux':'Chrome, Firefox',offers:{'@type':'Offer',price:'0',priceCurrency:'USD'},isAccessibleForFree:true,license:'https://opensource.org/licenses/MIT',image:origin+image,downloadUrl:stores[id]?.[0]||`https://github.com/vkardin/${repos[id]}/releases/latest`,sameAs:[...(stores[id]||[]),`https://github.com/vkardin/${repos[id]}`],author}:
+    {'@context':'https://schema.org','@type':id==='hub'?'CollectionPage':'WebPage',name:title,url,inLanguage:lang,description,...(id==='hub'?{author,mainEntity:{'@type':'ItemList',itemListElement:Object.keys(repos).map((p,i)=>({'@type':'ListItem',position:i+1,url:origin+pagePath(p,lang)}))}}:{})};
   const json=doc.createElement('script');json.type='application/ld+json';json.textContent=JSON.stringify(schema).replaceAll('<','\\u003c');doc.head.append(json);
   // Styles cover static language links and stable screenshots before the first paint.
   const css=doc.createElement('link');css.rel='stylesheet';css.href='/seo.css?v=2';doc.head.append(css);
