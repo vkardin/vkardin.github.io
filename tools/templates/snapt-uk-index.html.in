@@ -175,6 +175,7 @@
       </div>
     </div>
     <p class="note">Контрольні суми лежать у <code>SHA256SUMS.txt</code> на <a href="https://github.com/vkardin/snapt/releases">сторінці релізу</a>. Хочете зібрати самі? Дивіться <a href="https://github.com/vkardin/snapt#building-from-source">збірку з вихідного коду</a>.</p>
+    <p class="note">Є і в браузері: <a href="https://addons.mozilla.org/firefox/addon/snapt-screenshots-images/">Snapt для Firefox</a> — скриншоти сторінок і збереження зображень.</p>
   </div>
 </section>
 

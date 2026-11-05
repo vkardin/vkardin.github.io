@@ -22,7 +22,7 @@
         <p class="lead" data-i18n="heroLead">Video Drift pops web video into a floating window that keeps the site's subtitles, remembers the exact second you stopped on every video and turns your notes into a tidy Markdown file.</p>
         <div class="cta">
           <a class="btn primary" href="https://github.com/vkardin/video-drift/releases" data-i18n="btnChrome">Download for Chrome</a>
-          <a class="btn" href="https://github.com/vkardin/video-drift/releases" data-i18n="btnFirefox">Download for Firefox</a>
+          <a class="btn" href="https://addons.mozilla.org/firefox/addon/video-drift-floating-player/" data-i18n="btnFirefox">Install in Firefox</a>
         </div>
         <p class="free" data-i18n="hero_free">Free, no accounts, no ads. YouTube, Twitch and any other site.</p>
         <div class="screen">
@@ -58,15 +58,15 @@
     <section class="block" id="install">
       <div class="wrap">
         <h2 data-i18n="iTitle">Install</h2>
-        <p class="sub" data-i18n="iSub">Store listings are coming soon. Until then, install the release archive.</p>
+        <p class="sub" data-i18n="iSub">Firefox: install from Firefox Add-ons. The Chrome Web Store listing is coming soon; until then, install the release archive for Chrome.</p>
         <div class="install">
           <a class="tile store" href="https://github.com/vkardin/video-drift/releases" target="_blank" rel="noopener">
             <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#f3f2ef"/><circle cx="24" cy="24" r="9" fill="#0a0a0b"/><circle cx="24" cy="24" r="6" fill="#f3f2ef"/><path d="M24 15h19M16.2 28.5 6.7 12M31.8 28.5 22.3 45" stroke="#0a0a0b" stroke-width="2.4"/></svg>
             <div><b>Chrome, Edge, Brave, Opera</b><span data-i18n="iChrome">video-drift-chrome zip · Load unpacked in chrome://extensions</span></div>
           </a>
-          <a class="tile store" href="https://github.com/vkardin/video-drift/releases" target="_blank" rel="noopener">
+          <a class="tile store" href="https://addons.mozilla.org/firefox/addon/video-drift-floating-player/" target="_blank" rel="noopener">
             <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#f3f2ef"/><path d="M24 9a15 15 0 1 0 14.6 11.6c-1.4 3-4 4.4-6.4 4.4 1.2-5.5-2.2-10-7-11.5 1.4 3-1.2 5.3-3.4 5.6-2.3.4-4 2.3-4 4.6 0 3.3 2.8 5.8 6.2 5.8" fill="none" stroke="#0a0a0b" stroke-width="2.6" stroke-linecap="round"/></svg>
-            <div><b>Firefox</b><span data-i18n="iFirefox">video-drift-firefox zip · about:debugging → Load Temporary Add-on</span></div>
+            <div><b>Firefox</b><span data-i18n="iFirefox">Firefox Add-ons · one-click install</span></div>
           </a>
         </div>
       </div>
