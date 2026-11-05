@@ -36,6 +36,8 @@ const driftWindow={};vm.runInNewContext(read('video-drift/i18n.js'),{window:drif
 const drift=driftWindow.I18N;
 const urls=[];
 // Store listings; cards link straight to installation where a store exists.
+// Firefox-only listings: an extra card link next to Releases.
+const firefox={'video-drift':'https://addons.mozilla.org/firefox/addon/video-drift-floating-player/',snapt:'https://addons.mozilla.org/firefox/addon/snapt-screenshots-images/'};
 const stores={'video-glow':['https://chromewebstore.google.com/detail/bjgbalkabocifimhnhbcnomeknpbhkea','https://addons.mozilla.org/firefox/addon/video-glow/'],leveler:['https://chromewebstore.google.com/detail/phbjpipnbhffcegccfbbfabbhmgaelko','https://addons.mozilla.org/firefox/addon/leveler/']};
 const repos={'video-glow':'video-glow',leveler:'leveler','video-drift':'video-drift',snapt:'snapt','uni-homebot':'uni-homebot'};
 const ogSize=image=>image.startsWith('/media/og/')||image==='/leveler/img/og.png'?[1200,630]:[1280,640];
@@ -89,7 +91,7 @@ function translate(doc,id,lang,kind) {
   }
 }
 function familyLinks(doc,lang) {
-  doc.querySelectorAll('a[data-family-word="download"]').forEach(a=>{const id=(a.getAttribute('href')||'').match(/github\.com\/vkardin\/([a-z-]+)\/releases/)?.[1];if(stores[id]){a.href=stores[id][0];a.dataset.familyWord='install';}});
+  doc.querySelectorAll('a[data-family-word="download"]').forEach(a=>{const id=(a.getAttribute('href')||'').match(/github\.com\/vkardin\/([a-z-]+)\/releases/)?.[1];if(stores[id]){a.href=stores[id][0];a.dataset.familyWord='install';}else if(firefox[id]){const f=doc.createElement('a');f.href=firefox[id];f.dataset.familyWord='firefox';a.after(f);}});
   doc.querySelectorAll('[data-family-word]').forEach(e=>{e.textContent=words[lang][e.dataset.familyWord]+(e.dataset.familyWord==='site'?' ↗':'');});
   doc.querySelectorAll('[data-family-type]').forEach(e=>e.textContent=projects[e.dataset.familyType].type[lang]);
   doc.querySelectorAll('[data-family-description]').forEach(e=>e.textContent=projects[e.dataset.familyDescription].desc[lang]);
