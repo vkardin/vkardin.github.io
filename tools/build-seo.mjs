@@ -39,11 +39,13 @@ const urls=[];
 // Firefox-only listings: an extra card link next to Releases.
 const firefox={'video-drift':'https://addons.mozilla.org/firefox/addon/video-drift-floating-player/',snapt:'https://addons.mozilla.org/firefox/addon/snapt-screenshots-images/'};
 const stores={'video-glow':['https://chromewebstore.google.com/detail/bjgbalkabocifimhnhbcnomeknpbhkea','https://addons.mozilla.org/firefox/addon/video-glow/'],leveler:['https://chromewebstore.google.com/detail/phbjpipnbhffcegccfbbfabbhmgaelko','https://addons.mozilla.org/firefox/addon/leveler/']};
-const repos={'video-glow':'video-glow',leveler:'leveler','video-drift':'video-drift',snapt:'snapt','uni-homebot':'uni-homebot'};
+const repos={'video-glow':'video-glow',leveler:'leveler','video-drift':'video-drift',snapt:'snapt','uni-homebot':'uni-homebot',koly:'koly',tukk:'tukk'};
+// Projects whose templates are written once per language.
+const perLanguage=new Set(['snapt','tukk']);
 const ogSize=image=>image.startsWith('/media/og/')||image==='/leveler/img/og.png'?[1200,630]:[1280,640];
 // Smaller image candidates reduce mobile transfers without changing the desktop originals.
 const responsive=new Map();
-for(const id of ['video-glow','leveler','video-drift','snapt','uni-homebot'])for(const lang of langs){
+for(const id of ['video-glow','leveler','video-drift','snapt','uni-homebot','koly','tukk'])for(const lang of langs){
   const source=`media/${id}-${lang}.webp`,dest=`media/responsive/${id}-${lang}-480.webp`;
   fs.mkdirSync(path.join(root,'media/responsive'),{recursive:true});
   await sharp(path.join(root,source)).resize({width:480,withoutEnlargement:true}).webp({quality:76}).toFile(path.join(root,dest));
@@ -84,7 +86,10 @@ function translate(doc,id,lang,kind) {
     doc.querySelectorAll('.hub-principles b').forEach((e,i)=>e.textContent=t[13][i]);
     doc.querySelectorAll('.hub-principles p').forEach((e,i)=>e.textContent=t[14][i]);
     set('.hub-about>.hub-button',t[15]);set('.hub-footer span',t[16]);
-    set('#filter-result',lang==='en'?'5 projects':lang==='uk'?'5 проєктів':'5 проектов');
+    const total=doc.querySelectorAll('.hub-grid .family-card').length;
+    set('#filter-result',lang==='en'?total+' projects':lang==='uk'?total+' проєктів':total+' проектов');
+    doc.querySelector('.hub-orbit')?.setAttribute('aria-label',{en:`${total} projects by vkardin`,ru:`${total} проектов vkardin`,uk:`${total} проєктів vkardin`}[lang]);
+    doc.querySelector('.hub-filters')?.setAttribute('aria-label',{en:'Project categories',ru:'Категории проектов',uk:'Категорії проєктів'}[lang]);
     const nav=doc.createElement('div');nav.className='hub-languages';nav.setAttribute('aria-label','Language');
     for(const l of langs){const a=doc.createElement('a');a.hreflang=l;a.href=pagePath(id,l);a.textContent=l.toUpperCase();if(l===lang)a.setAttribute('aria-current','page');nav.append(a);}
     doc.querySelector('.family-nav-inner').append(nav);
@@ -101,8 +106,8 @@ function familyLinks(doc,lang) {
 }
 const captions={ru:['Подсветка видео','Режим LED-ленты','Цвет комнаты','Настройки Video Glow'],uk:['Підсвічування відео','Режим LED-стрічки','Колір кімнати','Налаштування Video Glow'],en:['Video ambient light','LED strip mode','Room colour','Video Glow settings']};
 function render(id,lang,kind) {
-  const source=(id==='hub'?'hub':id)+(id==='snapt'?'-'+lang:'')+'-'+kind+'.html.in';
-  const sourcePath=id==='hub'?'/':id==='snapt'&&lang!=='en'?`/snapt/${lang}/`:`/${id}/`;
+  const source=(id==='hub'?'hub':id)+(perLanguage.has(id)?'-'+lang:'')+'-'+kind+'.html.in';
+  const sourcePath=id==='hub'?'/':perLanguage.has(id)&&lang!=='en'?`/${id}/${lang}/`:`/${id}/`;
   const dom=new JSDOM(read('tools/templates/'+source),{url:origin+sourcePath,runScripts:'outside-only'});
   const doc=dom.window.document;
   doc.documentElement.lang=lang;doc.documentElement.dataset.staticLang=lang;
@@ -113,7 +118,7 @@ function render(id,lang,kind) {
     if(demo)demo.id='demo';
   }
   const url=origin+pagePath(id,lang,kind);
-  const brand=id==='hub'?'vKardin':id==='uni-homebot'?'UNI':id==='video-glow'?'Video Glow':id==='video-drift'?'Video Drift':id==='leveler'?'Leveler':'Snapt';
+  const brand=id==='hub'?'vKardin':id==='uni-homebot'?'UNI':id==='video-glow'?'Video Glow':id==='video-drift'?'Video Drift':id==='leveler'?'Leveler':id==='tukk'?'Tukk':'Snapt';
   const sub={ru:{support:'Поддержка',privacy:'Политика конфиденциальности'},uk:{support:'Підтримка',privacy:'Політика конфіденційності'},en:{support:'Support',privacy:'Privacy policy'}};
   const [mainTitle,h1,mainDesc]=copy[id][lang];
   const title=kind==='index'?mainTitle:`${brand} — ${sub[lang][kind]}`;
@@ -146,7 +151,7 @@ function render(id,lang,kind) {
     const target=new URL(v,origin+sourcePath);if(target.origin!==origin)continue;
     if(el.tagName==='SCRIPT'&&attr==='src')target.searchParams.set('v','seo-3');
     // Localize cross-project navigation, cards and document links.
-    const match=target.pathname.match(/^\/(video-glow|leveler|video-drift|snapt|uni-homebot)\/(?:ru\/|uk\/|en\/)?(?:(index|support|privacy)\.html)?$/);
+    const match=target.pathname.match(/^\/(video-glow|leveler|video-drift|snapt|uni-homebot|koly|tukk)\/(?:ru\/|uk\/|en\/)?(?:(index|support|privacy)\.html)?$/);
     if(attr==='href'&&el.tagName==='A'&&!el.hreflang) {
       if(match)target.pathname=pagePath(match[1],lang,match[2]||'index');
       else if(target.pathname==='/')target.pathname=pagePath('hub',lang);
@@ -189,7 +194,7 @@ function render(id,lang,kind) {
   if(id==='snapt'){const hero=doc.querySelector('body>.hero');if(hero)main.prepend(hero);}
   doc.querySelectorAll('[id="family-content"]').forEach(e=>{if(e!==main)e.removeAttribute('id');});main.id='family-content';main.tabIndex=-1;
   const author={'@type':'Person',name:'vKardin',url:origin+'/',sameAs:['https://github.com/vkardin','https://www.youtube.com/@vKardin','https://www.tiktok.com/@vkard1n']};
-  const schema=kind==='index'&&id!=='hub'?{'@context':'https://schema.org','@type':'SoftwareApplication',name:brand,url,inLanguage:lang,description,applicationCategory:id==='uni-homebot'?'UtilitiesApplication':'MultimediaApplication',operatingSystem:id==='snapt'?'Windows, macOS, Linux':id==='uni-homebot'?'Linux':'Chrome, Firefox',offers:{'@type':'Offer',price:'0',priceCurrency:'USD'},isAccessibleForFree:true,license:'https://opensource.org/licenses/MIT',image:origin+image,downloadUrl:stores[id]?.[0]||`https://github.com/vkardin/${repos[id]}/releases/latest`,sameAs:[...(stores[id]||[]),`https://github.com/vkardin/${repos[id]}`],author}:
+  const schema=kind==='index'&&id!=='hub'?{'@context':'https://schema.org','@type':'SoftwareApplication',name:brand,url,inLanguage:lang,description,applicationCategory:['uni-homebot','tukk'].includes(id)?'UtilitiesApplication':'MultimediaApplication',operatingSystem:id==='snapt'?'Windows, macOS, Linux':id==='uni-homebot'?'Linux':id==='tukk'?'Android 8.0+':'Chrome, Firefox',offers:{'@type':'Offer',price:'0',priceCurrency:'USD'},isAccessibleForFree:true,license:'https://opensource.org/licenses/MIT',image:origin+image,downloadUrl:stores[id]?.[0]||(id==='tukk'?'https://github.com/vkardin/tukk':`https://github.com/vkardin/${repos[id]}/releases/latest`),sameAs:[...(stores[id]||[]),`https://github.com/vkardin/${repos[id]}`],author}:
     {'@context':'https://schema.org','@type':id==='hub'?'CollectionPage':'WebPage',name:title,url,inLanguage:lang,description,...(id==='hub'?{author,mainEntity:{'@type':'ItemList',itemListElement:Object.keys(repos).map((p,i)=>({'@type':'ListItem',position:i+1,url:origin+pagePath(p,lang)}))}}:{})};
   const json=doc.createElement('script');json.type='application/ld+json';json.textContent=JSON.stringify(schema).replaceAll('<','\\u003c');doc.head.append(json);
   // Styles cover static language links and stable screenshots before the first paint.
@@ -199,7 +204,7 @@ function render(id,lang,kind) {
 }
 for(const id of Object.keys(copy))for(const lang of langs){render(id,lang,'index');if(['video-glow','leveler','video-drift'].includes(id))for(const kind of ['support','privacy'])render(id,lang,kind);}
 // Keep already published /en/ links working without duplicate English pages.
-for(const id of Object.keys(copy).filter(id=>id!=='snapt'))for(const kind of ['index',...(['video-glow','leveler','video-drift'].includes(id)?['support','privacy']:[])]){
+for(const id of Object.keys(copy).filter(id=>!perLanguage.has(id)))for(const kind of ['index',...(['video-glow','leveler','video-drift'].includes(id)?['support','privacy']:[])]){
   const destination=pagePath(id,'en',kind),legacy=projectPath(id)+'en/'+(kind==='index'?'index.html':kind+'.html');
   const script=`try{localStorage.setItem('vkardin-site-language-choice','en');}catch{}location.replace(${JSON.stringify(destination)}+location.search+location.hash);`;
   write(legacy.slice(1),'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow"><title>Page moved</title><link rel="canonical" href="'+origin+destination+'"><meta http-equiv="refresh" content="0;url='+destination+'"><script>'+script+'</script></head><body><a href="'+destination+'">Continue in English</a></body></html>\n');

@@ -7,10 +7,14 @@ Canonical source for https://vkardin.github.io/ and the product websites:
 - `/video-drift/`
 - `/snapt/` (including `/ru/` and `/uk/`)
 - `/uni-homebot/`
+- `/tukk/` (including `/ru/` and `/uk/`)
+
+`/koly/` is published from the `koly` repository (`web/` plus the schedule data on its
+`gh-pages` branch), so its page lives there; the shared files it loads come from here.
 
 Shared `family.css`, `family.js`, `family-head.js`, `family-assets/` and localized `media/` live at the repository root. Product-specific styles, scripts and assets stay in the product folders. App code and releases stay in their existing repositories.
 
-GitHub Pages publishes `main` from the repository root. Pages in the five app
+GitHub Pages publishes `main` from the repository root. Pages in the other app
 repositories and the old Snapt Pages workflow are disabled, so they cannot
 override these paths. Keep app code and releases in their existing repositories;
 publish website changes here.

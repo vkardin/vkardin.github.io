@@ -1,8 +1,8 @@
 {
   "hub": {
-    "ru": ["vKardin — приложения и расширения с открытым кодом", "Приложения и расширения для видео, скриншотов и домашнего сервера", "Бесплатные инструменты vKardin с открытым кодом: подсветка видео, ровная громкость, плавающий плеер, скриншоты и управление домашним сервером."],
-    "uk": ["vKardin — застосунки та розширення з відкритим кодом", "Застосунки та розширення для відео, знімків екрана й домашнього сервера", "Безкоштовні інструменти vKardin з відкритим кодом: підсвічування відео, рівна гучність, плаваючий плеєр, знімки екрана й керування домашнім сервером."],
-    "en": ["vKardin — open-source apps and browser extensions", "Apps and extensions for video, screenshots and your home server", "Free, open-source tools by vKardin: video ambient light, even loudness, a floating player, screenshots and home server management."]
+    "ru": ["vKardin — приложения и расширения с открытым кодом", "Приложения и расширения для видео, скриншотов, сервера и повседневных дел", "Бесплатные инструменты vKardin с открытым кодом: подсветка видео, ровная громкость, плавающий плеер, скриншоты, домашний сервер, графики отключений света и жесты на телефоне."],
+    "uk": ["vKardin — застосунки та розширення з відкритим кодом", "Застосунки та розширення для відео, знімків екрана, сервера й щоденних справ", "Безкоштовні інструменти vKardin з відкритим кодом: підсвічування відео, рівна гучність, плаваючий плеєр, знімки екрана, домашній сервер, графіки відключень світла й жести на телефоні."],
+    "en": ["vKardin — open-source apps and browser extensions", "Apps and extensions for video, screenshots, your server and everyday tasks", "Free, open-source tools by vKardin: video ambient light, even loudness, a floating player, screenshots, home server management, power outage schedules and phone gestures."]
   },
   "video-glow": {
     "ru": ["Video Glow — подсветка видео для Chrome и Firefox", "Подсветка вокруг видео в Chrome и Firefox", "Добавьте подсветку в цвет кадра вокруг видео с Video Glow. Мягкое свечение, LED-лента и цвет комнаты. Бесплатное расширение для Chrome и Firefox."],
@@ -28,5 +28,10 @@
     "ru": ["UNI — Telegram-бот для управления домашним сервером", "Управление домашним сервером через Telegram", "Управляйте домашним сервером через UNI: Telegram-бот, мониторинг, приложения, уведомления и мини-приложение. Свой сервер, установка одной командой."],
     "uk": ["UNI — Telegram-бот для керування домашнім сервером", "Керування домашнім сервером через Telegram", "Керуйте домашнім сервером через UNI: Telegram-бот, моніторинг, застосунки, сповіщення й мінізастосунок. Власний сервер, встановлення однією командою."],
     "en": ["UNI — a Telegram bot for home server management", "Manage your home server through Telegram", "Manage your home server with UNI: a Telegram bot, monitoring, apps, notifications and a Mini App. Self-hosted, with one-command installation."]
+  },
+  "tukk": {
+    "en": ["Tukk — phone gestures for the flashlight, silence and music", "Phone gestures for everyday actions", "Tukk for Android: shake the phone for the flashlight, flip it face down for silence, tap the back to pause music. No internet access, no accounts, no data collection."],
+    "ru": ["Tukk — жесты телефоном для фонарика, тишины и музыки", "Жесты телефоном для повседневных действий", "Tukk для Android: встряхните телефон для фонарика, переверните экраном вниз для тишины, постучите по корпусу для паузы. Без интернета, аккаунтов и сбора данных."],
+    "uk": ["Tukk — жести телефоном для ліхтарика, тиші та музики", "Жести телефоном для щоденних дій", "Tukk для Android: струсніть телефон для ліхтарика, переверніть екраном донизу для тиші, постукайте по корпусу для паузи. Без інтернету, акаунтів і збору даних."]
   }
 }
