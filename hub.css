@@ -15,3 +15,4 @@
 .hub-languages{display:flex;gap:3px;flex:none}.hub-languages button{font:600 10px/1.4 Inter,system-ui,sans-serif;background:transparent;color:var(--family-muted);border:1px solid transparent;border-radius:7px;padding:5px 6px;cursor:pointer}.hub-languages button[aria-pressed=true]{color:var(--family-text);background:var(--family-field);border-color:var(--family-line)}.hub-languages button:hover{color:var(--family-text)}@media(max-width:760px){.hub-languages{margin-left:auto}}
 
 .hub-lead strong{display:inline-block;margin-top:10px;color:var(--family-text);font-weight:600;font-size:.86em}
+@media(max-width:760px){.hub-orbit{flex-wrap:wrap;row-gap:20px;column-gap:8px}.orbit-app{flex:0 0 calc(25% - 8px)}}
