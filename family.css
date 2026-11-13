@@ -147,3 +147,58 @@ body[data-family] .top .langs a[aria-current],body[data-family] .top .langs butt
 :root[data-motion=reduce] .family-brand::after,:root[data-motion=reduce] .family-brand-v{transition:none}
 
 .family-preview{aspect-ratio:8/5}.family-preview img{object-fit:contain;transform:none!important}.family-card-header{min-height:54px}.family-card .family-actions{align-items:center;min-height:44px}.family-card .family-chips{align-items:center;min-height:30px}
+
+/* ===== Shared visual language: self-hosted type, graphite canvas, quiet components. ===== */
+@font-face{font-family:Geologica;font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/geologica-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122}
+@font-face{font-family:Geologica;font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/geologica-cyrillic-wght-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/onest-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122}
+@font-face{font-family:Onest;font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/onest-cyrillic-wght-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Caveat;font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/caveat-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:Caveat;font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/caveat-cyrillic-500-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+
+:root{--family-bg:#1b1d21;--family-card:#23262b;--family-line:#363a41;--family-text:#eef0ea;--family-muted:#a2a8b2;--family-field:#282c32;--family-link:#9aaaff;--family-display:Geologica,Onest,system-ui,sans-serif;--family-body:Onest,system-ui,-apple-system,'Segoe UI',sans-serif;--family-hand:Caveat,'Segoe Script',cursive}
+body[data-family]{--font:var(--family-body);font-family:var(--family-body)}
+body[data-family] :is(h1,h2,h3){font-family:var(--family-display);font-weight:560}
+body[data-family] h1{font-size:clamp(32px,4.6vw,54px);line-height:1.1;letter-spacing:-.035em}
+body[data-family] h2{font-size:clamp(25px,3vw,34px);line-height:1.15;letter-spacing:-.025em}
+body[data-family] h3{letter-spacing:-.02em}
+body[data-family] .btn,body[data-family] .btn-primary,body[data-family] .btn-ghost{border-radius:10px;font-family:var(--family-body)}
+body[data-family] .copy{border-radius:8px}
+body[data-family] .tile,body[data-family] .card,body[data-family] .os,body[data-family] details{border-radius:12px}
+body[data-family] .langs,body[data-family] .top nav .langs{border-radius:10px;background:none;padding:0}
+body[data-family] .top .langs a,body[data-family] .top .langs button,body[data-family] .langs a,body[data-family] .langs button{border-radius:8px;font-family:var(--family-body)}
+html body[data-family=tukk]{--t-bg:var(--family-bg);--t-card:var(--family-card);--t-card2:var(--family-field);--t-line:var(--family-line);--t-text:var(--family-text);--t-muted:var(--family-muted)}
+
+.family-nav{font:450 14px/1.4 var(--family-body)!important;background:var(--family-bg)}
+.family-brand-by{display:none}
+.family-brand-name{font:600 20px/1.05 var(--family-display);letter-spacing:-.02em}
+.family-brand-v,.family-brand:hover .family-brand-v{color:inherit}
+.family-brand::after{display:none}
+.family-settings-button{border-radius:8px}
+.family-settings-dialog{border-radius:14px;font-family:var(--family-body)}
+.family-kicker{display:none}
+
+/* Projects as a plain list: what it is, what it does, where to get it. */
+.family-grid{display:block;border-top:1px solid var(--family-line)}
+.family-card,.family-card:hover{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr) auto;gap:8px 28px;align-items:center;padding:20px 0;border:0;border-bottom:1px solid var(--family-line);border-radius:0;background:none;overflow:visible;transform:none;transition:none}
+.family-preview,.family-card .family-chips{display:none}
+.family-card-header{min-height:0;gap:16px!important}
+.family-icon{width:44px;height:44px;border:0;background:none;border-radius:11px}
+.family-icon img{width:44px;height:44px}
+.family-card h3{font-size:23px!important;line-height:1.15;letter-spacing:-.025em;margin:0 0 2px!important}
+.family-card h3 a{color:inherit;text-decoration:none}
+.family-card h3 a:hover{color:var(--family-link)}
+.family-card small{font-size:14px}
+.family-card p{font-size:16px;line-height:1.5;max-width:32em}
+.family-card .family-actions{margin:0;padding:0;gap:8px;justify-content:flex-end;min-height:0}
+.family-actions a,.family-actions a:first-child{font-size:14px!important;font-weight:450;color:var(--family-text);border:1px solid var(--family-line);border-radius:8px;padding:7px 13px;background:var(--family-card);white-space:nowrap}
+.family-actions a:hover{border-color:var(--family-muted)}
+.family-note{font:500 21px/1 var(--family-hand);color:var(--family-link);white-space:nowrap}
+.family-intro{margin-bottom:26px;line-height:1.6}
+@media(max-width:860px){
+ .family-card,.family-card:hover{grid-template-columns:1fr;gap:8px;padding:20px 0}
+ .family-card>p,.family-card>.family-actions{margin-left:60px!important}
+ .family-card .family-actions{justify-content:flex-start;margin-top:4px}
+}
+/* The UNI phone demo is wider than a narrow screen: keep the page from scrolling sideways. */
+body[data-family=uni-homebot] .hero{overflow-x:clip}

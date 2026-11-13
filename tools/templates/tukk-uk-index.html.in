@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tukk — жести телефоном для ліхтарика, тиші та музики</title>
 <meta name="description" content="Tukk для Android: струсніть телефон для ліхтарика, переверніть екраном донизу для тиші, постукайте по корпусу для паузи. Без інтернету, акаунтів і збору даних.">
-<meta name="theme-color" content="#121010">
+<meta name="theme-color" content="#1b1d21">
 <link rel="icon" href="/tukk/logo.svg" type="image/svg+xml">
-<script src="/family-head.js?v=9"></script><link rel="stylesheet" href="/family.css?v=9">
+<script src="/family-head.js?v=10"></script><link rel="stylesheet" href="/family.css?v=10">
 <link rel="stylesheet" href="/tukk/style.css?v=1">
 </head>
 <body data-family="tukk" style="--family-accent:#ff7a35">
@@ -81,6 +81,6 @@
 
 <footer class="foot"><div class="wrap"><span>© 2026 Tukk</span><a href="https://github.com/vkardin/tukk">GitHub</a><a href="https://github.com/vkardin/tukk/issues">Повідомити про помилку</a><a href="https://vkardin.github.io/">Усі проєкти</a></div></footer>
 <script src="/tukk/app.js?v=1"></script>
-<script src="/family.js?v=9"></script>
+<script src="/family.js?v=10"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 /* Static language links have the same treatment as the original controls. */
-.hub-languages a,.langs a{display:inline-flex;align-items:center;justify-content:center;min-width:40px;min-height:40px;text-decoration:none;border-radius:999px;color:inherit;font:600 12px/1.4 system-ui,sans-serif}
-.hub-languages a[aria-current=page],.langs a[aria-current=page]{background:var(--family-text,#f3f2ef);color:var(--family-bg,#0a0a0b)}
+.hub-languages a,.langs a{display:inline-flex;align-items:center;justify-content:center;min-width:40px;min-height:40px;text-decoration:none;border-radius:8px;color:inherit;font:500 13px/1.4 var(--family-body,system-ui,sans-serif)}
+.hub-languages a[aria-current=page],.langs a[aria-current=page]{background:var(--family-text,#f3f2ef);color:var(--family-bg,#1b1d21)}
 body[data-family] .top .langs a{min-height:40px;min-width:40px;padding:8px}
 .family-settings-button{min-width:40px;height:40px}
 .family-nav-links a{display:inline-flex;align-items:center;min-height:40px}
@@ -15,7 +15,6 @@ body[data-family=uni-homebot] main p a,body[data-family=uni-homebot] main li a{t
  .family-settings-button{grid-column:3;grid-row:1;margin-left:0}
  .family-nav-links{grid-column:1/-1;grid-row:2;justify-content:center;gap:4px 14px}
  .hub-languages a{min-width:36px}
- .hub-hero h1{font-size:clamp(32px,8.8vw,40px)!important}
-}
+ }
 
-.kofi-row{margin:18px 0 22px}.kofi{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;background:#f3f2ef;color:#0a0a0b!important;font-weight:650;text-decoration:none}.kofi:hover{background:#fff}.kofi-row{display:flex;flex-wrap:wrap;gap:10px}.kofi-alt{background:transparent;color:#f3f2ef!important;border:1px solid #27272c}.kofi-alt:hover{background:#131315;border-color:#a98bff}
+.kofi-row{margin:18px 0 22px}.kofi{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;background:var(--family-text,#eef0ea);color:var(--family-bg,#1b1d21)!important;font-weight:600;text-decoration:none}.kofi:hover{filter:brightness(.92)}.kofi-row{display:flex;flex-wrap:wrap;gap:10px}.kofi-alt{background:transparent;color:var(--family-text,#eef0ea)!important;border:1px solid var(--family-line,#363a41)}.kofi-alt:hover{filter:none;border-color:var(--family-muted,#a2a8b2)}

@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tukk — жесты телефоном для фонарика, тишины и музыки</title>
 <meta name="description" content="Tukk для Android: встряхните телефон для фонарика, переверните экраном вниз для тишины, постучите по корпусу для паузы. Без интернета, аккаунтов и сбора данных.">
-<meta name="theme-color" content="#121010">
+<meta name="theme-color" content="#1b1d21">
 <link rel="icon" href="/tukk/logo.svg" type="image/svg+xml">
-<script src="/family-head.js?v=9"></script><link rel="stylesheet" href="/family.css?v=9">
+<script src="/family-head.js?v=10"></script><link rel="stylesheet" href="/family.css?v=10">
 <link rel="stylesheet" href="/tukk/style.css?v=1">
 </head>
 <body data-family="tukk" style="--family-accent:#ff7a35">
@@ -81,6 +81,6 @@
 
 <footer class="foot"><div class="wrap"><span>© 2026 Tukk</span><a href="https://github.com/vkardin/tukk">GitHub</a><a href="https://github.com/vkardin/tukk/issues">Сообщить об ошибке</a><a href="https://vkardin.github.io/">Все проекты</a></div></footer>
 <script src="/tukk/app.js?v=1"></script>
-<script src="/family.js?v=9"></script>
+<script src="/family.js?v=10"></script>
 </body>
 </html>

@@ -1,13 +1,13 @@
 // Localised links and project descriptions; no external requests or tracking.
 (() => {
-  const words = {"ru": {"title": "Другие инструменты от vkardin", "sub": "Один автор. Семь проектов для видео, скриншотов, домашнего сервера и повседневных дел.", "site": "Открыть сайт", "code": "Исходный код", "download": "Релизы", "nav": "Проекты", "author": "Независимые инструменты · открытый код", "skip": "Перейти к содержимому", "install": "Установить в Chrome", "firefox": "Установить в Firefox"}, "uk": {"title": "Інші інструменти від vkardin", "sub": "Один автор. Сім проєктів для відео, знімків екрана, домашнього сервера й щоденних справ.", "site": "Відкрити сайт", "code": "Вихідний код", "download": "Релізи", "nav": "Проєкти", "author": "Незалежні інструменти · відкритий код", "skip": "Перейти до вмісту", "install": "Встановити в Chrome", "firefox": "Встановити у Firefox"}, "en": {"title": "More tools by vkardin", "sub": "One developer. Seven projects for video, screenshots, your home server and everyday tasks.", "site": "Visit website", "code": "Source code", "download": "Releases", "nav": "Projects", "author": "Independent tools · open source", "skip": "Skip to content", "install": "Add to Chrome", "firefox": "Install in Firefox"}};
-  const projects = {"video-glow": {"type": {"ru": "Расширение", "uk": "Розширення", "en": "Extension"}, "desc": {"ru": "Подсветка вокруг видео в цвет кадра. Мягкое свечение, LED-лента и цвет комнаты.", "uk": "Підсвічування навколо відео в колір кадру. М’яке світло, LED-стрічка й колір кімнати.", "en": "Ambient light around web videos. Soft glow, LED strips and room colour."}}, "leveler": {"type": {"ru": "Расширение", "uk": "Розширення", "en": "Extension"}, "desc": {"ru": "Ровная громкость, разборчивые диалоги, эквалайзер и управление скоростью.", "uk": "Рівна гучність, розбірливі діалоги, еквалайзер і керування швидкістю.", "en": "Even loudness, clearer dialogue, an equalizer and playback speed controls."}}, "video-drift": {"type": {"ru": "Расширение", "uk": "Розширення", "en": "Extension"}, "desc": {"ru": "Видео поверх других окон, субтитры, сохранение позиции и заметки к моментам.", "uk": "Відео поверх інших вікон, субтитри, збереження позиції й нотатки до моментів.", "en": "Floating video with subtitles, saved playback positions and timestamped notes."}}, "snapt": {"type": {"ru": "Приложение и расширение", "uk": "Застосунок і розширення", "en": "App & extension"}, "desc": {"ru": "Скриншоты, стрелки и подписи. Приложение для Windows, macOS и Linux и расширение браузера.", "uk": "Знімки екрана, стрілки й підписи. Застосунок для Windows, macOS та Linux і розширення браузера.", "en": "Capture, annotate and export. A Windows, macOS and Linux app, plus a browser extension."}}, "uni-homebot": {"type": {"ru": "Telegram · свой сервер", "uk": "Telegram · власний сервер", "en": "Telegram · self-hosted"}, "desc": {"ru": "Домашний сервер в Telegram: приложения, мониторинг, уведомления и мини-приложение.", "uk": "Домашній сервер у Telegram: застосунки, моніторинг, сповіщення й мінізастосунок.", "en": "Your home server in Telegram: apps, monitoring, notifications and a Mini App."}}, "koly": {"type": {"ru": "Виджет для Windows", "uk": "Віджет для Windows", "en": "Windows widget"}, "desc": {"ru": "Графики отключений света по всем областям Украины: что сейчас, сколько осталось, сегодня и завтра.", "uk": "Графіки відключень світла для всіх областей України: що зараз, скільки лишилося, сьогодні й завтра.", "en": "Power outage schedules for every region of Ukraine: what is on now, how long is left, today and tomorrow."}}, "tukk": {"type": {"ru": "Android · в разработке", "uk": "Android · у розробці", "en": "Android · in development"}, "desc": {"ru": "Жесты для повседневных действий: встряхнуть для фонарика, перевернуть для тишины, постучать по корпусу для паузы.", "uk": "Жести для щоденних дій: струсити для ліхтарика, перевернути для тиші, постукати по корпусу для паузи.", "en": "Gestures for everyday actions: shake for the flashlight, flip for silence, tap the back to pause music."}}};
+  const words = {"ru":{"title":"Другие мои программы","sub":"Их делает один человек. Все бесплатные и с открытым кодом.","site":"Открыть сайт","code":"Исходный код","download":"Релизы","nav":"Проекты","author":"Бесплатно и с открытым кодом","skip":"Перейти к содержимому","install":"Установить в Chrome","firefox":"Установить в Firefox","wip":"ещё в работе"},"uk":{"title":"Інші мої програми","sub":"Їх робить одна людина. Усі безкоштовні й з відкритим кодом.","site":"Відкрити сайт","code":"Вихідний код","download":"Релізи","nav":"Проєкти","author":"Безкоштовно й з відкритим кодом","skip":"Перейти до вмісту","install":"Встановити в Chrome","firefox":"Встановити у Firefox","wip":"ще в роботі"},"en":{"title":"More of my programs","sub":"All made by one person. Free and open source.","site":"Visit website","code":"Source code","download":"Releases","nav":"Projects","author":"Free and open source","skip":"Skip to content","install":"Add to Chrome","firefox":"Install in Firefox","wip":"in the works"}};
+  const projects = {"video-glow":{"type":{"ru":"Расширение для браузера","uk":"Розширення для браузера","en":"Browser extension"},"desc":{"ru":"Мягкий свет вокруг видео в цвет кадра, как подсветка за телевизором.","uk":"М’яке світло навколо відео в колір кадру, як підсвітка за телевізором.","en":"Soft light around the video that follows the picture, like a backlight behind a TV."}},"leveler":{"type":{"ru":"Расширение для браузера","uk":"Розширення для браузера","en":"Browser extension"},"desc":{"ru":"Выравнивает громкость в фильмах: диалоги слышно, взрывы не оглушают.","uk":"Вирівнює гучність у фільмах: діалоги чути, вибухи не глушать.","en":"Evens out the volume in films: you can hear the dialogue and the explosions don’t blast."}},"video-drift":{"type":{"ru":"Расширение для браузера","uk":"Розширення для браузера","en":"Browser extension"},"desc":{"ru":"Видео в отдельном окошке поверх остальных. Помнит, где вы остановились.","uk":"Відео в окремому віконці поверх інших. Пам’ятає, де ви зупинилися.","en":"Video in a small window on top of everything else. Remembers where you stopped."}},"snapt":{"type":{"ru":"Программа и расширение","uk":"Програма й розширення","en":"App and extension"},"desc":{"ru":"Скриншот одной клавишей, стрелки и подписи сразу поверх снимка.","uk":"Скриншот однією клавішею, стрілки й підписи одразу поверх знімка.","en":"A screenshot with one key, then arrows and captions right on top of it."}},"uni-homebot":{"type":{"ru":"Бот в Telegram","uk":"Бот у Telegram","en":"Telegram bot"},"desc":{"ru":"Домашний сервер под рукой: приложения, мониторинг и уведомления.","uk":"Домашній сервер під рукою: застосунки, моніторинг і сповіщення.","en":"Your home server at hand: apps, monitoring and notifications."}},"koly":{"type":{"ru":"Виджет для Windows","uk":"Віджет для Windows","en":"Windows widget"},"desc":{"ru":"Графики отключений света по всем областям Украины и отсчёт до включения.","uk":"Графіки відключень світла по всіх областях України й відлік до ввімкнення.","en":"Power outage schedules for every region of Ukraine, with a countdown until the power is back."}},"tukk":{"type":{"ru":"Приложение для Android","uk":"Застосунок для Android","en":"Android app"},"desc":{"ru":"Встряхнуть телефон, чтобы включить фонарик. Перевернуть, чтобы стало тихо.","uk":"Струснути телефон, щоб увімкнути ліхтарик. Перевернути, щоб стало тихо.","en":"Shake the phone to turn on the flashlight. Flip it over for silence."}}};
   let previous = '';
   function apply() {
     const code = document.documentElement.lang.slice(0,2), lang = words[code] ? code : 'en';
     if (lang === previous) return; previous = lang;
     document.querySelectorAll('.family-preview').forEach(link => { const id = new URL(link.href).pathname.split('/')[1]; const img = link.querySelector('img'); if (img && projects[id]) img.src = 'https://vkardin.github.io/media/' + id + '-' + lang + '.webp?v=7'; });
-    document.querySelectorAll('[data-family-word]').forEach((el) => { el.textContent = words[lang][el.dataset.familyWord] + (el.dataset.familyWord === 'site' ? ' ↗' : ''); });
+    document.querySelectorAll('[data-family-word]').forEach((el) => { el.textContent = words[lang][el.dataset.familyWord]; });
     document.querySelectorAll('[data-family-type]').forEach((el) => { el.textContent = projects[el.dataset.familyType].type[lang]; });
     document.querySelectorAll('[data-family-description]').forEach((el) => { el.textContent = projects[el.dataset.familyDescription].desc[lang]; });
     document.querySelectorAll('[data-family-site]').forEach((el) => { const id = el.dataset.familySite; el.href = 'https://vkardin.github.io/' + id + '/' + (lang !== 'en' ? lang + '/' : ''); });
@@ -72,63 +72,4 @@ new MutationObserver(applyTags).observe(document.documentElement,{attributes:tru
  document.addEventListener('click',event=>{const link=event.target.closest('a[hreflang]');if(link&&['en','ru','uk'].includes(link.hreflang)){try{localStorage.setItem('vkardin-site-language',link.hreflang);localStorage.setItem('vkardin-site-language-choice',link.hreflang);}catch{if(link.hreflang==='en'){const url=new URL(link.href);url.searchParams.set('lang','en');link.href=url.href;}}}},true);
  new MutationObserver(applyLanguage).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
  applyLanguage();
-})();
-
-// One-time scroll reveal shared by all project sites.
-(() => {
-  if (!('IntersectionObserver' in window)) return;
-  const root = document.documentElement;
-  const media = matchMedia('(prefers-reduced-motion: reduce)');
-  const reduced = () => media.matches || root.dataset.motion === 'reduce';
-  const selector = '.feat, .mlist, .app, .tile, .card, .step, .steps > *, .faq details, .gallery > *, .term, .demo-grid, .family-card, .hub-section-head, .hub-principles > div, section h2';
-  const seen = new WeakSet();
-  const pending = new Set();
-  function reveal(el, animate = true) {
-    if (!pending.delete(el)) return;
-    observer.unobserve(el);
-    el.classList.remove('family-reveal-pending');
-    if (animate && !reduced()) {
-      el.classList.add('family-reveal-enter');
-      el.addEventListener('animationend', () => el.classList.remove('family-reveal-enter'), {once:true});
-    }
-  }
-  const observer = new IntersectionObserver(entries => {
-    for (const entry of entries) if (entry.isIntersecting) reveal(entry.target);
-  }, {rootMargin:'0px 0px -8% 0px', threshold:0});
-  function scan() {
-    let index = 0;
-    for (const el of document.querySelectorAll(selector)) {
-      if (seen.has(el) || el.closest('template, dialog, [aria-hidden="true"]') || el.parentElement?.closest(selector)) continue;
-      seen.add(el);
-      if (reduced() || el.getBoundingClientRect().top < innerHeight * .92) continue;
-      try {
-        el.style.setProperty('--family-reveal-delay', (index++ % 3) * 70 + 'ms');
-        pending.add(el);
-        el.classList.add('family-reveal-pending');
-        observer.observe(el);
-      } catch {
-        reveal(el, false);
-      }
-    }
-  }
-  function syncMotion() {
-    if (reduced()) {
-      for (const el of [...pending]) reveal(el, false);
-      document.querySelectorAll('.family-reveal-enter').forEach(el => el.classList.remove('family-reveal-enter'));
-    }
-  }
-  new MutationObserver(syncMotion).observe(root, {attributes:true, attributeFilter:['data-motion']});
-  media.addEventListener('change', syncMotion);
-  document.addEventListener('focusin', event => {
-    const el = event.target.closest('.family-reveal-pending');
-    if (el) reveal(el, false);
-  });
-  addEventListener('pageshow', () => {
-    for (const el of [...pending]) {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < innerHeight && rect.bottom >= 0) reveal(el, false);
-    }
-  });
-  scan();
-  new MutationObserver(scan).observe(document.body, {childList:true, subtree:true});
 })();

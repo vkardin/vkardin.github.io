@@ -77,27 +77,40 @@ function translate(doc,id,lang,kind) {
     }
   }
   if(id==='hub') {
-    const t=hub[lang],set=(s,v)=>{const e=doc.querySelector(s);if(e)e.innerHTML=v;};
-    set('.hub-lead',t[2]);set('.hub-cta .hub-button',t[3]);set('.hub-source',t[4]);
-    doc.querySelectorAll('.hub-baseline span').forEach((e,i)=>e.textContent=t[5][i]);
-    set('.hub-section-head .family-kicker',t[6]);set('.hub-section-head h2',t[7]);set('.hub-section-head>p',t[8]);
-    doc.querySelectorAll('[data-filter]').forEach((e,i)=>e.textContent=t[9][i]);
-    set('.hub-featured-label',t[10]);set('.hub-about>.family-kicker',t[11]);set('.hub-about h2',t[12]);
-    doc.querySelectorAll('.hub-principles b').forEach((e,i)=>e.textContent=t[13][i]);
-    doc.querySelectorAll('.hub-principles p').forEach((e,i)=>e.textContent=t[14][i]);
-    set('.hub-about>.hub-button',t[15]);set('.hub-footer span',t[16]);
-    const total=doc.querySelectorAll('.hub-grid .family-card').length;
-    set('#filter-result',lang==='en'?total+' projects':lang==='uk'?total+' проєктів':total+' проектов');
-    doc.querySelector('.hub-orbit')?.setAttribute('aria-label',{en:`${total} projects by vkardin`,ru:`${total} проектов vkardin`,uk:`${total} проєктів vkardin`}[lang]);
-    doc.querySelector('.hub-filters')?.setAttribute('aria-label',{en:'Project categories',ru:'Категории проектов',uk:'Категорії проєктів'}[lang]);
+    const t=hub[lang];
+    doc.querySelectorAll('[data-hub]').forEach(el=>{el.innerHTML=t[el.dataset.hub];});
+    doc.querySelectorAll('img[data-hub-shot]').forEach(img=>{img.src=`/media/${img.dataset.hubShot}-${lang}.webp?v=7`;});
     const nav=doc.createElement('div');nav.className='hub-languages';nav.setAttribute('aria-label','Language');
     for(const l of langs){const a=doc.createElement('a');a.hreflang=l;a.href=pagePath(id,l);a.textContent=l.toUpperCase();if(l===lang)a.setAttribute('aria-current','page');nav.append(a);}
     doc.querySelector('.family-nav-inner').append(nav);
   }
 }
+// One list of projects for the hub and for the "other programs" block of every product page.
+const names={'video-glow':'Video Glow',leveler:'Leveler','video-drift':'Video Drift',snapt:'Snapt','uni-homebot':'UNI',koly:'Коли Є',tukk:'Tukk'};
+const accents={'video-glow':'#d3b3ff',leveler:'#3ddc97','video-drift':'#63d9d0',snapt:'#b79bff','uni-homebot':'#8fb5ff',koly:'#ffc24a',tukk:'#ff7a35'};
+const gets={
+  'video-glow':[['Chrome',stores['video-glow'][0]],['Firefox',stores['video-glow'][1]]],
+  leveler:[['Chrome',stores.leveler[0]],['Firefox',stores.leveler[1]]],
+  'video-drift':[['Firefox',firefox['video-drift']]],
+  snapt:[['Windows, macOS, Linux','https://github.com/vkardin/snapt/releases/latest'],['Firefox',firefox.snapt]],
+  'uni-homebot':[['GitHub','https://github.com/vkardin/uni-homebot']],
+  koly:[['Windows','https://github.com/vkardin/koly/releases/latest']],
+  tukk:[]
+};
+function familyRows(doc,id) {
+  doc.querySelectorAll('.family-grid').forEach(grid=>{
+    grid.innerHTML=Object.keys(names).filter(p=>p!==id).map(p=>
+      `<article class="family-card"${id==='hub'?` id="${p}"`:''} style="--project-accent:${accents[p]}">`+
+      `<header class="family-card-header"><span class="family-icon"><img src="/family-assets/${p}.svg" alt="" width="44" height="44" loading="lazy"></span>`+
+      `<div><h3><a data-family-site="${p}" href="https://vkardin.github.io/${p}/">${names[p]}</a></h3><small data-family-type="${p}"></small></div></header>`+
+      `<p data-family-description="${p}"></p><div class="family-actions">`+
+      (gets[p].length?gets[p].map(([label,href])=>`<a href="${href}" rel="noopener">${label}</a>`).join(''):'<span class="family-note" data-family-word="wip"></span>')+
+      `</div></article>`).join('');
+  });
+}
 function familyLinks(doc,lang) {
   doc.querySelectorAll('a[data-family-word="download"]').forEach(a=>{const id=(a.getAttribute('href')||'').match(/github\.com\/vkardin\/([a-z-]+)\/releases/)?.[1];if(stores[id]){a.href=stores[id][0];a.dataset.familyWord='install';}else if(firefox[id]){const f=doc.createElement('a');f.href=firefox[id];f.dataset.familyWord='firefox';a.after(f);}});
-  doc.querySelectorAll('[data-family-word]').forEach(e=>{e.textContent=words[lang][e.dataset.familyWord]+(e.dataset.familyWord==='site'?' ↗':'');});
+  doc.querySelectorAll('[data-family-word]').forEach(e=>{e.textContent=words[lang][e.dataset.familyWord];});
   doc.querySelectorAll('[data-family-type]').forEach(e=>e.textContent=projects[e.dataset.familyType].type[lang]);
   doc.querySelectorAll('[data-family-description]').forEach(e=>e.textContent=projects[e.dataset.familyDescription].desc[lang]);
   doc.querySelectorAll('[data-family-chip]').forEach(e=>{const [id,n]=e.dataset.familyChip.split(':');e.textContent=tags[lang][id][n];});
@@ -112,7 +125,7 @@ function render(id,lang,kind) {
   const doc=dom.window.document;
   doc.documentElement.lang=lang;doc.documentElement.dataset.staticLang=lang;
   if(lang==='en')doc.documentElement.dataset.localeBase=projectPath(id);
-  translate(doc,id,lang,kind);familyLinks(doc,lang);
+  familyRows(doc,id);translate(doc,id,lang,kind);familyLinks(doc,lang);
   if(kind==='index'&&id!=='video-glow'){
     const demo=doc.querySelector(id==='uni-homebot'?'.hero .phone':'.hero .demo, .screen .demo, .demo');
     if(demo)demo.id='demo';
@@ -198,7 +211,7 @@ function render(id,lang,kind) {
     {'@context':'https://schema.org','@type':id==='hub'?'CollectionPage':'WebPage',name:title,url,inLanguage:lang,description,...(id==='hub'?{author,mainEntity:{'@type':'ItemList',itemListElement:Object.keys(repos).map((p,i)=>({'@type':'ListItem',position:i+1,url:origin+pagePath(p,lang)}))}}:{})};
   const json=doc.createElement('script');json.type='application/ld+json';json.textContent=JSON.stringify(schema).replaceAll('<','\\u003c');doc.head.append(json);
   // Styles cover static language links and stable screenshots before the first paint.
-  const css=doc.createElement('link');css.rel='stylesheet';css.href='/seo.css?v=4';doc.head.append(css);
+  const css=doc.createElement('link');css.rel='stylesheet';css.href='/seo.css?v=5';doc.head.append(css);
   const dest=pagePath(id,lang,kind)+(kind==='index'?'index.html':'');
   write(dest.slice(1),dom.serialize().replace(/^[\t ]+$/gm,'')+'\n');urls.push(url);dom.window.close();
 }

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Snapt: быстрые скриншоты с открытым кодом</title>
 <meta name="description" content="Snapt — быстрая, лёгкая программа для скриншотов с открытым кодом для Windows, macOS и Linux. Нажмите PrtSc, выделите область, добавьте стрелку или подпись и скопируйте или сохраните. Без аккаунтов и облака.">
-<meta name="theme-color" content="#101013">
+<meta name="theme-color" content="#1b1d21">
 <link rel="icon" href="../logo.svg" type="image/svg+xml">
 <link rel="canonical" href="https://vkardin.github.io/snapt/ru/">
 <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
 <link rel="alternate" hreflang="uk" href="https://vkardin.github.io/snapt/uk/">
 <link rel="alternate" hreflang="x-default" href="https://vkardin.github.io/snapt/">
 <link rel="stylesheet" href="../style.css">
-<script src="/family-head.js?v=9"></script><link rel="stylesheet" href="/family.css?v=9">
+<script src="/family-head.js?v=10"></script><link rel="stylesheet" href="/family.css?v=10">
 <link rel="stylesheet" href="../demo-controls.css?v=1">
 </head>
 <body data-family="snapt" style="--family-accent:#b79bff">
@@ -236,7 +236,7 @@
 </footer>
 
 <script src="../app.js"></script>
-<script src="/family.js?v=9"></script>
+<script src="/family.js?v=10"></script>
 <script src="../demo-controls.js?v=1"></script>
 </body>
 </html>
