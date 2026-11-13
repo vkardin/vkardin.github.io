@@ -202,3 +202,16 @@ html body[data-family=tukk]{--t-bg:var(--family-bg);--t-card:var(--family-card);
 }
 /* The UNI phone demo is wider than a narrow screen: keep the page from scrolling sideways. */
 body[data-family=uni-homebot] .hero{overflow-x:clip}
+
+/* Product pages: left-aligned intro like the hub, one corner radius for small controls. */
+body:is([data-family=video-glow],[data-family=leveler],[data-family=video-drift]) .hero{text-align:left}
+body:is([data-family=video-glow],[data-family=leveler],[data-family=video-drift]) .hero h1{margin-inline:0;max-width:19ch}
+body:is([data-family=video-glow],[data-family=leveler],[data-family=video-drift]) .hero p.lead{margin-inline:0;max-width:46ch}
+body:is([data-family=video-glow],[data-family=leveler],[data-family=video-drift]) .hero .cta{justify-content:flex-start}
+body:is([data-family=video-glow],[data-family=leveler],[data-family=video-drift]) .hero .badge{margin-inline:0}
+body[data-family] .hero h1 em{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:inherit;font-style:normal}
+body[data-family] :is(.seg,.badge,.status,.gesture,.tag,.toast){border-radius:10px}
+body[data-family] :is(.seg span,.seg button,.chips li,.badge b,.dp-chips button,.dp-seg button){border-radius:8px}
+body[data-family=uni-homebot] .hero>div:first-child{text-align:left}
+body[data-family=uni-homebot] .hero .cta{justify-content:flex-start}
+body[data-family] .hero h1 .grad{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:inherit;-webkit-text-fill-color:currentColor}
