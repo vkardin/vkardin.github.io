@@ -94,7 +94,7 @@ const gets={
   'video-drift':[['Firefox',firefox['video-drift']]],
   snapt:[['Windows, macOS, Linux','https://github.com/vkardin/snapt/releases/latest'],['Firefox',firefox.snapt]],
   'uni-homebot':[['GitHub','https://github.com/vkardin/uni-homebot']],
-  koly:[['Windows','https://github.com/vkardin/koly/releases/latest']],
+  koly:[['Android','https://github.com/vkardin/koly/releases/download/android-v1.0.0/koly-1.0.0.apk'],['Windows','https://github.com/vkardin/koly/releases/download/desktop-v1.0.0/koly-widget-1.0.0-setup.exe']],
   tukk:[]
 };
 function familyRows(doc,id) {
