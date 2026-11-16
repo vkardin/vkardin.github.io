@@ -7,7 +7,7 @@ const copy=JSON.parse(fs.readFileSync(path.join(root,'tools/seo-copy.json'),'utf
 const tagline={en:['Free','Open source','No tracking'],ru:['Бесплатно','Открытый код','Без слежки'],uk:['Безкоштовно','Відкритий код','Без стеження']};
 const sub={'video-glow':{en:'Extension for Chrome and Firefox',ru:'Расширение для Chrome и Firefox',uk:'Розширення для Chrome і Firefox'},'video-drift':{en:'Extension for Chrome and Firefox',ru:'Расширение для Chrome и Firefox',uk:'Розширення для Chrome і Firefox'}};
 const names={'video-glow':'Video Glow','video-drift':'Video Drift'};
-const ids=['video-glow','leveler','video-drift','snapt','uni-homebot'],labels=['Video Glow','Leveler','Video Drift','Snapt','UNI'];
+const ids=['video-glow','leveler','snapt','video-drift','uni-homebot'],labels=['Video Glow','Leveler','Snapt','Video Drift','UNI'];
 const file=p=>`data:${p.endsWith('.svg')?'image/svg+xml':'image/webp'};base64,`+fs.readFileSync(path.join(root,p)).toString('base64');
 const css=`*{box-sizing:border-box}body{margin:0}
 .c{width:1200px;height:630px;background:#0a0a0b;color:#f3f2ef;font-family:Inter,system-ui,sans-serif;position:relative;overflow:hidden}

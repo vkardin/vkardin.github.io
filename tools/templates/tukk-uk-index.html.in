@@ -11,17 +11,17 @@
 <link rel="stylesheet" href="/tukk/style.css?v=1">
 </head>
 <body data-family="tukk" style="--family-accent:#ff7a35">
-<a class="family-skip" href="#family-content" data-family-word="skip">Перейти до вмісту</a><nav class="family-nav" aria-label="vkardin projects"><div class="family-nav-inner"><a class="family-brand" href="https://vkardin.github.io/"><span class="family-brand-by">by</span><span class="family-brand-name"><span class="family-brand-v">v</span>Kardin</span></a><div class="family-nav-links"><a href="https://vkardin.github.io/video-glow/">Video Glow</a><a href="https://vkardin.github.io/leveler/">Leveler</a><a href="https://vkardin.github.io/video-drift/">Video Drift</a><a href="https://vkardin.github.io/snapt/">Snapt</a><a href="https://vkardin.github.io/uni-homebot/">UNI</a><a href="https://vkardin.github.io/koly/">Коли Є</a><a href="https://vkardin.github.io/blackoutmode/">BlackoutMode</a><a href="https://vkardin.github.io/tukk/" aria-current="page">Tukk</a></div></div></nav>
+<a class="family-skip" href="#family-content" data-family-word="skip">Перейти до вмісту</a><nav class="family-nav" aria-label="vkardin projects"><div class="family-nav-inner"><a class="family-brand" href="https://vkardin.github.io/"><span class="family-brand-by">by</span><span class="family-brand-name"><span class="family-brand-v">v</span>Kardin</span></a><div class="family-nav-links"><a href="https://vkardin.github.io/video-glow/">Video Glow</a><a href="https://vkardin.github.io/leveler/">Leveler</a><a href="https://vkardin.github.io/snapt/">Snapt</a><a href="https://vkardin.github.io/video-drift/">Video Drift</a><a href="https://vkardin.github.io/koly/">Коли Є</a><a href="https://vkardin.github.io/blackoutmode/">BlackoutMode</a><a href="https://vkardin.github.io/tukk/" aria-current="page">Tukk</a><a href="https://vkardin.github.io/uni-homebot/">UNI</a></div></div></nav>
 
-<header class="top"><div class="wrap"><a class="brand" href="#family-content"><img src="/tukk/logo.svg" alt="" width="28" height="28">Tukk</a><nav class="nav" aria-label="Tukk"><a class="opt" href="#demo">Спробувати</a><a class="opt" href="#gestures">Жести</a><a href="#status">Статус</a><a class="opt" href="https://github.com/vkardin/tukk">GitHub</a></nav><div class="langs" aria-label="Мова"><a href="../" hreflang="en">EN</a><a href="../ru/" hreflang="ru">RU</a><a href="../uk/" hreflang="uk" aria-current="page">UK</a></div></div></header>
+<header class="top"><div class="wrap"><a class="brand" href="#family-content"><img src="/tukk/logo.svg" alt="" width="28" height="28">Tukk</a><nav class="nav" aria-label="Tukk"><a class="opt" href="#demo">Спробувати</a><a class="opt" href="#gestures">Жести</a><a href="#status">Завантажити</a><a class="opt" href="https://github.com/vkardin/tukk">GitHub</a></nav><div class="langs" aria-label="Мова"><a href="../" hreflang="en">EN</a><a href="../ru/" hreflang="ru">RU</a><a href="../uk/" hreflang="uk" aria-current="page">UK</a></div></div></header>
 
 <main>
 <section class="hero"><div class="wrap">
  <div class="hero-text">
-  <p class="status"><span class="dot" aria-hidden="true"></span>У розробці. Перша збірка з’явиться на GitHub.</p>
+  <p class="status"><span class="dot" aria-hidden="true"></span>Версія 1.0 вийшла. APK можна завантажити на GitHub.</p>
   <h1>Жести телефоном для щоденних дій</h1>
   <p class="lead">Струсніть телефон, щоб увімкнути ліхтарик, переверніть екраном донизу для тиші, постукайте по корпусу, щоб поставити музику на паузу. Tukk розпізнає жести на самому телефоні й одразу виконує дію.</p>
-  <div class="cta"><a class="btn btn-primary" href="https://github.com/vkardin/tukk">Стежити на GitHub</a><a class="btn btn-ghost" href="#gestures">Усі жести</a></div>
+  <div class="cta"><a class="btn btn-primary" href="https://github.com/vkardin/tukk/releases/latest">Завантажити APK</a><a class="btn btn-ghost" href="#gestures">Усі жести</a></div>
   <p class="meta">Android 8.0 і новіші. Без доступу до інтернету, акаунтів і збору даних.</p>
  </div>
  <div class="demo">
@@ -66,8 +66,8 @@
 <section id="status" class="block"><div class="wrap">
  <div class="soon">
   <svg class="soon-mark" viewBox="0 0 48 48" aria-hidden="true"><path fill="#ff7a35" d="M24,3 L42,13 L45,32 L29,44 L9,39 L3,21 Z"/><path fill="#1b1715" d="M24,5 L23,20 L6,20 Z M24,6 L39,14 L26,20 Z M5,23 L21,23 L10,36 Z M12,37 L23,25 L29,41 Z M28,23 L40,16 L42,31 L31,39 Z"/><path fill="#ffd9a0" d="M24,9 L25,20 L37,15 L27,23 L31,37 L24,25 L13,35 L21,23 L9,21 L23,21 Z"/></svg>
-  <div><h2>Tukk у розробці</h2><p>Перша збірка з’явиться в GitHub Releases, пізніше — у Google Play. Стежте за репозиторієм, щоб не пропустити вихід.</p>
-  <div class="cta"><a class="btn btn-primary" href="https://github.com/vkardin/tukk">Відкрити репозиторій</a><a class="btn btn-ghost" href="https://github.com/vkardin/tukk/issues">Запропонувати ідею або повідомити про помилку</a></div></div>
+  <div><h2>Завантажити Tukk 1.0</h2><p>Підписаний APK лежить у GitHub Releases, пізніше з’явиться сторінка в Google Play. Android може попередити про застосунок не з магазину: дозвольте встановлення. Якщо перемикач у спеціальних можливостях заблоковано, відкрийте Налаштування → Застосунки → Tukk → ⋮ → «Дозволити обмежені налаштування».</p>
+  <div class="cta"><a class="btn btn-primary" href="https://github.com/vkardin/tukk/releases/latest">Завантажити APK</a><a class="btn btn-ghost" href="https://github.com/vkardin/tukk/issues">Запропонувати ідею або повідомити про помилку</a></div></div>
  </div>
 </div></section>
 

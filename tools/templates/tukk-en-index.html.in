@@ -11,17 +11,17 @@
 <link rel="stylesheet" href="/tukk/style.css?v=1">
 </head>
 <body data-family="tukk" style="--family-accent:#ff7a35">
-<a class="family-skip" href="#family-content" data-family-word="skip">Skip to content</a><nav class="family-nav" aria-label="vkardin projects"><div class="family-nav-inner"><a class="family-brand" href="https://vkardin.github.io/"><span class="family-brand-by">by</span><span class="family-brand-name"><span class="family-brand-v">v</span>Kardin</span></a><div class="family-nav-links"><a href="https://vkardin.github.io/video-glow/">Video Glow</a><a href="https://vkardin.github.io/leveler/">Leveler</a><a href="https://vkardin.github.io/video-drift/">Video Drift</a><a href="https://vkardin.github.io/snapt/">Snapt</a><a href="https://vkardin.github.io/uni-homebot/">UNI</a><a href="https://vkardin.github.io/koly/">Коли Є</a><a href="https://vkardin.github.io/blackoutmode/">BlackoutMode</a><a href="https://vkardin.github.io/tukk/" aria-current="page">Tukk</a></div></div></nav>
+<a class="family-skip" href="#family-content" data-family-word="skip">Skip to content</a><nav class="family-nav" aria-label="vkardin projects"><div class="family-nav-inner"><a class="family-brand" href="https://vkardin.github.io/"><span class="family-brand-by">by</span><span class="family-brand-name"><span class="family-brand-v">v</span>Kardin</span></a><div class="family-nav-links"><a href="https://vkardin.github.io/video-glow/">Video Glow</a><a href="https://vkardin.github.io/leveler/">Leveler</a><a href="https://vkardin.github.io/snapt/">Snapt</a><a href="https://vkardin.github.io/video-drift/">Video Drift</a><a href="https://vkardin.github.io/koly/">Коли Є</a><a href="https://vkardin.github.io/blackoutmode/">BlackoutMode</a><a href="https://vkardin.github.io/tukk/" aria-current="page">Tukk</a><a href="https://vkardin.github.io/uni-homebot/">UNI</a></div></div></nav>
 
-<header class="top"><div class="wrap"><a class="brand" href="#family-content"><img src="/tukk/logo.svg" alt="" width="28" height="28">Tukk</a><nav class="nav" aria-label="Tukk"><a class="opt" href="#demo">Try it</a><a class="opt" href="#gestures">Gestures</a><a href="#status">Status</a><a class="opt" href="https://github.com/vkardin/tukk">GitHub</a></nav><div class="langs" aria-label="Language"><a href="" hreflang="en" aria-current="page">EN</a><a href="ru/" hreflang="ru">RU</a><a href="uk/" hreflang="uk">UK</a></div></div></header>
+<header class="top"><div class="wrap"><a class="brand" href="#family-content"><img src="/tukk/logo.svg" alt="" width="28" height="28">Tukk</a><nav class="nav" aria-label="Tukk"><a class="opt" href="#demo">Try it</a><a class="opt" href="#gestures">Gestures</a><a href="#status">Download</a><a class="opt" href="https://github.com/vkardin/tukk">GitHub</a></nav><div class="langs" aria-label="Language"><a href="" hreflang="en" aria-current="page">EN</a><a href="ru/" hreflang="ru">RU</a><a href="uk/" hreflang="uk">UK</a></div></div></header>
 
 <main>
 <section class="hero"><div class="wrap">
  <div class="hero-text">
-  <p class="status"><span class="dot" aria-hidden="true"></span>In development. The first build will appear on GitHub.</p>
+  <p class="status"><span class="dot" aria-hidden="true"></span>Version 1.0 is out. Download the APK from GitHub.</p>
   <h1>Phone gestures for everyday actions</h1>
   <p class="lead">Shake the phone for the flashlight, flip it face down for silence, tap the back to pause music. Tukk recognizes gestures on the phone itself and runs the action right away.</p>
-  <div class="cta"><a class="btn btn-primary" href="https://github.com/vkardin/tukk">Follow on GitHub</a><a class="btn btn-ghost" href="#gestures">See all gestures</a></div>
+  <div class="cta"><a class="btn btn-primary" href="https://github.com/vkardin/tukk/releases/latest">Download APK</a><a class="btn btn-ghost" href="#gestures">See all gestures</a></div>
   <p class="meta">Android 8.0 and later. No internet access, no accounts, no data collection.</p>
  </div>
  <div class="demo">
@@ -66,8 +66,8 @@
 <section id="status" class="block"><div class="wrap">
  <div class="soon">
   <svg class="soon-mark" viewBox="0 0 48 48" aria-hidden="true"><path fill="#ff7a35" d="M24,3 L42,13 L45,32 L29,44 L9,39 L3,21 Z"/><path fill="#1b1715" d="M24,5 L23,20 L6,20 Z M24,6 L39,14 L26,20 Z M5,23 L21,23 L10,36 Z M12,37 L23,25 L29,41 Z M28,23 L40,16 L42,31 L31,39 Z"/><path fill="#ffd9a0" d="M24,9 L25,20 L37,15 L27,23 L31,37 L24,25 L13,35 L21,23 L9,21 L23,21 Z"/></svg>
-  <div><h2>Tukk is in development</h2><p>The first build will appear in GitHub Releases, with a Google Play listing later. Follow the repository to hear when it is out.</p>
-  <div class="cta"><a class="btn btn-primary" href="https://github.com/vkardin/tukk">Open the repository</a><a class="btn btn-ghost" href="https://github.com/vkardin/tukk/issues">Suggest an idea or report a bug</a></div></div>
+  <div><h2>Download Tukk 1.0</h2><p>The signed APK is in GitHub Releases, and a Google Play listing is planned. Android may warn about an app from outside the store: allow the install. If the accessibility switch is blocked, open Settings → Apps → Tukk → ⋮ → Allow restricted settings.</p>
+  <div class="cta"><a class="btn btn-primary" href="https://github.com/vkardin/tukk/releases/latest">Download APK</a><a class="btn btn-ghost" href="https://github.com/vkardin/tukk/issues">Suggest an idea or report a bug</a></div></div>
  </div>
 </div></section>
 

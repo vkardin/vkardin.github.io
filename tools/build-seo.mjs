@@ -41,13 +41,13 @@ const firefox={'video-drift':'https://addons.mozilla.org/firefox/addon/video-dri
 const stores={'video-glow':['https://chromewebstore.google.com/detail/bjgbalkabocifimhnhbcnomeknpbhkea','https://addons.mozilla.org/firefox/addon/video-glow/'],leveler:['https://chromewebstore.google.com/detail/phbjpipnbhffcegccfbbfabbhmgaelko','https://addons.mozilla.org/firefox/addon/leveler/']};
 // Chrome listings of projects whose main download is not the extension.
 const chrome={snapt:'https://chromewebstore.google.com/detail/cgojajobdffefmabijahgncknakoegic'};
-const repos={'video-glow':'video-glow',leveler:'leveler','video-drift':'video-drift',snapt:'snapt','uni-homebot':'uni-homebot',koly:'koly',blackoutmode:'blackoutmode',tukk:'tukk'};
+const repos={'video-glow':'video-glow',leveler:'leveler',snapt:'snapt','video-drift':'video-drift',koly:'koly',blackoutmode:'blackoutmode',tukk:'tukk','uni-homebot':'uni-homebot'};
 // Projects whose templates are written once per language.
 const perLanguage=new Set(['snapt','tukk','blackoutmode']);
 const ogSize=image=>image.startsWith('/media/og/')||image==='/leveler/img/og.png'?[1200,630]:[1280,640];
 // Smaller image candidates reduce mobile transfers without changing the desktop originals.
 const responsive=new Map();
-for(const id of ['video-glow','leveler','video-drift','snapt','uni-homebot','koly','blackoutmode','tukk'])for(const lang of langs){
+for(const id of ['video-glow','leveler','snapt','video-drift','koly','blackoutmode','tukk','uni-homebot'])for(const lang of langs){
   const source=`media/${id}-${lang}.webp`,dest=`media/responsive/${id}-${lang}-480.webp`;
   fs.mkdirSync(path.join(root,'media/responsive'),{recursive:true});
   await sharp(path.join(root,source)).resize({width:480,withoutEnlargement:true}).webp({quality:76}).toFile(path.join(root,dest));
@@ -88,17 +88,17 @@ function translate(doc,id,lang,kind) {
   }
 }
 // One list of projects for the hub and for the "other programs" block of every product page.
-const names={'video-glow':'Video Glow',leveler:'Leveler','video-drift':'Video Drift',snapt:'Snapt','uni-homebot':'UNI',koly:'Коли Є',blackoutmode:'BlackoutMode',tukk:'Tukk'};
-const accents={'video-glow':'#d3b3ff',leveler:'#3ddc97','video-drift':'#63d9d0',snapt:'#b79bff','uni-homebot':'#8fb5ff',koly:'#ffc24a',blackoutmode:'#f6d365',tukk:'#ff7a35'};
+const names={'video-glow':'Video Glow',leveler:'Leveler',snapt:'Snapt','video-drift':'Video Drift',koly:'Коли Є',blackoutmode:'BlackoutMode',tukk:'Tukk','uni-homebot':'UNI'};
+const accents={'video-glow':'#d3b3ff',leveler:'#3ddc97',snapt:'#b79bff','video-drift':'#63d9d0',koly:'#ffc24a',blackoutmode:'#f6d365',tukk:'#ff7a35','uni-homebot':'#8fb5ff'};
 const gets={
   'video-glow':[['Chrome',stores['video-glow'][0]],['Firefox',stores['video-glow'][1]]],
   leveler:[['Chrome',stores.leveler[0]],['Firefox',stores.leveler[1]]],
-  'video-drift':[['Firefox',firefox['video-drift']]],
   snapt:[['Windows, macOS, Linux','https://github.com/vkardin/snapt/releases/latest'],['Chrome',chrome.snapt],['Firefox',firefox.snapt]],
-  'uni-homebot':[['GitHub','https://github.com/vkardin/uni-homebot']],
+  'video-drift':[['Firefox',firefox['video-drift']]],
   koly:[['Android','https://github.com/vkardin/koly/releases/download/android-v1.0.0/koly-1.0.0.apk'],['Windows','https://github.com/vkardin/koly/releases/download/desktop-v1.0.0/koly-widget-1.0.0-setup.exe']],
   blackoutmode:[['Windows','https://github.com/vkardin/blackoutmode/releases/latest']],
-  tukk:[]
+  tukk:[['Android','https://github.com/vkardin/tukk/releases/latest']],
+  'uni-homebot':[['GitHub','https://github.com/vkardin/uni-homebot']]
 };
 function familyRows(doc,id) {
   doc.querySelectorAll('.family-grid').forEach(grid=>{
