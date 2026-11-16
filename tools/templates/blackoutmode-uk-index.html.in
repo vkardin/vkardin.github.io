@@ -1,0 +1,83 @@
+<!doctype html>
+<html data-theme="dark" data-site-project="blackoutmode" lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BlackoutMode — ноутбук доживає до кінця відключення світла</title>
+<meta name="description" content="BlackoutMode для Windows: коли зникла розетка, знижує споживання ноутбука, рахує, на скільки вистачить батареї та павербанка, і повертає все як було, коли дали світло. Безкоштовно, код відкритий.">
+<meta name="theme-color" content="#1b1d21">
+<link rel="icon" href="/blackoutmode/logo.svg" type="image/svg+xml">
+<script src="/family-head.js?v=10"></script><link rel="stylesheet" href="/family.css?v=10">
+<link rel="stylesheet" href="/blackoutmode/style.css?v=1">
+</head>
+<body data-family="blackoutmode" style="--family-accent:#f2b84b">
+<a class="family-skip" href="#family-content" data-family-word="skip">Перейти до вмісту</a><nav class="family-nav" aria-label="vkardin projects"><div class="family-nav-inner"><a class="family-brand" href="https://vkardin.github.io/"><span class="family-brand-by">by</span><span class="family-brand-name"><span class="family-brand-v">v</span>Kardin</span></a><div class="family-nav-links"><a href="https://vkardin.github.io/video-glow/">Video Glow</a><a href="https://vkardin.github.io/leveler/">Leveler</a><a href="https://vkardin.github.io/video-drift/">Video Drift</a><a href="https://vkardin.github.io/snapt/">Snapt</a><a href="https://vkardin.github.io/uni-homebot/">UNI</a><a href="https://vkardin.github.io/koly/">Коли Є</a><a href="https://vkardin.github.io/blackoutmode/" aria-current="page">BlackoutMode</a><a href="https://vkardin.github.io/tukk/">Tukk</a></div></div></nav>
+
+<header class="top"><div class="wrap"><a class="brand" href="#family-content"><img src="/blackoutmode/logo.svg" alt="" width="28" height="28">BlackoutMode</a><nav class="nav" aria-label="BlackoutMode"><a class="opt" href="#demo">Спробувати</a><a class="opt" href="#features">Що вміє</a><a href="#download">Завантажити</a><a class="opt" href="https://github.com/vkardin/blackoutmode">GitHub</a></nav><div class="langs" aria-label="Мова"><a href="../" hreflang="en">EN</a><a href="../ru/" hreflang="ru">RU</a><a href="../uk/" hreflang="uk" aria-current="page">UK</a></div></div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+ <div class="hero-text">
+  <p class="status"><span class="dot" aria-hidden="true"></span>Windows 10 і 11. Безкоштовно, код відкритий.</p>
+  <h1>Ноутбук доживає до кінця відключення світла</h1>
+  <p class="lead">BlackoutMode живе в треї. Коли зникла розетка, він знижує споживання у два-три рази, показує, на скільки вистачить батареї та павербанка, і повертає все як було, коли дали світло.</p>
+  <div class="cta"><a class="btn btn-primary" href="https://github.com/vkardin/blackoutmode/releases/latest">Завантажити для Windows</a><a class="btn btn-ghost" href="#features">Що вміє</a></div>
+  <p class="meta">Один файл, без інсталятора. Без реєстрації, з ноутбука нічого не йде.</p>
+ </div>
+ <div class="demo" data-mode="on" data-profile="work" data-bank="on" data-h="год" data-min="хв" data-on="Без світла, робота" data-off="Звичайний режим" data-since="Режим увімкнено з 16:52" data-plug="Від батареї" data-res-on="Споживання впало з {a} до {b} Вт. Того самого заряду вистачить у {x} раза довше." data-res-off="Без економії ноутбук витрачає {a} Вт.">
+  <div class="panel" role="group" aria-label="Демо BlackoutMode: перемикач, який вмикає і вимикає режим без світла">
+   <div class="p-head"><div><small class="p-sub">Режим увімкнено з 16:52</small><b class="p-title">Без світла, робота</b></div><button type="button" class="switch" role="switch" aria-checked="true" aria-label="Режим без світла"><span></span></button></div>
+   <div class="p-metrics"><div class="p-metric"><small>Споживання</small><b><span class="v-draw">14</span> Вт</b></div><div class="p-metric"><small>Вистачить на</small><b>≈ <span class="v-lasts">—</span></b></div></div>
+   <div class="p-bar"><div class="p-top"><span>Батарея ноутбука</span><span><span class="v-batwh">47</span> Вт·год · <b>78%</b></span></div><div class="bar"><i style="width:78%"></i></div></div>
+   <div class="p-bar p-bank"><div class="p-top"><span>Павербанк</span><span>≈ 120 Вт·год · <b>80%</b></span></div><div class="bar bank"><i style="width:80%"></i></div></div>
+   <p class="p-label" id="prof-label">Чим ви зайняті</p>
+   <div class="chips" role="group" aria-labelledby="prof-label"><button type="button" class="chip" data-profile="work" aria-pressed="true">Робота</button><button type="button" class="chip" data-profile="film" aria-pressed="false">Кіно</button><button type="button" class="chip" data-profile="game" aria-pressed="false">Гра</button></div>
+   <label class="check"><input type="checkbox" class="with-bank" checked> <span>З павербанком</span></label>
+  </div>
+  <p class="result" role="status" aria-live="polite">Клацніть перемикачем і подивіться, що зміниться</p>
+ </div>
+</div></section>
+
+<section id="features" class="block"><div class="wrap">
+ <h2>Що відбувається, коли зникло світло</h2><p class="sub">Ви нічого не робите. Режим вмикається сам, і звичайні налаштування повертаються теж самі.</p>
+ <ul class="glist"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3 6 13h5l-1 8 8-11h-5z"/></svg><div><b>Знижує споживання</b><p>Турбо-буст вимкнено, робота йде на енергоефективних ядрах, частота і яскравість екрана нижчі, Bluetooth вимкнено, фонові служби і VPN на паузі.</p></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><div><b>Чесно рахує час</b><p>Споживання вимірюється від батареї і запам’ятовується окремо для роботи, кіно та ігор. Час, що залишився, не стрибає від кожного сплеску.</p></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="8" width="15" height="9" rx="2.5"/><path d="M18.5 11h2v3h-2M7 12.5h5"/></svg><div><b>Знає ваш павербанк</b><p>Показує, скільки в ньому залишилося. Введіть відсоток з його екрана, і програма зрозуміє, скільки він віддає насправді.</p></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14" rx="2.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg><div><b>Стежить за графіком</b><p>Для України бере графік відключень «Коли Є»: попереджає заздалегідь, дозаряджає батарею і сама вимикає режим, коли дали світло.</p></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9h10a4 4 0 0 1 4 4v1.5a2.5 2.5 0 0 1-4.6 1.4L15.5 15h-7l-.9.9A2.5 2.5 0 0 1 3 14.5V13a4 4 0 0 1 4-4z"/><path d="M7.5 11.5v3M6 13h3"/></svg><div><b>Профілі для всього іншого</b><p>Гра, кіно, збирання, дзвінок, тиша. Відкрилася програма — увімкнувся профіль. На зарядці гра отримує повну потужність.</p></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14M9.5 8V5h5v3M7 8l1 12h8l1-12"/></svg><div><b>Тримає ноутбук у порядку</b><p>Раз на тиждень прибирає тимчасові файли і кеш, стежить за зносом батареї та попереджає, коли щось нове прописалося в автозавантаження.</p></div></li></ul>
+</div></section>
+
+<section class="block"><div class="wrap split">
+ <div><h2>Одне вікно, де все видно</h2><p class="sub">Споживання, час, що залишився, батарея і павербанк, відключення на сьогодні та профіль. Міні-панель біля трея показує те саме коротко.</p><ul class="ticks"><li>Віджет у кутку екрана, поки немає світла</li><li>Графік споживання та історія відключень</li><li>Кнопка, яка вимірює, скільки дає економія на вашому ноутбуці</li><li>Світла і темна тема, три мови</li></ul></div>
+ <figure class="shot"><img src="/blackoutmode/img/overview-uk.webp" width="960" height="600" loading="lazy" alt="Вікно BlackoutMode: споживання, час, що залишився, батарея і павербанк, графік відключень на сьогодні"></figure>
+</div></section>
+
+<section class="block"><div class="wrap">
+ <h2>Зроблений так, щоб про нього не думати</h2>
+ <div class="whys"><div class="why"><h3>Вмикається сам</h3><p>Зникла розетка — режим увімкнено. Дали світло — все як було.</p></div><div class="why"><h3>Нічого не змінює назавжди</h3><p>Кожне налаштування, яке чіпає, програма запам’ятовує і повертає, навіть після перезавантаження.</p></div><div class="why"><h3>Легкий</h3><p>Один файл на 8 МБ. Вікно закрите — у пам’яті від нього нічого не залишається.</p></div><div class="why"><h3>Приватний</h3><p>Без акаунта і статистики. Завантажуються лише графік відключень і номер версії.</p></div></div>
+</div></section>
+
+<section class="block"><div class="wrap">
+ <h2>Що працює на якому ноутбуці</h2><p class="sub">Під час першого запуску програма дивиться, що є на ноутбуці, і ховає те, чого немає.</p>
+ <div class="table"><table><thead><tr><th scope="col">Можливість</th><th scope="col">Що потрібно</th></tr></thead><tbody><tr><th scope="row">Режим без світла, профілі, графік, павербанк, прибирання</th><td>будь-який ноутбук з Windows 10 або 11</td></tr><tr><th scope="row">Профіль охолодження, ліміт заряджання батареї</th><td>Lenovo IdeaPad або Legion</td></tr><tr><th scope="row">Приспати дискретну відеокарту</th><td>вбудована графіка плюс NVIDIA</td></tr><tr><th scope="row">Знижена частота екрана</th><td>екран, який її підтримує</td></tr></tbody></table></div>
+</div></section>
+
+<section id="download" class="block"><div class="wrap">
+ <div class="soon">
+  <img class="soon-mark" src="/blackoutmode/logo.svg" alt="" width="120" height="120">
+  <div><h2>Завантажити BlackoutMode</h2><p>Один exe-файл. Покладіть куди зручно і запустіть: у треї з’явиться значок із блискавкою. Нові версії програма знаходить сама.</p>
+  <div class="cta"><a class="btn btn-primary" href="https://github.com/vkardin/blackoutmode/releases/latest">Завантажити для Windows</a><a class="btn btn-ghost" href="https://github.com/vkardin/blackoutmode">Вихідний код на GitHub</a></div>
+  <p class="meta">Права адміністратора не обов’язкові. Без них не ставляться на паузу служби і не перемикається профіль охолодження.</p></div>
+ </div>
+ <p class="thanks" id="donate">Програми безкоштовні й такими залишаться. Подякувати можна на <a href="https://ko-fi.com/vkardin">Ko-fi</a> або <a href="https://donatello.to/vkardin">Donatello</a>.</p>
+</div></section>
+
+<section id="faq" class="block"><div class="wrap narrow">
+ <h2>Питання</h2>
+ <div class="faq"><details><summary>Вона нічого не зламає у Windows?</summary><p>Ні. Перш ніж змінити налаштування, програма запам’ятовує його значення і повертає, коли режим вимикається. Якщо ноутбук вимкнули посеред режиму, все повернеться під час наступного запуску.</p></details><details><summary>Скільки вона економить?</summary><p>Залежить від ноутбука. На моєму споживання падає з 30–60 Вт до 12–17 Вт. На сторінці «Статистика» є кнопка, яка вимірює це на вашому: три хвилини без економії і три з нею.</p></details><details><summary>У мене немає павербанка. Вона все одно стане в пригоді?</summary><p>Так. Усе, крім обліку павербанка, працює від батареї самого ноутбука.</p></details><details><summary>Я не в Україні. Вона працюватиме?</summary><p>Так. До України прив’язаний лише графік відключень; сам режим вмикається будь-де, щойно зникла розетка.</p></details><details><summary>Чому Windows попереджає про файл?</summary><p>Файл не підписаний платним сертифікатом, тому SmartScreen може спитати під час першого запуску. Код відкритий, і кожен реліз збирає з нього сам GitHub.</p></details></div>
+</div></section>
+
+<section class="family-section" id="more" aria-labelledby="family-title"><div class="family-wrap"><p class="family-kicker">VKARDIN / TOOLS</p><h2 id="family-title" data-family-word="title">Інші інструменти від vkardin</h2><p class="family-intro" data-family-word="sub">Один автор. Усе безкоштовно й з відкритим кодом.</p><div class="family-grid"></div><p class="family-credit"><a href="https://github.com/vkardin">github.com/vkardin</a> · <span data-family-word="author">Незалежні інструменти · відкритий код</span></p></div></section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>© 2026 BlackoutMode</span><a href="https://github.com/vkardin/blackoutmode">GitHub</a><a href="https://github.com/vkardin/blackoutmode/issues">Повідомити про помилку</a><a href="https://vkardin.github.io/">Усі проєкти</a></div></footer>
+<script src="/blackoutmode/app.js?v=1"></script>
+<script src="/family.js?v=10"></script>
+</body>
+</html>

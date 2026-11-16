@@ -8,7 +8,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const origin='https://vkardin.github.io';
 const urls=[...read('sitemap.xml').matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>m[1]);
-assert.equal(urls.length,39);
+assert.equal(urls.length,42);
 const docs=new Map();
 for(const url of urls){const p=new URL(url).pathname;docs.set(url,new JSDOM(read(p.slice(1)+(p.endsWith('/')?'index.html':'')),{url}).window.document);}
 const errors=[];
@@ -104,4 +104,4 @@ for(const [url] of docs){
  check(d.querySelector('meta[name="description"]').content===expected.description,url+': runtime description changed');
  dom.window.close();
 }
-if(errors.length){console.error(errors.join('\n'));process.exitCode=1;}else console.log('PASS: 39 pages; metadata, reciprocal hreflang, assets, links, anchors, structured data and runtime language stability.');
+if(errors.length){console.error(errors.join('\n'));process.exitCode=1;}else console.log('PASS: 42 pages; metadata, reciprocal hreflang, assets, links, anchors, structured data and runtime language stability.');

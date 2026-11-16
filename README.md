@@ -7,6 +7,7 @@ Canonical source for https://vkardin.github.io/ and the product websites:
 - `/video-drift/`
 - `/snapt/` (including `/ru/` and `/uk/`)
 - `/uni-homebot/`
+- `/blackoutmode/` (including `/ru/` and `/uk/`)
 - `/tukk/` (including `/ru/` and `/uk/`)
 
 `/koly/` is published from the `koly` repository (`web/` plus the schedule data on its

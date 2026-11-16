@@ -1,0 +1,83 @@
+<!doctype html>
+<html data-theme="dark" data-site-project="blackoutmode" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BlackoutMode — your laptop lasts through the power outage</title>
+<meta name="description" content="BlackoutMode for Windows: when the charger goes dead it cuts the laptop&#x27;s power draw, counts the time left on battery and power bank, and puts everything back when the grid returns. Free, open source.">
+<meta name="theme-color" content="#1b1d21">
+<link rel="icon" href="/blackoutmode/logo.svg" type="image/svg+xml">
+<script src="/family-head.js?v=10"></script><link rel="stylesheet" href="/family.css?v=10">
+<link rel="stylesheet" href="/blackoutmode/style.css?v=1">
+</head>
+<body data-family="blackoutmode" style="--family-accent:#f2b84b">
+<a class="family-skip" href="#family-content" data-family-word="skip">Skip to content</a><nav class="family-nav" aria-label="vkardin projects"><div class="family-nav-inner"><a class="family-brand" href="https://vkardin.github.io/"><span class="family-brand-by">by</span><span class="family-brand-name"><span class="family-brand-v">v</span>Kardin</span></a><div class="family-nav-links"><a href="https://vkardin.github.io/video-glow/">Video Glow</a><a href="https://vkardin.github.io/leveler/">Leveler</a><a href="https://vkardin.github.io/video-drift/">Video Drift</a><a href="https://vkardin.github.io/snapt/">Snapt</a><a href="https://vkardin.github.io/uni-homebot/">UNI</a><a href="https://vkardin.github.io/koly/">Коли Є</a><a href="https://vkardin.github.io/blackoutmode/" aria-current="page">BlackoutMode</a><a href="https://vkardin.github.io/tukk/">Tukk</a></div></div></nav>
+
+<header class="top"><div class="wrap"><a class="brand" href="#family-content"><img src="/blackoutmode/logo.svg" alt="" width="28" height="28">BlackoutMode</a><nav class="nav" aria-label="BlackoutMode"><a class="opt" href="#demo">Try it</a><a class="opt" href="#features">What it does</a><a href="#download">Download</a><a class="opt" href="https://github.com/vkardin/blackoutmode">GitHub</a></nav><div class="langs" aria-label="Language"><a href="" hreflang="en" aria-current="page">EN</a><a href="ru/" hreflang="ru">RU</a><a href="uk/" hreflang="uk">UK</a></div></div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+ <div class="hero-text">
+  <p class="status"><span class="dot" aria-hidden="true"></span>Windows 10 and 11. Free, open source.</p>
+  <h1>Your laptop lasts through the power outage</h1>
+  <p class="lead">BlackoutMode sits in the tray. When the charger goes dead it cuts the power draw two or three times over, shows how long the battery and the power bank will last, and puts everything the way it was when the grid is back.</p>
+  <div class="cta"><a class="btn btn-primary" href="https://github.com/vkardin/blackoutmode/releases/latest">Download for Windows</a><a class="btn btn-ghost" href="#features">What it does</a></div>
+  <p class="meta">One file, no installer. No account, nothing leaves your laptop.</p>
+ </div>
+ <div class="demo" data-mode="on" data-profile="work" data-bank="on" data-h="h" data-min="min" data-on="No power, working" data-off="Usual mode" data-since="On since 16:52" data-plug="On battery" data-res-on="Draw is down from {a} to {b} W. The same charge lasts {x} times longer." data-res-off="Without saving the laptop draws {a} W.">
+  <div class="panel" role="group" aria-label="BlackoutMode demo: a switch that turns the no-power mode on and off">
+   <div class="p-head"><div><small class="p-sub">On since 16:52</small><b class="p-title">No power, working</b></div><button type="button" class="switch" role="switch" aria-checked="true" aria-label="No-power mode"><span></span></button></div>
+   <div class="p-metrics"><div class="p-metric"><small>Draw</small><b><span class="v-draw">14</span> W</b></div><div class="p-metric"><small>Lasts</small><b>≈ <span class="v-lasts">—</span></b></div></div>
+   <div class="p-bar"><div class="p-top"><span>Laptop battery</span><span><span class="v-batwh">47</span> Wh · <b>78%</b></span></div><div class="bar"><i style="width:78%"></i></div></div>
+   <div class="p-bar p-bank"><div class="p-top"><span>Power bank</span><span>≈ 120 Wh · <b>80%</b></span></div><div class="bar bank"><i style="width:80%"></i></div></div>
+   <p class="p-label" id="prof-label">What you are doing</p>
+   <div class="chips" role="group" aria-labelledby="prof-label"><button type="button" class="chip" data-profile="work" aria-pressed="true">Work</button><button type="button" class="chip" data-profile="film" aria-pressed="false">Film</button><button type="button" class="chip" data-profile="game" aria-pressed="false">Game</button></div>
+   <label class="check"><input type="checkbox" class="with-bank" checked> <span>With a power bank</span></label>
+  </div>
+  <p class="result" role="status" aria-live="polite">Flip the switch and see what changes</p>
+ </div>
+</div></section>
+
+<section id="features" class="block"><div class="wrap">
+ <h2>What happens when the power goes out</h2><p class="sub">You do nothing. The mode turns on by itself, and the usual settings come back by themselves.</p>
+ <ul class="glist"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3 6 13h5l-1 8 8-11h-5z"/></svg><div><b>Cuts the draw</b><p>Turbo boost off, efficient cores first, lower screen refresh rate and brightness, Bluetooth off, background services and VPN on pause.</p></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><div><b>Counts the time honestly</b><p>The draw is measured on battery and remembered separately for work, films and games. The time left does not jump with every spike.</p></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="8" width="15" height="9" rx="2.5"/><path d="M18.5 11h2v3h-2M7 12.5h5"/></svg><div><b>Knows your power bank</b><p>Shows how much is left in it. Type the percent the bank shows, and the program learns how much it really gives.</p></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14" rx="2.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg><div><b>Follows the schedule</b><p>For Ukraine it reads the Koly Ye outage schedule: warns ahead, tops the battery up and switches back when the power returns.</p></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9h10a4 4 0 0 1 4 4v1.5a2.5 2.5 0 0 1-4.6 1.4L15.5 15h-7l-.9.9A2.5 2.5 0 0 1 3 14.5V13a4 4 0 0 1 4-4z"/><path d="M7.5 11.5v3M6 13h3"/></svg><div><b>Profiles for everything else</b><p>Game, film, build, call, quiet. A program opens, its profile turns on. On the charger a game gets full power.</p></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14M9.5 8V5h5v3M7 8l1 12h8l1-12"/></svg><div><b>Keeps the laptop tidy</b><p>Once a week it clears temporary files and caches, watches the battery wear and warns when something new adds itself to autostart.</p></div></li></ul>
+</div></section>
+
+<section class="block"><div class="wrap split">
+ <div><h2>One window where everything is visible</h2><p class="sub">Draw, time left, battery and power bank, today&#x27;s outages and the profile. The small panel by the tray shows the same in brief.</p><ul class="ticks"><li>A widget in the corner of the screen while the power is out</li><li>A chart of the draw and the history of outages</li><li>A button that measures what the saving gives on your laptop</li><li>Light and dark theme, three languages</li></ul></div>
+ <figure class="shot"><img src="/blackoutmode/img/overview-en.webp" width="960" height="600" loading="lazy" alt="BlackoutMode window: draw, time left, battery and power bank, today&#x27;s outage schedule"></figure>
+</div></section>
+
+<section class="block"><div class="wrap">
+ <h2>Made to be forgotten about</h2>
+ <div class="whys"><div class="why"><h3>Turns on by itself</h3><p>The charger is gone, the mode is on. The power is back, everything is as it was.</p></div><div class="why"><h3>Changes nothing for good</h3><p>Every setting it touches is remembered and restored, even after a restart.</p></div><div class="why"><h3>Light</h3><p>One file of 8 MB. The window is closed, nothing of it stays in memory.</p></div><div class="why"><h3>Private</h3><p>No account, no statistics. Only the outage schedule and the version number are downloaded.</p></div></div>
+</div></section>
+
+<section class="block"><div class="wrap">
+ <h2>What works on which laptop</h2><p class="sub">On first start the program checks what the laptop has and hides what is missing.</p>
+ <div class="table"><table><thead><tr><th scope="col">Feature</th><th scope="col">Needs</th></tr></thead><tbody><tr><th scope="row">No-power mode, profiles, schedule, power bank, clean-up</th><td>any laptop with Windows 10 or 11</td></tr><tr><th scope="row">Cooling profile, battery charge limit</th><td>Lenovo IdeaPad or Legion</td></tr><tr><th scope="row">Putting the discrete card to sleep</th><td>built-in graphics plus NVIDIA</td></tr><tr><th scope="row">Lower refresh rate</th><td>a screen that offers one</td></tr></tbody></table></div>
+</div></section>
+
+<section id="download" class="block"><div class="wrap">
+ <div class="soon">
+  <img class="soon-mark" src="/blackoutmode/logo.svg" alt="" width="120" height="120">
+  <div><h2>Download BlackoutMode</h2><p>One exe file. Put it anywhere and run it: a lightning icon appears in the tray. New versions are picked up by the program itself.</p>
+  <div class="cta"><a class="btn btn-primary" href="https://github.com/vkardin/blackoutmode/releases/latest">Download for Windows</a><a class="btn btn-ghost" href="https://github.com/vkardin/blackoutmode">Source code on GitHub</a></div>
+  <p class="meta">Administrator rights are optional. Without them pausing services and the cooling profile are skipped.</p></div>
+ </div>
+ <p class="thanks" id="donate">These programs are free and stay free. You can say thanks on <a href="https://ko-fi.com/vkardin">Ko-fi</a> or <a href="https://donatello.to/vkardin">Donatello</a>.</p>
+</div></section>
+
+<section id="faq" class="block"><div class="wrap narrow">
+ <h2>Questions</h2>
+ <div class="faq"><details><summary>Does it break anything in Windows?</summary><p>No. Before changing a setting the program remembers its value and puts it back when the mode turns off. If the laptop was switched off in the middle, everything is restored on the next start.</p></details><details><summary>How much does it save?</summary><p>It depends on the laptop. On mine the draw falls from 30–60 W to 12–17 W. The Statistics page has a button that measures it on yours: three minutes without saving, three with it.</p></details><details><summary>I have no power bank. Is it still useful?</summary><p>Yes. Everything except the power bank counter works from the laptop&#x27;s own battery.</p></details><details><summary>I am not in Ukraine. Will it work?</summary><p>Yes. Only the outage schedule is tied to Ukraine; the mode itself turns on whenever the charger is unplugged, anywhere.</p></details><details><summary>Why does Windows warn about the file?</summary><p>The file is not signed with a paid certificate, so SmartScreen may ask on the first run. The code is open, and every release is built from it by GitHub.</p></details></div>
+</div></section>
+
+<section class="family-section" id="more" aria-labelledby="family-title"><div class="family-wrap"><p class="family-kicker">VKARDIN / TOOLS</p><h2 id="family-title" data-family-word="title">More tools by vkardin</h2><p class="family-intro" data-family-word="sub">One developer. Free and open source.</p><div class="family-grid"></div><p class="family-credit"><a href="https://github.com/vkardin">github.com/vkardin</a> · <span data-family-word="author">Independent tools · open source</span></p></div></section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>© 2026 BlackoutMode</span><a href="https://github.com/vkardin/blackoutmode">GitHub</a><a href="https://github.com/vkardin/blackoutmode/issues">Report a bug</a><a href="https://vkardin.github.io/">All projects</a></div></footer>
+<script src="/blackoutmode/app.js?v=1"></script>
+<script src="/family.js?v=10"></script>
+</body>
+</html>

@@ -3,17 +3,17 @@
     "ru": [
       "vKardin — приложения и расширения с открытым кодом",
       "Небольшие программы, которые я делаю для себя и выкладываю для всех",
-      "Бесплатные инструменты vKardin с открытым кодом: подсветка видео, ровная громкость, плавающий плеер, скриншоты, домашний сервер, графики отключений света и жесты на телефоне."
+      "Бесплатные инструменты vKardin с открытым кодом: подсветка видео, ровная громкость, плавающий плеер, скриншоты, домашний сервер, графики отключений света, экономия заряда ноутбука без света и жесты на телефоне."
     ],
     "uk": [
       "vKardin — застосунки та розширення з відкритим кодом",
       "Невеликі програми, які я роблю для себе й викладаю для всіх",
-      "Безкоштовні інструменти vKardin з відкритим кодом: підсвічування відео, рівна гучність, плаваючий плеєр, знімки екрана, домашній сервер, графіки відключень світла й жести на телефоні."
+      "Безкоштовні інструменти vKardin з відкритим кодом: підсвічування відео, рівна гучність, плаваючий плеєр, знімки екрана, домашній сервер, графіки відключень світла, економія заряду ноутбука без світла й жести на телефоні."
     ],
     "en": [
       "vKardin — open-source apps and browser extensions",
       "Small programs I make for myself and share with everyone",
-      "Free, open-source tools by vKardin: video ambient light, even loudness, a floating player, screenshots, home server management, power outage schedules and phone gestures."
+      "Free, open-source tools by vKardin: video ambient light, even loudness, a floating player, screenshots, home server management, power outage schedules, laptop power saving during outages and phone gestures."
     ]
   },
   "video-glow": {
@@ -99,6 +99,23 @@
       "UNI — a Telegram bot for home server management",
       "Manage your home server through Telegram",
       "Manage your home server with UNI: a Telegram bot, monitoring, apps, notifications and a Mini App. Self-hosted, with one-command installation."
+    ]
+  },
+  "blackoutmode": {
+    "en": [
+      "BlackoutMode — your laptop lasts through the power outage",
+      "Your laptop lasts through the power outage",
+      "BlackoutMode for Windows: when the charger goes dead it cuts the laptop's power draw, counts the time left on battery and power bank, and puts everything back when the grid returns. Free, open source."
+    ],
+    "ru": [
+      "BlackoutMode — ноутбук доживает до конца отключения света",
+      "Ноутбук доживает до конца отключения света",
+      "BlackoutMode для Windows: когда пропала розетка, снижает расход ноутбука, считает, на сколько хватит батареи и павербанка, и возвращает всё как было, когда дали свет. Бесплатно, код открыт."
+    ],
+    "uk": [
+      "BlackoutMode — ноутбук доживає до кінця відключення світла",
+      "Ноутбук доживає до кінця відключення світла",
+      "BlackoutMode для Windows: коли зникла розетка, знижує споживання ноутбука, рахує, на скільки вистачить батареї та павербанка, і повертає все як було, коли дали світло. Безкоштовно, код відкритий."
     ]
   },
   "tukk": {

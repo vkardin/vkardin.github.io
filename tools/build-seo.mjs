@@ -39,13 +39,15 @@ const urls=[];
 // Firefox-only listings: an extra card link next to Releases.
 const firefox={'video-drift':'https://addons.mozilla.org/firefox/addon/video-drift-floating-player/',snapt:'https://addons.mozilla.org/firefox/addon/snapt-screenshots-images/'};
 const stores={'video-glow':['https://chromewebstore.google.com/detail/bjgbalkabocifimhnhbcnomeknpbhkea','https://addons.mozilla.org/firefox/addon/video-glow/'],leveler:['https://chromewebstore.google.com/detail/phbjpipnbhffcegccfbbfabbhmgaelko','https://addons.mozilla.org/firefox/addon/leveler/']};
-const repos={'video-glow':'video-glow',leveler:'leveler','video-drift':'video-drift',snapt:'snapt','uni-homebot':'uni-homebot',koly:'koly',tukk:'tukk'};
+// Chrome listings of projects whose main download is not the extension.
+const chrome={snapt:'https://chromewebstore.google.com/detail/cgojajobdffefmabijahgncknakoegic'};
+const repos={'video-glow':'video-glow',leveler:'leveler','video-drift':'video-drift',snapt:'snapt','uni-homebot':'uni-homebot',koly:'koly',blackoutmode:'blackoutmode',tukk:'tukk'};
 // Projects whose templates are written once per language.
-const perLanguage=new Set(['snapt','tukk']);
+const perLanguage=new Set(['snapt','tukk','blackoutmode']);
 const ogSize=image=>image.startsWith('/media/og/')||image==='/leveler/img/og.png'?[1200,630]:[1280,640];
 // Smaller image candidates reduce mobile transfers without changing the desktop originals.
 const responsive=new Map();
-for(const id of ['video-glow','leveler','video-drift','snapt','uni-homebot','koly','tukk'])for(const lang of langs){
+for(const id of ['video-glow','leveler','video-drift','snapt','uni-homebot','koly','blackoutmode','tukk'])for(const lang of langs){
   const source=`media/${id}-${lang}.webp`,dest=`media/responsive/${id}-${lang}-480.webp`;
   fs.mkdirSync(path.join(root,'media/responsive'),{recursive:true});
   await sharp(path.join(root,source)).resize({width:480,withoutEnlargement:true}).webp({quality:76}).toFile(path.join(root,dest));
@@ -86,15 +88,16 @@ function translate(doc,id,lang,kind) {
   }
 }
 // One list of projects for the hub and for the "other programs" block of every product page.
-const names={'video-glow':'Video Glow',leveler:'Leveler','video-drift':'Video Drift',snapt:'Snapt','uni-homebot':'UNI',koly:'Коли Є',tukk:'Tukk'};
-const accents={'video-glow':'#d3b3ff',leveler:'#3ddc97','video-drift':'#63d9d0',snapt:'#b79bff','uni-homebot':'#8fb5ff',koly:'#ffc24a',tukk:'#ff7a35'};
+const names={'video-glow':'Video Glow',leveler:'Leveler','video-drift':'Video Drift',snapt:'Snapt','uni-homebot':'UNI',koly:'Коли Є',blackoutmode:'BlackoutMode',tukk:'Tukk'};
+const accents={'video-glow':'#d3b3ff',leveler:'#3ddc97','video-drift':'#63d9d0',snapt:'#b79bff','uni-homebot':'#8fb5ff',koly:'#ffc24a',blackoutmode:'#f6d365',tukk:'#ff7a35'};
 const gets={
   'video-glow':[['Chrome',stores['video-glow'][0]],['Firefox',stores['video-glow'][1]]],
   leveler:[['Chrome',stores.leveler[0]],['Firefox',stores.leveler[1]]],
   'video-drift':[['Firefox',firefox['video-drift']]],
-  snapt:[['Windows, macOS, Linux','https://github.com/vkardin/snapt/releases/latest'],['Firefox',firefox.snapt]],
+  snapt:[['Windows, macOS, Linux','https://github.com/vkardin/snapt/releases/latest'],['Chrome',chrome.snapt],['Firefox',firefox.snapt]],
   'uni-homebot':[['GitHub','https://github.com/vkardin/uni-homebot']],
   koly:[['Android','https://github.com/vkardin/koly/releases/download/android-v1.0.0/koly-1.0.0.apk'],['Windows','https://github.com/vkardin/koly/releases/download/desktop-v1.0.0/koly-widget-1.0.0-setup.exe']],
+  blackoutmode:[['Windows','https://github.com/vkardin/blackoutmode/releases/latest']],
   tukk:[]
 };
 function familyRows(doc,id) {
@@ -131,7 +134,7 @@ function render(id,lang,kind) {
     if(demo)demo.id='demo';
   }
   const url=origin+pagePath(id,lang,kind);
-  const brand=id==='hub'?'vKardin':id==='uni-homebot'?'UNI':id==='video-glow'?'Video Glow':id==='video-drift'?'Video Drift':id==='leveler'?'Leveler':id==='tukk'?'Tukk':'Snapt';
+  const brand=id==='hub'?'vKardin':id==='uni-homebot'?'UNI':id==='video-glow'?'Video Glow':id==='video-drift'?'Video Drift':id==='leveler'?'Leveler':id==='tukk'?'Tukk':id==='blackoutmode'?'BlackoutMode':'Snapt';
   const sub={ru:{support:'Поддержка',privacy:'Политика конфиденциальности'},uk:{support:'Підтримка',privacy:'Політика конфіденційності'},en:{support:'Support',privacy:'Privacy policy'}};
   const [mainTitle,h1,mainDesc]=copy[id][lang];
   const title=kind==='index'?mainTitle:`${brand} — ${sub[lang][kind]}`;
@@ -164,7 +167,7 @@ function render(id,lang,kind) {
     const target=new URL(v,origin+sourcePath);if(target.origin!==origin)continue;
     if(el.tagName==='SCRIPT'&&attr==='src')target.searchParams.set('v','seo-3');
     // Localize cross-project navigation, cards and document links.
-    const match=target.pathname.match(/^\/(video-glow|leveler|video-drift|snapt|uni-homebot|koly|tukk)\/(?:ru\/|uk\/|en\/)?(?:(index|support|privacy)\.html)?$/);
+    const match=target.pathname.match(/^\/(video-glow|leveler|video-drift|snapt|uni-homebot|koly|blackoutmode|tukk)\/(?:ru\/|uk\/|en\/)?(?:(index|support|privacy)\.html)?$/);
     if(attr==='href'&&el.tagName==='A'&&!el.hreflang) {
       if(match)target.pathname=pagePath(match[1],lang,match[2]||'index');
       else if(target.pathname==='/')target.pathname=pagePath('hub',lang);
@@ -207,7 +210,7 @@ function render(id,lang,kind) {
   if(id==='snapt'){const hero=doc.querySelector('body>.hero');if(hero)main.prepend(hero);}
   doc.querySelectorAll('[id="family-content"]').forEach(e=>{if(e!==main)e.removeAttribute('id');});main.id='family-content';main.tabIndex=-1;
   const author={'@type':'Person',name:'vKardin',url:origin+'/',sameAs:['https://github.com/vkardin','https://www.youtube.com/@vKardin','https://www.tiktok.com/@vkard1n']};
-  const schema=kind==='index'&&id!=='hub'?{'@context':'https://schema.org','@type':'SoftwareApplication',name:brand,url,inLanguage:lang,description,applicationCategory:['uni-homebot','tukk'].includes(id)?'UtilitiesApplication':'MultimediaApplication',operatingSystem:id==='snapt'?'Windows, macOS, Linux':id==='uni-homebot'?'Linux':id==='tukk'?'Android 8.0+':'Chrome, Firefox',offers:{'@type':'Offer',price:'0',priceCurrency:'USD'},isAccessibleForFree:true,license:'https://opensource.org/licenses/MIT',image:origin+image,downloadUrl:stores[id]?.[0]||(id==='tukk'?'https://github.com/vkardin/tukk':`https://github.com/vkardin/${repos[id]}/releases/latest`),sameAs:[...(stores[id]||[]),`https://github.com/vkardin/${repos[id]}`],author}:
+  const schema=kind==='index'&&id!=='hub'?{'@context':'https://schema.org','@type':'SoftwareApplication',name:brand,url,inLanguage:lang,description,applicationCategory:['uni-homebot','tukk','blackoutmode'].includes(id)?'UtilitiesApplication':'MultimediaApplication',operatingSystem:id==='snapt'?'Windows, macOS, Linux':id==='uni-homebot'?'Linux':id==='tukk'?'Android 8.0+':id==='blackoutmode'?'Windows 10, Windows 11':'Chrome, Firefox',offers:{'@type':'Offer',price:'0',priceCurrency:'USD'},isAccessibleForFree:true,license:'https://opensource.org/licenses/MIT',image:origin+image,downloadUrl:stores[id]?.[0]||(id==='tukk'?'https://github.com/vkardin/tukk':`https://github.com/vkardin/${repos[id]}/releases/latest`),sameAs:[...(stores[id]||[]),...(chrome[id]?[chrome[id]]:[]),`https://github.com/vkardin/${repos[id]}`],author}:
     {'@context':'https://schema.org','@type':id==='hub'?'CollectionPage':'WebPage',name:title,url,inLanguage:lang,description,...(id==='hub'?{author,mainEntity:{'@type':'ItemList',itemListElement:Object.keys(repos).map((p,i)=>({'@type':'ListItem',position:i+1,url:origin+pagePath(p,lang)}))}}:{})};
   const json=doc.createElement('script');json.type='application/ld+json';json.textContent=JSON.stringify(schema).replaceAll('<','\\u003c');doc.head.append(json);
   // Styles cover static language links and stable screenshots before the first paint.
